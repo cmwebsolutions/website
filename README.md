@@ -1,4 +1,4 @@
-# Custom Made Websolutions: Website
+# Custom Made Web Solutions: Website
 
 This is the main website for CMWS
 
