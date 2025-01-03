@@ -1,52 +1,61 @@
 ---
 interface Props {
-	title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Providing professional web design and development services for growing busineses that are looking to improve their digital presence." />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	<script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="SlUuWL36Jbxf+HQqstX1Cg" defer="true"></script>
-	</body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description"
+          content="Providing professional web design and development services for growing busineses that are looking to improve their digital presence."/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <script
+            is:inline
+            defer
+            data-domain="cmwebsolutions.com"
+            src="https://plausible.io/js/script.js"
+    >
+
+    </script>
+    <title>{title}</title>
+</head>
+<body>
+<slot/>
+</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 15, 210, 187;
-		--accent-light: 222, 226, 233;
-		--accent-dark: 65, 0, 245;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-dark)) 30%,
-			rgb(var(--accent-light)) 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #1b1919;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+    :root {
+        --accent: 15, 210, 187;
+        --accent-light: 222, 226, 233;
+        --accent-dark: 65, 0, 245;
+        --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-dark)) 30%,
+                rgb(var(--accent-light)) 60%
+        );
+    }
+
+    html {
+        font-family: system-ui, sans-serif;
+        background: #1b1919;
+        background-size: 224px;
+    }
+
+    code {
+        font-family: Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
 </style>
