@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 ---
 
 <Layout title="Professional digital solutions | Custom Made Web Solutions.">
@@ -51,6 +50,25 @@ import Card from '../components/Card.astro';
 			<p>
 				This website is currently undergoing a major redesign. <br /> Please check back soon!
 			</p>
+			<p>
+				Want to discuss your project? <br>
+				Fill in the form below and I'll get back to you as soon as possible.
+			</p>
+			<form action="https://formspree.io/f/xzzpzegw" method="POST">
+				<label>
+					Your name:
+					<input type="text" name="name">
+				</label>
+				<label>
+					Your email:
+					<input type="email" name="email">
+				</label>
+				<label>
+					Your project details:
+					<textarea rows="6" name="projectDetails"></textarea>
+				</label>
+				<button class="" type="submit">Share project details</button>
+			</form>
 		</div>
 	</main>
 </Layout>
@@ -98,6 +116,76 @@ import Card from '../components/Card.astro';
 		background-size: 400%;
 		background-position: 0;
 	}
+
+
+	form{
+		font: 95% Arial, Helvetica, sans-serif;
+		max-width: 400px;
+		margin: 10px auto;
+		padding: 16px;
+		text-align: left;
+	}
+
+	form input[type="text"],
+	form input[type="date"],
+	form input[type="datetime"],
+	form input[type="email"],
+	form input[type="number"],
+	form input[type="search"],
+	form input[type="time"],
+	form input[type="url"],
+	form textarea,
+	form select
+	{
+		-webkit-transition: all 0.30s ease-in-out;
+		-moz-transition: all 0.30s ease-in-out;
+		-ms-transition: all 0.30s ease-in-out;
+		-o-transition: all 0.30s ease-in-out;
+		outline: none;
+		box-sizing: border-box;
+		width: 100%;
+		background: #fff;
+		margin-bottom: 4%;
+		margin-top: 2%;
+		border: 1px solid #ccc;
+		padding: 3%;
+		color: #555;
+		font: 95% Arial, Helvetica, sans-serif;
+	}
+	form input[type="text"]:focus,
+	form input[type="date"]:focus,
+	form input[type="datetime"]:focus,
+	form input[type="email"]:focus,
+	form input[type="number"]:focus,
+	form input[type="search"]:focus,
+	form input[type="time"]:focus,
+	form input[type="url"]:focus,
+	form textarea:focus,
+	form select:focus
+	{
+		box-shadow: 0 0 5px #43D1AF;
+		padding: 3%;
+		border: 1px solid #43D1AF;
+	}
+
+	form button[type="submit"],
+	form button[type="button"]{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 3%;
+		background: var(--accent);
+		border-bottom: 2px solid #30C29E;
+		border-top-style: none;
+		border-right-style: none;
+		border-left-style: none;
+		color: #fff;
+		transition: all 0.30s ease-in-out;
+	}
+	form button[type="submit"]:hover,
+	form button[type="button"]:hover{
+		background: #2EBC99;
+	}
+
 
 	@media screen and (min-width: 500px) {
 		svg {
