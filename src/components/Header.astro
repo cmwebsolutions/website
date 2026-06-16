@@ -1,4 +1,12 @@
-<header class="site-header">
+---
+interface Props {
+    transparent?: boolean;
+}
+
+const { transparent = true } = Astro.props;
+---
+
+<header class="site-header" class:list={{ 'site-header--scrolled': !transparent }}>
     <div class="container">
         <nav class="nav" aria-label="Primary navigation">
             <a class="brand" href="/" aria-label="CM Web Solutions home">
@@ -18,14 +26,14 @@
     </div>
 </header>
 
-<script>
+{transparent && <script>
     const header = document.querySelector('.site-header');
     if (header) {
         const toggleHeader = () => header.classList.toggle('site-header--scrolled', window.scrollY > 10);
         window.addEventListener('scroll', toggleHeader, { passive: true });
         toggleHeader();
     }
-</script>
+</script>}
 
 <style>
     .site-header {
