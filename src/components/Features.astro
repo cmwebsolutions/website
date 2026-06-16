@@ -1,0 +1,143 @@
+<section class="section" id="included">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">What's included</span>
+                <h2>A managed website system, not just a page builder.</h2>
+            </div>
+
+            <p>
+                Everything your business needs to launch and maintain a credible web presence, wrapped into one simple monthly subscription.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <div>
+                    <div class="icon">01</div>
+                </div>
+                <div>
+                    <h3>Website design</h3>
+                    <p>
+                        A clean, professional design shaped around your business, offer and target customers.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon">02</div>
+                </div>
+                <div>
+                    <h3>Responsive development</h3>
+                    <p>
+                        A mobile-friendly website built to work smoothly across desktop, tablet and mobile devices.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon">03</div>
+                </div>
+                <div>
+                    <h3>Managed hosting</h3>
+                    <p>
+                        Hosting handled for you, so you do not have to worry about server setup or configuration.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon">04</div>
+                </div>
+                <div>
+                    <h3>Maintenance and updates</h3>
+                    <p>
+                        Ongoing care to keep your website stable, maintained and running as expected.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon">05</div>
+                </div>
+                <div>
+                    <h3>Support</h3>
+                    <p>
+                        Help with website questions, minor changes and technical issues during your subscription.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon">06</div>
+                </div>
+                <div>
+                    <h3>SEO setup</h3>
+                    <p>
+                        Basic on-page SEO foundations including page titles, meta descriptions and core structure.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .feature-card {
+        min-height: 240px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition:
+            transform 180ms ease,
+            box-shadow 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(65, 0, 245, 0.22);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .feature-card p {
+        margin-top: 12px;
+    }
+
+    .feature-card:nth-child(2n) :global(.icon) {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .feature-card:nth-child(3n) :global(.icon) {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    @media (max-width: 980px) {
+        .feature-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

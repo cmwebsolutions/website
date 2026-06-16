@@ -1,0 +1,57 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">CM Web Solutions</div>
+                <div>Professional websites from &pound;149/month.</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="mailto:hello@cmwebsolutions.com">hello@cmwebsolutions.com</a>
+                <a href="#">Privacy policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        padding: 34px 0;
+        color: rgba(252, 252, 252, 0.58);
+        background: var(--black);
+    }
+
+    .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .footer-brand {
+        color: var(--white);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-links a {
+        transition: color 180ms ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+        .footer-inner {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+</style>

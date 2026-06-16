@@ -1,0 +1,158 @@
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-panel">
+            <div>
+                <span class="eyebrow">Free consultation</span>
+
+                <h2>Let's see if the subscription model fits your business.</h2>
+
+                <p class="lead">
+                    Send a few details and we'll tell you whether this plan makes sense, what it would include, and what the next step looks like.
+                </p>
+            </div>
+
+            <form class="form" action="#" method="post">
+                <div class="form-row">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@business.co.uk" required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07700 000000" />
+                    </div>
+
+                    <div class="field">
+                        <label for="business-type">Business type</label>
+                        <select id="business-type" name="business-type">
+                            <option value="">Select one</option>
+                            <option>Startup</option>
+                            <option>Local business</option>
+                            <option>Service provider</option>
+                            <option>Trade business</option>
+                            <option>Consultant</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="message">What do you need?</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your current website, business and what you want to improve."></textarea>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Book my free consultation</button>
+
+                <p class="privacy">
+                    No spam. We'll only contact you about your enquiry.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .cta {
+        padding-bottom: 92px;
+        background: var(--surface-soft);
+    }
+
+    .cta-panel {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 30px;
+        padding: clamp(32px, 5vw, 58px);
+        background:
+            radial-gradient(circle at 0% 50%, rgba(15, 210, 187, 0.24), transparent 22rem),
+            var(--secondary);
+        border-radius: var(--radius-xl);
+    }
+
+    .form {
+        display: grid;
+        gap: 13px;
+        padding: 18px;
+        background: rgba(252, 252, 252, 0.74);
+        border: 1px solid rgba(27, 25, 25, 0.10);
+        border-radius: 26px;
+        backdrop-filter: blur(12px);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+    }
+
+    .field {
+        display: grid;
+        gap: 6px;
+    }
+
+    .field label {
+        color: rgba(27, 25, 25, 0.58);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+        width: 100%;
+        min-height: 50px;
+        padding: 12px 14px;
+        color: var(--black);
+        background: var(--white);
+        border: 1px solid rgba(27, 25, 25, 0.12);
+        border-radius: 14px;
+        outline: none;
+        transition:
+            border-color 180ms ease,
+            box-shadow 180ms ease;
+    }
+
+    .field textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+        border-color: rgba(65, 0, 245, 0.46);
+        box-shadow: 0 0 0 4px rgba(65, 0, 245, 0.10);
+    }
+
+    .form :global(.btn) {
+        width: 100%;
+        min-height: 54px;
+    }
+
+    .privacy {
+        color: rgba(27, 25, 25, 0.52);
+        font-size: 0.82rem;
+        text-align: center;
+    }
+
+    @media (max-width: 980px) {
+        .cta-panel {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

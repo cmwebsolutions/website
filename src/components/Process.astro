@@ -1,0 +1,102 @@
+<section class="section section-soft" id="process">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">How it works</span>
+                <h2>Four steps from stuck to live.</h2>
+            </div>
+
+            <p>
+                A simple process designed to keep the project moving without overwhelming you or your team.
+            </p>
+        </div>
+
+        <div class="process-grid">
+            <article class="process-step" data-step="01">
+                <h3>Discover</h3>
+                <p>
+                    We learn about your business, your offer, your audience and what the website needs to achieve.
+                </p>
+            </article>
+
+            <article class="process-step" data-step="02">
+                <h3>Shape</h3>
+                <p>
+                    We turn your business into a clear website structure with focused pages and messaging.
+                </p>
+            </article>
+
+            <article class="process-step" data-step="03">
+                <h3>Launch</h3>
+                <p>
+                    We design, build, test and launch your website so it is ready to start generating trust.
+                </p>
+            </article>
+
+            <article class="process-step" data-step="04">
+                <h3>Support</h3>
+                <p>
+                    After launch, we continue to manage hosting, maintenance, updates and support.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .process-step {
+        position: relative;
+        min-height: 230px;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .process-step::before {
+        content: attr(data-step);
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 36px;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 15px;
+        font-size: 0.82rem;
+        font-weight: 900;
+    }
+
+    .process-step:nth-child(2)::before {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .process-step:nth-child(3)::before {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    .process-step p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+        .process-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .process-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
