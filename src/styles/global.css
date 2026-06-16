@@ -16,7 +16,7 @@
     --dark-muted: rgba(252, 252, 252, 0.68);
     --dark-border: rgba(252, 252, 252, 0.12);
 
-    --font: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font: "Geist Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     --container: 1160px;
     --radius-sm: 14px;
@@ -39,7 +39,7 @@ html {
 
 body {
     margin: 0;
-    font-family: var(--font);
+    font-family: var(--font), serif;
     color: var(--text);
     background: var(--white);
     line-height: 1.55;
