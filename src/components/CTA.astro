@@ -11,16 +11,24 @@
                 </p>
             </div>
 
-            <form class="form" action="#" method="post">
+            <div data-fs-success>
+                <strong>Thanks for your enquiry!</strong> We'll be in touch soon.
+            </div>
+            <div data-fs-error>
+                <strong>Oops!</strong> Something went wrong. Please try again.
+            </div>
+            <form id="waas-form" class="form">
                 <div class="form-row">
                     <div class="field">
                         <label for="name">Name</label>
                         <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required />
+                        <span data-fs-error="name"></span>
                     </div>
 
                     <div class="field">
                         <label for="email">Email</label>
                         <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@business.co.uk" required />
+                        <span data-fs-error="email"></span>
                     </div>
                 </div>
 
@@ -28,6 +36,7 @@
                     <div class="field">
                         <label for="phone">Phone</label>
                         <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07700 000000" />
+                        <span data-fs-error="phone"></span>
                     </div>
 
                     <div class="field">
@@ -41,12 +50,14 @@
                             <option>Consultant</option>
                             <option>Other</option>
                         </select>
+                        <span data-fs-error="business-type"></span>
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="message">What do you need?</label>
                     <textarea id="message" name="message" placeholder="Tell us about your current website, business and what you want to improve."></textarea>
+                        <span data-fs-error="message"></span>
                 </div>
 
                 <button class="btn btn-primary" type="submit">Book my free consultation</button>
@@ -155,4 +166,59 @@
             grid-template-columns: 1fr;
         }
     }
+
+    [data-fs-error] {
+        color: #dc3455;
+        font-size: 0.82rem;
+    }
+
+    input[aria-invalid='true'],
+    select[aria-invalid='true'],
+    textarea[aria-invalid='true'] {
+        border-color: #dc3455;
+    }
+
+    [data-fs-success][data-fs-active] {
+        background: #d4edda;
+        color: #155724;
+        padding: 12px 16px;
+        border-radius: 14px;
+        margin-bottom: 16px;
+        font-size: 0.92rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+
+        strong {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    [data-fs-error=''][data-fs-active] {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 12px 16px;
+        border-radius: 14px;
+        margin-bottom: 16px;
+        font-size: 0.92rem;
+    }
 </style>
+
+<script>
+    import { initForm } from "@formspree/ajax";
+
+    initForm({
+        formElement: "#waas-form",
+        formId: "xzzpzegw",
+        onSuccess: (context, result) => {
+            const form = document.querySelector('#waas-form') as HTMLFormElement;
+            if (form) {
+                form.style.display = 'none';
+            }
+        }
+    });
+</script>

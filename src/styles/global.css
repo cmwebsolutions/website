@@ -122,6 +122,10 @@ p {
     align-items: end;
     gap: 36px;
     margin-bottom: 42px;
+
+    @media screen and (max-width: 490px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .section-head p {
