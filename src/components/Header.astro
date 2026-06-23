@@ -22,19 +22,55 @@ const { transparent = true } = Astro.props;
                 <a href="/contact">Contact</a>
             </div>
 
-            <a class="btn btn-primary" href="/contact">Book a call</a>
+            <div class="nav-actions">
+                <a class="btn btn-primary" href="/contact">Book a call</a>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
+
+            <div class="nav-mobile">
+                <a href="/services">Services</a>
+                <a href="/work">Our Work</a>
+                <a href="/about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/contact">Contact</a>
+            </div>
     </div>
 </header>
 
-{transparent && <script>
+<script>
     const header = document.querySelector('.site-header');
     if (header) {
         const toggleHeader = () => header.classList.toggle('site-header--scrolled', window.scrollY > 10);
         window.addEventListener('scroll', toggleHeader, { passive: true });
         toggleHeader();
     }
-</script>}
+
+    const hamburger = document.querySelector('.hamburger');
+    if (header && hamburger) {
+        hamburger.addEventListener('click', () => {
+            header.classList.toggle('nav-open');
+            const isOpen = header.classList.contains('nav-open');
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+
+    if (header) {
+        document.querySelectorAll('.nav-mobile a').forEach((link) => {
+            link.addEventListener('click', () => {
+                header.classList.remove('nav-open');
+                const hamburgerBtn = document.querySelector('.hamburger');
+                if (hamburgerBtn) {
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+</script>
 
 <style>
     .site-header {
@@ -110,25 +146,109 @@ const { transparent = true } = Astro.props;
         color: var(--primary);
     }
 
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: transform 180ms ease;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2.5px;
+        border-radius: 2px;
+        background: var(--white);
+        transition: transform 200ms ease, opacity 200ms ease;
+    }
+
+    .site-header--scrolled .hamburger span {
+        background: var(--black);
+    }
+
+    .nav-open .hamburger span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .nav-open .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-open .hamburger span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    .nav-mobile {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 20px 20px;
+        background: rgba(252, 252, 252, 0.82);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 200ms ease, visibility 200ms ease;
+    }
+
+    .nav-open .nav-mobile {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-mobile a {
+        padding: 12px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--muted);
+        transition: background 180ms ease, color 180ms ease;
+    }
+
+    .nav-mobile a:hover {
+        background: rgba(27, 25, 25, 0.06);
+        color: var(--text);
+    }
+
     @media (max-width: 980px) {
         .nav-links {
             display: none;
         }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .nav-mobile {
+            display: flex;
+        }
     }
 
     @media (max-width: 640px) {
-        .site-header :global(.btn) {
-            width: 100%;
-            min-height: 46px;
+        .nav {
+            min-height: 64px;
+            padding: 12px 0;
         }
 
-        .nav {
-            flex-wrap: wrap;
-            padding: 16px 0;
-
-            .btn {
-                width: auto;
-            }
+        .brand-logo {
+            height: 38px;
         }
     }
 </style>
