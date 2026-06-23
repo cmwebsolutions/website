@@ -1,44 +1,61 @@
+---
+interface Step {
+    heading: string;
+    description: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    steps?: Step[];
+}
+
+const {
+    eyebrow = "How it works",
+    heading = "Four steps from stuck to live.",
+    description = "A simple process designed to keep the project moving without overwhelming you or your team.",
+    steps = [
+        {
+            heading: "Discover",
+            description: "We learn about your business, your offer, your audience and what the website needs to achieve."
+        },
+        {
+            heading: "Shape",
+            description: "We turn your business into a clear website structure with focused pages and messaging."
+        },
+        {
+            heading: "Launch",
+            description: "We design, build, test and launch your website so it is ready to start generating trust."
+        },
+        {
+            heading: "Support",
+            description: "Your site is live and we're here when you need us. Hosting and ongoing support plans are available separately."
+        }
+    ]
+} = Astro.props;
+---
+
 <section class="section section-soft" id="process">
     <div class="container">
         <div class="section-head">
             <div>
-                <span class="eyebrow">How it works</span>
-                <h2>Four steps from stuck to live.</h2>
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
             </div>
-
-            <p>
-                A simple process designed to keep the project moving without overwhelming you or your team.
-            </p>
+            <p>{description}</p>
         </div>
 
         <div class="process-grid">
-            <article class="process-step" data-step="01">
-                <h3>Discover</h3>
-                <p>
-                    We learn about your business, your offer, your audience and what the website needs to achieve.
-                </p>
-            </article>
-
-            <article class="process-step" data-step="02">
-                <h3>Shape</h3>
-                <p>
-                    We turn your business into a clear website structure with focused pages and messaging.
-                </p>
-            </article>
-
-            <article class="process-step" data-step="03">
-                <h3>Launch</h3>
-                <p>
-                    We design, build, test and launch your website so it is ready to start generating trust.
-                </p>
-            </article>
-
-            <article class="process-step" data-step="04">
-                <h3>Support</h3>
-                <p>
-                    After launch, we continue to manage hosting, maintenance, updates and support.
-                </p>
-            </article>
+            {steps.map((step, i) => {
+                const num = String(i + 1).padStart(2, '0');
+                return (
+                    <article class="process-step" data-step={num}>
+                        <h3>{step.heading}</h3>
+                        <p>{step.description}</p>
+                    </article>
+                );
+            })}
         </div>
     </div>
 </section>

@@ -21,7 +21,26 @@ import { testimonials } from '../../data/testimonials';
         <TrustStrip />
         <Problem />
         <Features />
-        <Process />
+        <Process
+            steps={[
+                {
+                    heading: "Discover",
+                    description: "We learn about your business, your offer, your audience and what the website needs to achieve."
+                },
+                {
+                    heading: "Shape",
+                    description: "We turn your business into a clear website structure with focused pages and messaging."
+                },
+                {
+                    heading: "Launch",
+                    description: "We design, build, test and launch your website so it is ready to start generating trust."
+                },
+                {
+                    heading: "Support",
+                    description: "After launch, we continue to manage hosting, maintenance, updates and support as part of your subscription."
+                }
+            ]}
+        />
         <Pricing />
         <Testimonials
             testimonials={[
