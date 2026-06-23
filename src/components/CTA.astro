@@ -225,8 +225,8 @@ const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
 <script>
     import { initForm } from "@formspree/ajax";
 
-    const ctaForm = document.currentScript?.parentElement?.querySelector('form');
-    const formId = ctaForm?.getAttribute('data-form-id') || 'general-form-id';
+    const ctaForm = document.querySelector('form[data-form-id]') as HTMLFormElement;
+    const formId = ctaForm?.getAttribute('data-form-id') || 'mlgydvbn';
     const formElementId = ctaForm?.id || 'cta-form';
 
     initForm({
