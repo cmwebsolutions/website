@@ -1,0 +1,178 @@
+<section class="section portfolio" id="work">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Our work</span>
+                <h2>Sites we've built for businesses like yours.</h2>
+            </div>
+            <p>From landing pages to full business sites, each project is tailored to the client's goals and audience.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <article class="project-card">
+                <div class="project-thumb project-thumb--1">
+                    <span class="project-label">Landing page</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Brighton Dental Studio</h3>
+                    <p class="project-desc">A single-page lead generation site for a private dental practice.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-thumb project-thumb--2">
+                    <span class="project-label">Business site</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Thames Valley Plumbing</h3>
+                    <p class="project-desc">A 5-page service site with contact form and service area map.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-thumb project-thumb--3">
+                    <span class="project-label">E-commerce</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">The Urban Pantry</h3>
+                    <p class="project-desc">A custom online store with product management and booking integration.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-thumb project-thumb--4">
+                    <span class="project-label">Landing page</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Peak Fitness Coaching</h3>
+                    <p class="project-desc">A high-converting landing page for a fitness coaching ad campaign.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-thumb project-thumb--5">
+                    <span class="project-label">Multi-page</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Charterhouse Accountants</h3>
+                    <p class="project-desc">A 10-page professional services site with client portal integration.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-thumb project-thumb--6">
+                    <span class="project-label">Full stack</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Nourish Meal Prep</h3>
+                    <p class="project-desc">A subscription-based meal prep service with ordering system and CRM sync.</p>
+                    <a href="/work" class="project-link">View project →</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="portfolio-cta">
+            <a href="/work" class="btn btn-primary">See all projects</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .project-thumb {
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 16px;
+    }
+
+    .project-thumb--1 { background: linear-gradient(135deg, #4100F5, #7B4AFF); }
+    .project-thumb--2 { background: linear-gradient(135deg, #0FD2BB, #0AA8D2); }
+    .project-thumb--3 { background: linear-gradient(135deg, #FF6B6B, #EE5A24); }
+    .project-thumb--4 { background: linear-gradient(135deg, #6C5CE7, #A29BFE); }
+    .project-thumb--5 { background: linear-gradient(135deg, #1B1919, #444); }
+    .project-thumb--6 { background: linear-gradient(135deg, #00B894, #00CEC9); }
+
+    .project-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: var(--white);
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .project-info {
+        padding: 20px 22px 22px;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        line-height: 1.08;
+    }
+
+    .project-desc {
+        margin-top: 8px;
+        font-size: 0.88rem;
+        color: var(--muted);
+    }
+
+    .project-link {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--primary);
+        transition: gap 180ms ease;
+    }
+
+    .project-link:hover {
+        gap: 6px;
+    }
+
+    .portfolio-cta {
+        display: flex;
+        justify-content: center;
+        margin-top: 48px;
+    }
+
+    @media (max-width: 980px) {
+        .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .portfolio-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

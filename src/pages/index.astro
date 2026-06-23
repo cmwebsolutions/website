@@ -1,36 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroHome from '../components/HeroHome.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import Packages from '../components/Packages.astro';
+import Process from '../components/Process.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="CM Web Solutions | Professional Web Design & Development">
-
-    <main class="index-placeholder">
-        <div class="container">
-            <h1>We're building something new.</h1>
-            <p class="lead">Our website is being rebuilt. In the meantime, you can see our current service offering.</p>
-            <a class="btn btn-primary" href="/services/website-subscriptions">View website subscriptions</a>
-        </div>
+    <Header />
+    <main>
+        <HeroHome />
+        <TrustStrip />
+        <Packages />
+        <Process />
+        <Portfolio />
+        <Testimonials />
+        <FAQ />
+        <CTA />
     </main>
+    <Footer />
 </Layout>
-
-<style>
-    .index-placeholder {
-        padding: 92px 0;
-        background: var(--surface-soft);
-        min-height: 100vh;
-    }
-
-    .index-placeholder .container {
-        max-width: 640px;
-        text-align: center;
-    }
-
-    .index-placeholder h1 {
-        margin-bottom: 16px;
-    }
-
-    .index-placeholder .lead {
-        margin-top: 0;
-        margin-bottom: 32px;
-    }
-</style>

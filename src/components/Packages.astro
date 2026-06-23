@@ -1,0 +1,189 @@
+<section class="section packages" id="packages">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Our packages</span>
+                <h2>Fixed-price websites, built to perform.</h2>
+            </div>
+            <p>Choose the package that fits your goals. Every site is custom-designed, mobile-optimised, and built with performance in mind.</p>
+        </div>
+
+        <div class="packages-grid">
+            <article class="package-card">
+                <div class="package-card-body">
+                    <span class="package-name">The Launch Pad</span>
+                    <p class="package-desc">A single high-converting landing page. Perfect for Google and Meta ad campaigns, product launches, or lead generation.</p>
+                    <div class="package-price">
+                        <span class="price-value">£1,750</span>
+                        <span class="price-note">one-off</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><span class="check">✓</span> Single long-form landing page</li>
+                        <li><span class="check">✓</span> High-converting copy & design</li>
+                        <li><span class="check">✓</span> Mobile & tablet responsive</li>
+                        <li><span class="check">✓</span> SEO meta tags & schema</li>
+                        <li><span class="check">✓</span> Speed optimised</li>
+                        <li><span class="check">✓</span> 1 round of revisions</li>
+                    </ul>
+                </div>
+                <a href="/services" class="btn btn-primary package-cta">Learn more</a>
+            </article>
+
+            <article class="package-card package-card--featured">
+                <span class="package-badge">Most popular</span>
+                <div class="package-card-body">
+                    <span class="package-name">The Core Business</span>
+                    <p class="package-desc">A complete business website with up to 5 pages. Ideal for service providers, local businesses, and startups.</p>
+                    <div class="package-price">
+                        <span class="price-value">£2,750</span>
+                        <span class="price-note">one-off</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><span class="check">✓</span> Up to 5 custom pages</li>
+                        <li><span class="check">✓</span> Home, About, Services, Reviews, Contact</li>
+                        <li><span class="check">✓</span> Mobile & tablet responsive</li>
+                        <li><span class="check">✓</span> Full SEO setup</li>
+                        <li><span class="check">✓</span> Contact form integration</li>
+                        <li><span class="check">✓</span> 2 rounds of revisions</li>
+                    </ul>
+                </div>
+                <a href="/services" class="btn btn-accent package-cta">Learn more</a>
+            </article>
+
+            <article class="package-card">
+                <div class="package-card-body">
+                    <span class="package-name">The Premium Growth</span>
+                    <p class="package-desc">A full-featured website with up to 10 pages and advanced integrations — booking engines, CRM syncing, or custom forms.</p>
+                    <div class="package-price">
+                        <span class="price-value">£4,250</span>
+                        <span class="price-note">one-off</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><span class="check">✓</span> Up to 10 custom pages</li>
+                        <li><span class="check">✓</span> Advanced integrations</li>
+                        <li><span class="check">✓</span> Booking engine or CRM sync</li>
+                        <li><span class="check">✓</span> Custom forms & workflows</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                        <li><span class="check">✓</span> 3 rounds of revisions</li>
+                    </ul>
+                </div>
+                <a href="/services" class="btn btn-primary package-cta">Learn more</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .packages {
+        background: var(--surface-soft);
+    }
+
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        align-items: start;
+    }
+
+    .package-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .package-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .package-card--featured {
+        position: relative;
+        border-color: var(--accent);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .package-card--featured:hover {
+        border-color: var(--accent);
+        box-shadow: var(--shadow-card);
+    }
+
+    .package-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 16px;
+        background: var(--accent);
+        color: var(--black);
+        font-size: 0.78rem;
+        font-weight: 800;
+        border-radius: 999px;
+        white-space: nowrap;
+    }
+
+    .package-card-body {
+        flex: 1;
+        padding: 32px 28px 28px;
+    }
+
+    .package-card--featured .package-card-body {
+        padding-top: 44px;
+    }
+
+    .package-name {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1.08;
+    }
+
+    .package-desc {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        color: var(--muted);
+    }
+
+    .package-price {
+        margin-top: 24px;
+        padding: 18px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .price-value {
+        font-size: 2.2rem;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    .price-note {
+        margin-left: 8px;
+        font-size: 0.88rem;
+        color: var(--muted);
+        font-weight: 600;
+    }
+
+    .package-card :global(.check-list) {
+        margin-top: 20px;
+    }
+
+    .package-card :global(.check-list li) {
+        font-size: 0.92rem;
+    }
+
+    .package-cta {
+        margin: 0 28px 28px;
+    }
+
+    @media (max-width: 980px) {
+        .packages-grid {
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin-inline: auto;
+        }
+    }
+</style>
