@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { testimonials } from '../data/testimonials';
 ---
 
 <Layout title="About | CM Web Solutions">
@@ -78,6 +80,17 @@ import Footer from '../components/Footer.astro';
                 </div>
             </div>
         </section>
+
+        <Testimonials
+            layout="featured"
+            heading="What it's like to work with us."
+            description="Our clients become long-term partners. Here's what they say about working together."
+            testimonials={[
+                testimonials[2],
+                testimonials[6],
+                testimonials[7],
+            ]}
+        />
 
         <CTA />
     </main>

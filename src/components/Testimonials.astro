@@ -1,58 +1,73 @@
+---
+interface Testimonial {
+    name: string;
+    company: string;
+    heading: string;
+    quote: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    testimonials?: Testimonial[];
+    layout?: "grid" | "featured";
+}
+
+const {
+    eyebrow = "Testimonials",
+    heading = "Trusted by businesses like yours.",
+    description = "See what our clients have to say about working with us.",
+    testimonials = [
+        {
+            name: "Will Grady",
+            company: "Futurizm",
+            heading: "Great landing page, great experience",
+            quote: "As a tech start-up founder, finding good people is a challenge. I was referred to Custom Made Web Solutions and have been delighted \u2014 consultative, easy to work with, and landed me a great landing page at a competitive price. I highly recommend them."
+        },
+        {
+            name: "Jakub Konecki",
+            company: "Halny Tech Consulting",
+            heading: "Always goes the extra mile",
+            quote: "I can highly recommend Custom Made Web Solutions. Always helpful and goes the extra mile. They keep up with evolving technologies and often offer valuable suggestions for improvements."
+        },
+        {
+            name: "Tim Field",
+            company: "29homes",
+            heading: "Reliable partner for years",
+            quote: "I have used Custom Made Web Solutions for years for website design, hosting and maintenance. Always friendly, knowledgeable and gets the job done as required."
+        }
+    ],
+    layout = "grid"
+} = Astro.props;
+---
+
 <section class="section" id="testimonials">
     <div class="container">
         <div class="section-head">
             <div>
-                <span class="eyebrow">Testimonials</span>
-                <h2>Trusted by businesses like yours.</h2>
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
             </div>
-
-            <p>
-                See what our clients have to say about working with us.
-            </p>
+            <p>{description}</p>
         </div>
 
-        <div class="testimonial-grid">
-            <article class="card testimonial-card">
-                <div class="testimonial-content">
-                    <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-                    <div class="quote-text">
-                        <p class="quote-heading">Great landing page, great experience</p>
-                        <p>As a tech start-up founder, finding good people is a challenge. I was referred to Custom Made Web Solutions and have been delighted &mdash; consultative, easy to work with, and landed me a great landing page at a competitive price. I highly recommend them.</p>
+        <div class="testimonial-grid" class:list={{ 'testimonial-grid--featured': layout === 'featured' }}>
+            {testimonials.map((t, i) => (
+                <article class="card testimonial-card" class:list={{ 'testimonial-card--featured': layout === 'featured' && i === 0 }}>
+                    <div class="testimonial-content">
+                        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+                        <div class="quote-text">
+                            <p class="quote-heading">{t.heading}</p>
+                            <p>{t.quote}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="attribution">
-                    <strong>Will Grady</strong>
-                    <span>Futurizm</span>
-                </div>
-            </article>
-
-            <article class="card testimonial-card">
-                <div class="testimonial-content">
-                    <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-                    <div class="quote-text">
-                        <p class="quote-heading">Always goes the extra mile</p>
-                        <p>I can highly recommend Custom Made Web Solutions. Always helpful and goes the extra mile. They keep up with evolving technologies and often offer valuable suggestions for improvements.</p>
+                    <div class="attribution">
+                        <strong>{t.name}</strong>
+                        <span>{t.company}</span>
                     </div>
-                </div>
-                <div class="attribution">
-                    <strong>Jakub Konecki</strong>
-                    <span>Halny Tech Consulting</span>
-                </div>
-            </article>
-
-            <article class="card testimonial-card">
-                <div class="testimonial-content">
-                    <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-                    <div class="quote-text">
-                        <p class="quote-heading">Reliable partner for years</p>
-                        <p>I have used Custom Made Web Solutions for years for website design, hosting and maintenance. Always friendly, knowledgeable and gets the job done as required.</p>
-                    </div>
-                </div>
-                <div class="attribution">
-                    <strong>Tim Field</strong>
-                    <span>29homes</span>
-                </div>
-            </article>
+                </article>
+            ))}
         </div>
     </div>
 </section>
@@ -60,8 +75,16 @@
 <style>
     .testimonial-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .testimonial-grid--featured {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonial-card--featured {
+        grid-column: 1 / -1;
     }
 
     .testimonial-card {
@@ -73,6 +96,10 @@
             transform 180ms ease,
             box-shadow 180ms ease,
             border-color 180ms ease;
+    }
+
+    .testimonial-card--featured .quote-heading {
+        font-size: 1.2rem;
     }
 
     .testimonial-card:hover {
@@ -130,8 +157,13 @@
     }
 
     @media (max-width: 980px) {
-        .testimonial-grid {
+        .testimonial-grid,
+        .testimonial-grid--featured {
             grid-template-columns: 1fr;
+        }
+
+        .testimonial-card--featured {
+            grid-column: 1 / -1;
         }
 
         .testimonial-card {
