@@ -1,14 +1,28 @@
+---
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    formId?: string;
+}
+
+const {
+    eyebrow = "Free consultation",
+    heading = "Ready to get started on your website?",
+    description = "Tell us about your project and we'll put together a custom proposal. No obligation, just a friendly chat.",
+    formId = "mlgydvbn"
+} = Astro.props;
+
+const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
+---
+
 <section class="cta" id="consultation">
     <div class="container">
         <div class="cta-panel">
             <div>
-                <span class="eyebrow">Free consultation</span>
-
-                <h2>Let's see if the subscription model fits your business.</h2>
-
-                <p class="lead">
-                    Send a few details and we'll tell you whether this plan makes sense, what it would include, and what the next step looks like.
-                </p>
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
+                <p class="lead">{description}</p>
             </div>
 
             <div data-fs-success>
@@ -17,7 +31,7 @@
             <div data-fs-error>
                 <strong>Oops!</strong> Something went wrong. Please try again.
             </div>
-            <form id="waas-form" class="form">
+            <form id={formElementId} class="form" data-form-id={formId}>
                 <div class="form-row">
                     <div class="field">
                         <label for="name">Name</label>
@@ -211,11 +225,15 @@
 <script>
     import { initForm } from "@formspree/ajax";
 
+    const ctaForm = document.currentScript?.parentElement?.querySelector('form');
+    const formId = ctaForm?.getAttribute('data-form-id') || 'general-form-id';
+    const formElementId = ctaForm?.id || 'cta-form';
+
     initForm({
-        formElement: "#waas-form",
-        formId: "xzzpzegw",
+        formElement: `#${formElementId}`,
+        formId: formId,
         onSuccess: () => {
-            const form = document.querySelector('#waas-form') as HTMLFormElement;
+            const form = document.querySelector(`#${formElementId}`) as HTMLFormElement;
             if (form) {
                 form.style.display = 'none';
             }

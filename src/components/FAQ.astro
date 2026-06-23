@@ -1,65 +1,69 @@
+---
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    questions?: FAQItem[];
+}
+
+const {
+    eyebrow = "FAQ",
+    heading = "Frequently asked questions.",
+    description = "Got questions? We've got answers. If there's something we haven't covered, feel free to get in touch.",
+    questions = [
+        {
+            question: "How long does a typical project take?",
+            answer: "It depends on the scope. A single landing page typically takes 1-2 weeks, a 5-page site around 2-3 weeks, and a larger 10-page project with integrations can take 3-5 weeks. We'll give you a clear timeline before we start."
+        },
+        {
+            question: "Do I need to provide content and images?",
+            answer: "We can work with whatever you have. If you have copy and images ready, great. If not, we can help with copywriting and source high-quality stock imagery as part of the project."
+        },
+        {
+            question: "Will my website be mobile-friendly?",
+            answer: "Absolutely. Every site we build is fully responsive — it'll look and perform great on phones, tablets, and desktops. We don't do separate mobile sites."
+        },
+        {
+            question: "Can I update the site myself after launch?",
+            answer: "We build your site so that making basic updates is straightforward. We can also provide ongoing support and maintenance if you'd prefer to leave it to us."
+        },
+        {
+            question: "What if I'm not happy with the design?",
+            answer: "We include rounds of revisions in every package to make sure you're happy with the result. We work closely with you throughout the process, so there are no surprises at the end."
+        },
+        {
+            question: "Do you offer hosting and ongoing maintenance?",
+            answer: "Yes. We can set up and manage hosting for you. We also offer maintenance and support retainers if you want ongoing updates, security patches, and peace of mind."
+        },
+        {
+            question: "What's the process from start to launch?",
+            answer: "We start with a discovery call to understand your goals. Then we design a custom mockup, build the site, review it with you, and finally deploy it live. The whole process is collaborative, with regular check-ins."
+        }
+    ]
+} = Astro.props;
+---
+
 <section class="section section-soft" id="faq">
     <div class="container">
         <div class="faq-grid">
             <div class="faq-copy">
-                <span class="eyebrow">FAQ</span>
-
-                <h2>Clear answers before you commit.</h2>
-
-                <p class="lead">
-                    If you are unsure whether the subscription model is right for your business, book a free consultation and we'll talk through it.
-                </p>
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
+                <p class="lead">{description}</p>
             </div>
 
             <div class="faq-list">
-                <details>
-                    <summary>Is there a minimum term?</summary>
-                    <p>
-                        Yes. The website subscription has a 12-month minimum term. This allows the design, build, launch and support to be spread across the subscription.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>Can I upgrade later?</summary>
-                    <p>
-                        Yes. If you need extra pages beyond the 5 included, ecommerce, booking systems, landing pages or ongoing marketing support, we can move you onto a more suitable plan.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>Can I add extra pages?</summary>
-                    <p>
-                        Yes. Additional pages beyond the 5 included can be built and added for a one-off fee of £100 per page. Your monthly subscription stays at £149 the extra page is a single payment, not a price increase.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>Who owns the website?</summary>
-                    <p>
-                        You own your content, copy and brand assets. The website build and platform remain part of the managed subscription service. After the 12-month minimum term, you can purchase the full website outright for a one-off fee, discussed and confirmed before you sign up.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>What counts as support?</summary>
-                    <p>
-                        Support includes basic maintenance, updates and reasonable minor changes. Larger new features or new pages may be quoted separately.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>Can I cancel after 12 months?</summary>
-                    <p>
-                        Yes. After the 12-month minimum term, you can cancel with one month's notice. At that point hosting and support will stop and the site will be taken offline. If you want to keep the site live elsewhere, you can purchase it outright for a one-off fee confirmed before you sign up.
-                    </p>
-                </details>
-
-                <details>
-                    <summary>Is ongoing SEO included?</summary>
-                    <p>
-                        Basic SEO setup is included. Ongoing SEO campaigns, content creation, technical SEO and link building are separate services.
-                    </p>
-                </details>
+                {questions.map((item) => (
+                    <details>
+                        <summary>{item.question}</summary>
+                        <p>{item.answer}</p>
+                    </details>
+                ))}
             </div>
         </div>
     </div>
