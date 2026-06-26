@@ -169,14 +169,28 @@ export const projects: Project[] = [
         title: "Halny Tech Consulting",
         description: "A professional consulting site built to communicate expertise, services and pricing for a tech consultancy.",
         label: "Tech Consulting",
-        gradient: 5,
+        gradient: 6,
         image: "/projects/halnytechconsulting.webp",
     },
     {
         title: "KM4 Group",
         description: "A static company holding website that sits above the KM4 HR brand. Built as a lightweight corporate presence for the wider group.",
         label: "Group Marketing",
-        gradient: 6,
+        gradient: 5,
         image: "/projects/km4recruitmentgroup.webp",
     },
+    {
+        title: "DJ Carr",
+        description: "Custom-designed website for DJ Carr, a Bedfordshire-based wedding and events DJ, showcasing packages, optional extras, and a modern live-mixing service across London and the South of England. ",
+        label: "DJ Services",
+        gradient: 1,
+        image: "/projects/djcarr.webp",
+    },
+    {
+        title: "Blackbridge Advisory",
+        description: "Custom static website build for Blackbridge Advisory, created to the client’s specifications—presenting independent, confidential director support, clarifying financial difficulty options, and promoting their core “90‑Minute Call” service.",
+        label: "Business Advisory",
+        gradient: 2,
+        image: "/projects/blackbridgeadvisory.webp",
+    }
 ];
