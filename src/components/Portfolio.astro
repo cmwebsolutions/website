@@ -1,3 +1,13 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+    projects?: Project[];
+}
+
+const { projects = [] } = Astro.props;
+---
+
 <section class="section portfolio" id="work">
     <div class="container">
         <div class="section-head">
@@ -9,71 +19,18 @@
         </div>
 
         <div class="portfolio-grid">
-            <article class="project-card">
-                <div class="project-thumb project-thumb--1">
-                    <span class="project-label">Landing page</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Brighton Dental Studio</h3>
-                    <p class="project-desc">A single-page lead generation site for a private dental practice.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb project-thumb--2">
-                    <span class="project-label">Business site</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Thames Valley Plumbing</h3>
-                    <p class="project-desc">A 5-page service site with contact form and service area map.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb project-thumb--3">
-                    <span class="project-label">E-commerce</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">The Urban Pantry</h3>
-                    <p class="project-desc">A custom online store with product management and booking integration.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb project-thumb--4">
-                    <span class="project-label">Landing page</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Peak Fitness Coaching</h3>
-                    <p class="project-desc">A high-converting landing page for a fitness coaching ad campaign.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb project-thumb--5">
-                    <span class="project-label">Multi-page</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Charterhouse Accountants</h3>
-                    <p class="project-desc">A 10-page professional services site with client portal integration.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb project-thumb--6">
-                    <span class="project-label">Full stack</span>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Nourish Meal Prep</h3>
-                    <p class="project-desc">A subscription-based meal prep service with ordering system and CRM sync.</p>
-                    <a href="/work" class="project-link">View project →</a>
-                </div>
-            </article>
+            {projects.map(p => (
+                <article class="project-card">
+                    <div class={`project-thumb project-thumb--${p.gradient}`}>
+                        <span class="project-label">{p.label}</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">{p.title}</h3>
+                        <p class="project-desc">{p.description}</p>
+                        <a href="/work" class="project-link">View project &rarr;</a>
+                    </div>
+                </article>
+            ))}
         </div>
 
         <div class="portfolio-cta">
@@ -143,6 +100,10 @@
         margin-top: 8px;
         font-size: 0.88rem;
         color: var(--muted);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .project-link {

@@ -11,6 +11,7 @@ import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import { testimonials } from '../data/testimonials';
+import { projects } from '../data/projects';
 ---
 
 <Layout title="CM Web Solutions | Professional Web Design & Development">
@@ -20,7 +21,7 @@ import { testimonials } from '../data/testimonials';
         <TrustStrip />
         <Packages />
         <Process />
-        <Portfolio />
+        <Portfolio projects={projects.slice(0, 6)} />
         <Testimonials
             layout="featured"
             testimonials={[
