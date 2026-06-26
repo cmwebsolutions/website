@@ -21,12 +21,17 @@ const { projects = [] } = Astro.props;
         <div class="portfolio-grid">
             {projects.map(p => (
                 <article class="project-card">
-                    <div class={`project-thumb project-thumb--${p.gradient}`}>
+                    <div class="project-thumb">
+                        {p.image && <img src={p.image} alt="" class="project-thumb-img" />}
+                        <div class={`project-thumb-overlay project-thumb--${p.gradient}`} style={`opacity: ${p.image ? 0.65 : 1};`}></div>
                         <span class="project-label">{p.label}</span>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">{p.title}</h3>
                         <p class="project-desc">{p.description}</p>
+                        {p.partner && (
+                            <p class="project-partner">In partnership with <a href={p.partner.url} target="_blank" rel="noopener">{p.partner.name}</a></p>
+                        )}
                         <a href="/work" class="project-link">View project &rarr;</a>
                     </div>
                 </article>
@@ -66,6 +71,21 @@ const { projects = [] } = Astro.props;
         align-items: flex-start;
         justify-content: flex-end;
         padding: 16px;
+        overflow: hidden;
+        background: var(--surface-soft);
+    }
+
+    .project-thumb-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-thumb-overlay {
+        position: absolute;
+        inset: 0;
     }
 
     .project-thumb--1 { background: linear-gradient(135deg, #4100F5, #7B4AFF); }
@@ -84,6 +104,8 @@ const { projects = [] } = Astro.props;
         background: rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+        z-index: 1;
     }
 
     .project-info {
@@ -117,6 +139,23 @@ const { projects = [] } = Astro.props;
 
     .project-link:hover {
         gap: 6px;
+    }
+
+    .project-partner {
+        margin-top: 10px;
+        font-size: 0.82rem;
+        color: var(--muted);
+    }
+
+    .project-partner a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .project-partner a:hover {
+        color: var(--black);
     }
 
     .portfolio-cta {

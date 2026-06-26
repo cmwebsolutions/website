@@ -3,22 +3,20 @@ export interface SiteImage {
     alt: string;
 }
 
-const colors = ['4100F5', '0FD2BB', '6C5CE7', '1B1919', 'FF6B6B', '00B894'];
-
 export const topSites: SiteImage[] = [
-    { src: `https://placehold.co/400x300/${colors[0]}/white?text=Aila+Recruitment`, alt: "Aila Recruitment website" },
-    { src: `https://placehold.co/400x300/${colors[1]}/white?text=EOR+International`, alt: "EOR International website" },
-    { src: `https://placehold.co/400x300/${colors[2]}/white?text=Impact+PT`, alt: "Impact Personal Training website" },
-    { src: `https://placehold.co/400x300/${colors[3]}/white?text=JDC+Scaffolding`, alt: "JDC Scaffolding website" },
-    { src: `https://placehold.co/400x300/${colors[4]}/white?text=Luton+Jobs`, alt: "Luton Jobs and Skills website" },
-    { src: `https://placehold.co/400x300/${colors[5]}/white?text=Monster+Clearance`, alt: "Monster Clearance website" },
+    { src: `/projects/ailarecruitment.webp`, alt: "Aila Recruitment website" },
+    { src: `/projects/eorinternational.webp`, alt: "EOR International website" },
+    { src: `/projects/impactpt.webp`, alt: "Impact Personal Training website" },
+    { src: `/projects/jdcscaffolding.webp`, alt: "JDC Scaffolding website" },
+    { src: `/projects/lutonjobsandskills.webp`, alt: "Luton Jobs and Skills website" },
+    { src: `/projects/monsterclearance.webp`, alt: "Monster Clearance website" },
 ];
 
 export const bottomSites: SiteImage[] = [
-    { src: `https://placehold.co/400x300/${colors[5]}/white?text=SAS+Accountants`, alt: "SAS Accountants website" },
-    { src: `https://placehold.co/400x300/${colors[4]}/white?text=UK+Credit+Insure`, alt: "UK Credit Insurance website" },
-    { src: `https://placehold.co/400x300/${colors[3]}/white?text=Group+Promotions`, alt: "Group Promotions website" },
-    { src: `https://placehold.co/400x300/${colors[2]}/white?text=Futurizm`, alt: "Futurizm website" },
-    { src: `https://placehold.co/400x300/${colors[1]}/white?text=Clarion+Search`, alt: "Clarion Search website" },
-    { src: `https://placehold.co/400x300/${colors[0]}/white?text=Haley+Bridge`, alt: "Haley Bridge website" },
+    { src: `/projects/sasaccountants.webp`, alt: "SAS Accountants website" },
+    { src: `/projects/ukcreditinsurance.webp`, alt: "UK Credit Insurance website" },
+    { src: `/projects/grouppromotions.webp`, alt: "Group Promotions website" },
+    { src: `/projects/selecttaxandaccounts.webp`, alt: "Select Tax And Accounts website" },
+    { src: `/projects/clarionsearch.webp`, alt: "Clarion Search website" },
+    { src: `/projects/haleybridge.webp`, alt: "Haley Bridge website" },
 ];
