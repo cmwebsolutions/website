@@ -1,5 +1,6 @@
 <footer class="site-footer">
-    <div class="container">
+    <div class="site-footer-bg"></div>
+    <div class="container site-footer-content">
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="/" class="footer-logo-link" aria-label="Custom Made Web Solutions home">
@@ -38,9 +39,28 @@
 
 <style>
     .site-footer {
+        position: relative;
         padding: 60px 0 0;
         color: rgba(252, 252, 252, 0.58);
         background: var(--black);
+    }
+
+    .site-footer-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .site-footer-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(circle at 0% 100%, black 30%, transparent 70%);
+        -webkit-mask-image: radial-gradient(circle at 0% 100%, black 30%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
     }
 
     .footer-grid {
