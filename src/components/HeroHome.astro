@@ -1,15 +1,5 @@
 ---
-const colors = ['4100F5', '0FD2BB', '6C5CE7', '1B1919', 'FF6B6B', '00B894'];
-
-const topSites = colors.map((color, i) => ({
-    src: `https://placehold.co/400x300/${color}/white?text=Site+${i + 1}`,
-    alt: `Website project ${i + 1}`
-}));
-
-const bottomSites = [...colors].reverse().map((color, i) => ({
-    src: `https://placehold.co/400x300/${color}/white?text=Site+${i + 7}`,
-    alt: `Website project ${i + 7}`
-}));
+import { topSites, bottomSites } from '../data/sites';
 ---
 
 <section class="hero-home">
@@ -174,6 +164,7 @@ const bottomSites = [...colors].reverse().map((color, i) => ({
         border: 1px solid rgba(252, 252, 252, 0.12);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         flex-shrink: 0;
+        filter: grayscale(100%);
     }
 
     .marquee-img:nth-child(12n+1) { rotate: -3deg; }
