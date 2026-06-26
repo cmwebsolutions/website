@@ -4,16 +4,14 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
-    const posts = Object.entries(import.meta.glob('/src/content/blog/*.mdx', { eager: true }))
+    return Object.entries(import.meta.glob('/src/content/blog/*.mdx', {eager: true}))
         .map(([path, module]: [string, any]) => {
             const slug = path.split('/').pop()?.replace('.mdx', '') || '';
             return {
-                params: { slug },
-                props: { frontmatter: module.frontmatter, Content: module.Content },
+                params: {slug},
+                props: {frontmatter: module.frontmatter, Content: module.Content},
             };
         });
-
-    return posts;
 }
 
 const { frontmatter, Content } = Astro.props;
@@ -139,6 +137,31 @@ const { frontmatter, Content } = Astro.props;
         margin-bottom: 10px;
     }
 
+    .post-content h4 {
+        margin-top: 28px;
+        margin-bottom: 8px;
+        font-size: 1.08rem;
+        font-weight: 800;
+        line-height: 1.08;
+    }
+
+    .post-content h5 {
+        margin-top: 24px;
+        margin-bottom: 6px;
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .post-content h6 {
+        margin-top: 20px;
+        margin-bottom: 6px;
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: var(--muted-strong);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
     .post-content p {
         font-size: 1.06rem;
         line-height: 1.7;
@@ -146,7 +169,25 @@ const { frontmatter, Content } = Astro.props;
         color: var(--muted-strong);
     }
 
-    .post-content ul {
+    .post-content a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: rgba(65, 0, 245, 0.3);
+        text-underline-offset: 3px;
+        transition: text-decoration-color 180ms ease;
+    }
+
+    .post-content a:hover {
+        text-decoration-color: var(--primary);
+    }
+
+    .post-content strong {
+        color: var(--text);
+    }
+
+    .post-content ul,
+    .post-content ol {
         margin: 16px 0;
         padding-left: 24px;
     }
@@ -158,7 +199,63 @@ const { frontmatter, Content } = Astro.props;
         margin-bottom: 6px;
     }
 
-    .post-content strong {
+    .post-content ol li::marker {
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .post-content blockquote {
+        margin: 24px 0;
+        padding: 16px 20px;
+        border-left: 4px solid var(--accent);
+        background: var(--surface-soft);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        color: var(--muted-strong);
+        font-style: italic;
+    }
+
+    .post-content blockquote p {
+        margin-top: 0;
+    }
+
+    .post-content code {
+        font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+        font-size: 0.88em;
+        padding: 2px 8px;
+        background: var(--secondary);
+        border-radius: 8px;
         color: var(--text);
+    }
+
+    .post-content pre {
+        margin: 20px 0;
+        padding: 20px 24px;
+        background: var(--black);
+        border-radius: var(--radius-sm);
+        overflow-x: auto;
+    }
+
+    .post-content pre code {
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        color: var(--white);
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
+    .post-content img {
+        margin: 32px auto;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .post-content hr {
+        margin: 40px 0;
+        border: none;
+        height: 1px;
+        background: var(--border);
     }
 </style>
