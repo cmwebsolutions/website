@@ -1,3 +1,17 @@
+---
+const colors = ['4100F5', '0FD2BB', '6C5CE7', '1B1919', 'FF6B6B', '00B894'];
+
+const topSites = colors.map((color, i) => ({
+    src: `https://placehold.co/400x300/${color}/white?text=Site+${i + 1}`,
+    alt: `Website project ${i + 1}`
+}));
+
+const bottomSites = [...colors].reverse().map((color, i) => ({
+    src: `https://placehold.co/400x300/${color}/white?text=Site+${i + 7}`,
+    alt: `Website project ${i + 7}`
+}));
+---
+
 <section class="hero-home">
     <div class="hero-bg"></div>
     <div class="container">
@@ -19,33 +33,17 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="hero-card-dots">
-                        <span></span><span></span><span></span>
+                <div class="hero-marquee">
+                    <div class="marquee-row">
+                        <div class="marquee-track marquee-track--left">
+                            {topSites.map(s => <img src={s.src} alt={s.alt} class="marquee-img" />)}
+                            {topSites.map(s => <img src={s.src} alt={s.alt} class="marquee-img" />)}
+                        </div>
                     </div>
-                    <div class="hero-card-content">
-                        <div class="hero-card-header">
-                            <span class="hero-card-site">cmwebsolutions.com</span>
-                            <span class="hero-card-status">Live</span>
-                        </div>
-                        <div class="hero-card-graphic">
-                            <div class="graphic-bar graphic-bar--l"></div>
-                            <div class="graphic-bar graphic-bar--m"></div>
-                            <div class="graphic-bar graphic-bar--s"></div>
-                        </div>
-                        <div class="hero-card-stats">
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">3x</span>
-                                <span class="hero-stat-label">faster load</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">100%</span>
-                                <span class="hero-stat-label">responsive</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">99.9%</span>
-                                <span class="hero-stat-label">uptime</span>
-                            </div>
+                    <div class="marquee-row">
+                        <div class="marquee-track marquee-track--right">
+                            {bottomSites.map(s => <img src={s.src} alt={s.alt} class="marquee-img" />)}
+                            {bottomSites.map(s => <img src={s.src} alt={s.alt} class="marquee-img" />)}
                         </div>
                     </div>
                 </div>
@@ -85,9 +83,14 @@
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         gap: 60px;
         align-items: center;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 4;
     }
 
     .hero-content :global(.eyebrow) {
@@ -129,116 +132,85 @@
         font-size: 0.82rem;
     }
 
-    /* Visual card */
-    .hero-card {
-        background: rgba(252, 252, 252, 0.06);
-        border: 1px solid rgba(252, 252, 252, 0.1);
-        border-radius: var(--radius-md);
-        backdrop-filter: blur(12px);
+    .hero-visual {
         overflow: hidden;
+        width: 60vw;
+        margin-left: calc(50% - 40vw);
+        transform: rotate(-5deg);
+        opacity: 0.65;
     }
 
-    .hero-card-dots {
-        display: flex;
-        gap: 8px;
-        padding: 14px 18px;
-        background: rgba(252, 252, 252, 0.04);
-        border-bottom: 1px solid rgba(252, 252, 252, 0.06);
-    }
-
-    .hero-card-dots span {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: rgba(252, 252, 252, 0.15);
-    }
-
-    .hero-card-dots span:first-child { background: #FF5F57; }
-    .hero-card-dots span:nth-child(2) { background: #FEBC2E; }
-    .hero-card-dots span:nth-child(3) { background: #28C840; }
-
-    .hero-card-content {
-        padding: 28px;
-    }
-
-    .hero-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-    }
-
-    .hero-card-site {
-        font-size: 0.92rem;
-        font-weight: 700;
-        color: var(--white);
-    }
-
-    .hero-card-status {
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 999px;
-        color: var(--accent);
-        background: rgba(15, 210, 187, 0.12);
-        border: 1px solid rgba(15, 210, 187, 0.2);
-    }
-
-    .hero-card-graphic {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 28px;
-    }
-
-    .graphic-bar {
-        height: 12px;
-        border-radius: 999px;
-        background: rgba(252, 252, 252, 0.08);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .graphic-bar::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        opacity: 0.7;
-    }
-
-    .graphic-bar--l::after { width: 85%; }
-    .graphic-bar--m::after { width: 65%; }
-    .graphic-bar--s::after { width: 45%; }
-
-    .hero-card-stats {
+    .hero-marquee {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        gap: 16px;
+        padding: 12px 0;
     }
 
-    .hero-stat {
-        text-align: center;
-        padding: 14px 8px;
-        background: rgba(252, 252, 252, 0.04);
+    .marquee-row {
+        overflow: hidden;
+        mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+    }
+
+    .marquee-track {
+        display: flex;
+        gap: 20px;
+        width: fit-content;
+    }
+
+    .marquee-track--left {
+        animation: marquee-left 35s linear infinite;
+    }
+
+    .marquee-track--right {
+        animation: marquee-right 35s linear infinite;
+    }
+
+    .marquee-img {
+        width: 280px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
         border-radius: var(--radius-sm);
-        border: 1px solid rgba(252, 252, 252, 0.06);
+        border: 1px solid rgba(252, 252, 252, 0.12);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        flex-shrink: 0;
     }
 
-    .hero-stat-value {
-        display: block;
-        font-size: 1.4rem;
-        font-weight: 900;
-        color: var(--accent);
-        line-height: 1;
+    .marquee-img:nth-child(12n+1) { rotate: -3deg; }
+    .marquee-img:nth-child(12n+2) { rotate: 2deg; }
+    .marquee-img:nth-child(12n+3) { rotate: -1deg; }
+    .marquee-img:nth-child(12n+4) { rotate: 3deg; }
+    .marquee-img:nth-child(12n+5) { rotate: -2deg; }
+    .marquee-img:nth-child(12n+6) { rotate: 1deg; }
+    .marquee-img:nth-child(12n+7) { rotate: -3deg; }
+    .marquee-img:nth-child(12n+8) { rotate: 2deg; }
+    .marquee-img:nth-child(12n+9) { rotate: -1deg; }
+    .marquee-img:nth-child(12n+10) { rotate: 3deg; }
+    .marquee-img:nth-child(12n+11) { rotate: -2deg; }
+    .marquee-img:nth-child(12n+12) { rotate: 1deg; }
+
+    @keyframes marquee-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
 
-    .hero-stat-label {
-        display: block;
-        margin-top: 4px;
-        font-size: 0.76rem;
-        color: var(--dark-muted);
+    @keyframes marquee-right {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .marquee-track {
+            animation: none;
+            transform: none !important;
+        }
+        .marquee-row {
+            mask: none;
+            -webkit-mask: none;
+        }
+        .marquee-img {
+            rotate: none !important;
+        }
     }
 
     @media (max-width: 980px) {
@@ -253,6 +225,14 @@
 
         .hero-visual {
             max-width: 480px;
+        }
+
+        .marquee-img {
+            width: 200px;
+        }
+
+        .marquee-track {
+            gap: 14px;
         }
     }
 
@@ -269,8 +249,17 @@
             flex-direction: column;
         }
 
-        .hero-card-stats {
-            grid-template-columns: 1fr;
+        .marquee-img {
+            width: 160px;
+        }
+
+        .marquee-track {
+            gap: 10px;
+        }
+
+        .hero-visual {
+            width: 100%;
+            margin-left: 0;
         }
     }
 </style>
