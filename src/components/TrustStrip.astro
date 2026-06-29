@@ -1,25 +1,25 @@
+---
+export interface TrustItem {
+    title: string;
+    description: string;
+}
+
+interface Props {
+    items: TrustItem[];
+}
+
+const { items } = Astro.props;
+---
+
 <div class="trust-strip" aria-label="Trust highlights">
     <div class="container">
         <div class="trust-grid">
-            <div class="trust-card">
-                <strong>Designed properly</strong>
-                <span>Human-made approach to building your website.</span>
-            </div>
-
-            <div class="trust-card">
-                <strong>Built for mobile</strong>
-                <span>Responsive across modern devices, ensuring a smooth experience.</span>
-            </div>
-
-            <div class="trust-card">
-                <strong>Managed for you</strong>
-                <span>Hosting, updates and support included.</span>
-            </div>
-
-            <div class="trust-card">
-                <strong>Predictable cost</strong>
-                <span>One simple monthly subscription, no surprises.</span>
-            </div>
+            {items.map((item) => (
+                <div class="trust-card">
+                    <strong>{item.title}</strong>
+                    <span>{item.description}</span>
+                </div>
+            ))}
         </div>
     </div>
 </div>

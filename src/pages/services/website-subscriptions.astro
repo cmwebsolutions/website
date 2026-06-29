@@ -18,7 +18,26 @@ import { testimonials } from '../../data/testimonials';
     <Header />
     <main>
         <Hero />
-        <TrustStrip />
+        <TrustStrip
+            items={[
+                {
+                    title: "Designed properly",
+                    description: "Human-made approach to building your website."
+                },
+                {
+                    title: "Built for mobile",
+                    description: "Responsive across modern devices, ensuring a smooth experience."
+                },
+                {
+                    title: "Managed for you",
+                    description: "Hosting, updates and support included."
+                },
+                {
+                    title: "Predictable cost",
+                    description: "One simple monthly subscription, no surprises."
+                }
+            ]}
+        />
         <Problem />
         <Features />
         <Process

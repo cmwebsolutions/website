@@ -18,7 +18,26 @@ import { projects } from '../data/projects';
     <Header />
     <main>
         <HeroHome />
-        <TrustStrip />
+        <TrustStrip
+            items={[
+                {
+                    title: "Designed properly",
+                    description: "Human-made approach to building your website."
+                },
+                {
+                    title: "Built for mobile",
+                    description: "Responsive across modern devices, ensuring a smooth experience."
+                },
+                {
+                    title: "Yours to keep",
+                    description: "Full ownership of your website with no recurring fees."
+                },
+                {
+                    title: "Fixed price",
+                    description: "A single investment with no hidden costs or surprises."
+                }
+            ]}
+        />
         <Packages />
         <Process />
         <Portfolio projects={projects.slice(0, 6)} />
