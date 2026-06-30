@@ -16,9 +16,36 @@ export async function getStaticPaths() {
 }
 
 const { frontmatter, Content } = Astro.props;
+
+const formattedDate = new Date(frontmatter.date).toISOString();
 ---
 
-<Layout title={`${frontmatter.title} | CM Web Solutions`}>
+<Layout
+    title={`${frontmatter.title} | CM Web Solutions`}
+    description={frontmatter.description}
+    openGraph={{
+        basic: {
+            title: `${frontmatter.title} | CM Web Solutions`,
+            type: "article",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+        article: {
+            publishedTime: formattedDate,
+            tags: frontmatter.tags ?? [],
+            authors: ["https://cmwebsolutions.com/about"],
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+        title: `${frontmatter.title} | CM Web Solutions`,
+        description: frontmatter.description,
+    }}
+>
     <Header />
     <main>
         <article class="section post-hero">

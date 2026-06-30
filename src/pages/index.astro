@@ -14,7 +14,25 @@ import { testimonials } from '../data/testimonials';
 import { projects } from '../data/projects';
 ---
 
-<Layout title="CM Web Solutions | Professional Web Design & Development">
+<Layout
+    title="CM Web Solutions | Professional Web Design & Development"
+    description="Professional managed websites for UK businesses. £499 one-off setup, then £249/month. Design, hosting, SSL, backups, maintenance and support included."
+    openGraph={{
+        basic: {
+            title: "CM Web Solutions | Professional Web Design & Development",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
     <Header />
     <main>
         <HeroHome />

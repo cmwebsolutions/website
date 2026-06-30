@@ -15,6 +15,7 @@
     "@fontsource-variable/geist": "^5.2.9",
     "@formspree/ajax": "^1.1.5",
     "astro": "^6.4.7",
+    "astro-seo": "^1.1.0",
     "typescript": "^5.5.3"
   }
 }

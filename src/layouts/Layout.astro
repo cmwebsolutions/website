@@ -1,12 +1,16 @@
 ---
 import '../styles/global.css';
 import '@fontsource-variable/geist/wght.css';
+import { SEO } from 'astro-seo';
+import type { SEOProps } from 'astro-seo';
 
-interface Props {
+interface Props extends Omit<SEOProps, 'title' | 'description'> {
     title: string;
+    description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, ...seoProps } = Astro.props;
+const resolvedDescription = description ?? "Professional managed websites for UK businesses. £499 one-off setup, then £249/month. Design, hosting, SSL, backups, maintenance and support included.";
 ---
 
 <!doctype html>
@@ -15,8 +19,11 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{title}</title>
-    <meta name="description" content="Professional managed websites for UK businesses. £499 one-off setup, then £249/month. Design, hosting, SSL, backups, maintenance and support included." />
+    <SEO
+        title={title}
+        description={resolvedDescription}
+        {...seoProps}
+    />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />

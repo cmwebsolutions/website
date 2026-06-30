@@ -22,7 +22,25 @@ const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.m
     .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 ---
 
-<Layout title="Blog | CM Web Solutions">
+<Layout
+    title="Blog | CM Web Solutions"
+    description="Tips, guides, and thoughts on web design, development, and growing your business online. Read the CM Web Solutions blog."
+    openGraph={{
+        basic: {
+            title: "Blog | CM Web Solutions",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
     <Header />
     <main>
         <section class="section blog-hero">

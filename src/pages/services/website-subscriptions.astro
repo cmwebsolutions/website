@@ -14,7 +14,25 @@ import Footer from '../../components/Footer.astro';
 import { testimonials } from '../../data/testimonials';
 ---
 
-<Layout title="Managed Website Subscription | CM Web Solutions">
+<Layout
+    title="Managed Website Subscription | CM Web Solutions"
+    description="Managed website subscription for UK businesses. £499 one-off setup, then £249/month. Includes design, hosting, SSL, backups, maintenance and support."
+    openGraph={{
+        basic: {
+            title: "Managed Website Subscription | CM Web Solutions",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
     <Header />
     <main>
         <Hero />

@@ -7,7 +7,25 @@ import Testimonials from '../components/Testimonials.astro';
 import { testimonials } from '../data/testimonials';
 ---
 
-<Layout title="About | CM Web Solutions">
+<Layout
+    title="About | CM Web Solutions"
+    description="Learn about Custom Made Web Solutions — a UK-based web design agency building websites that help businesses grow. Meet founder Ciaran Murray."
+    openGraph={{
+        basic: {
+            title: "About | CM Web Solutions",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
     <Header />
     <main>
         <section class="section about-hero">
