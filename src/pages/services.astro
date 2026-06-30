@@ -80,6 +80,38 @@ import { testimonials } from '../data/testimonials';
             </div>
         </section>
 
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">What to expect</span>
+                        <h2>Websites you can trust, backed by support.</h2>
+                    </div>
+                    <p>Every project follows the same commitment to quality, no matter which package you choose.</p>
+                </div>
+
+                <div class="expect-grid">
+                    <article class="expect-card">
+                        <div class="expect-icon">01</div>
+                        <h3>Built around your goals</h3>
+                        <p>Designed around your specific audience and what you need them to do. No generic layouts, no one-size-fits-all approach.</p>
+                    </article>
+
+                    <article class="expect-card">
+                        <div class="expect-icon">02</div>
+                        <h3>Tested on every device</h3>
+                        <p>Every site is built and checked across mobile, tablet, and desktop screen sizes so you never lose a visitor to a broken layout.</p>
+                    </article>
+
+                    <article class="expect-card">
+                        <div class="expect-icon">03</div>
+                        <h3>Ongoing support available</h3>
+                        <p>Optional hosting, updates, and maintenance plans keep your site running smoothly once it's live. You're not on your own after launch.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
                 <div class="alt-offer">
@@ -330,8 +362,72 @@ import { testimonials } from '../data/testimonials';
         font-weight: 700;
     }
 
+    .expect-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .expect-card {
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .expect-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(65, 0, 245, 0.22);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .expect-icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 36px;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 15px;
+        font-size: 0.82rem;
+        font-weight: 900;
+    }
+
+    .expect-card:nth-child(2) .expect-icon {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .expect-card:nth-child(3) .expect-icon {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    .expect-card h3 {
+        font-size: 1.12rem;
+        font-weight: 800;
+        line-height: 1.15;
+    }
+
+    .expect-card p {
+        margin-top: 12px;
+        font-size: 0.92rem;
+        flex: 1;
+    }
+
     @media (max-width: 980px) {
         .services-grid {
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin-inline: auto;
+        }
+
+        .expect-grid {
             grid-template-columns: 1fr;
             max-width: 480px;
             margin-inline: auto;
