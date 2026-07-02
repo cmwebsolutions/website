@@ -2,8 +2,11 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
 
+import sitemap from '@astrojs/sitemap';
+
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cmwebsolutions.com',
-  integrations: [mdx()]
+  site: 'https://www.cmwebsolutions.com',
+  integrations: [mdx(), sitemap()]
 });
