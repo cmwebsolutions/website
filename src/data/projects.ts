@@ -99,6 +99,7 @@ export const projects: Project[] = [
         label: "Startup",
         gradient: 1,
         partner: { name: "Jane Kisnica", url: "https://www.janekisnica.com" },
+        image: "/projects/futurizm.webp",
     },
     {
         title: "Clarion Search",
