@@ -112,7 +112,7 @@ export const projects: Project[] = [
     {
         title: "Haley Bridge",
         description: "Custom-designed site with a live job listing area that syncs with their platform. Jobs can be added, updated or removed from their own system without touching the website admin.",
-        label: "Professional Services",
+        label: "Recruitment",
         gradient: 3,
         image: "/projects/haleybridge.webp",
     },
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     {
         title: "Bijoux Brows",
         description: "A custom ecommerce and membership site with LMS course delivery and event ticketing — built from the ground up to the client's spec.",
-        label: "Fashion",
+        label: "Beauty",
         gradient: 6,
         image: "/projects/bijouxbrows.webp",
     },
@@ -193,5 +193,12 @@ export const projects: Project[] = [
         label: "Business Advisory",
         gradient: 2,
         image: "/projects/blackbridgeadvisory.webp",
+    },
+    {
+        title: "De-Havilland Advisory",
+        description: "A custom build for De-Havilland Advisory, a London-based financial advisory firm, featuring a modern, responsive design, a clear call-to-action, and a focus on user experience.",
+        label: "Business Advisory",
+        gradient: 5,
+        image: "/projects/de-havilland-advisory.webp",
     }
 ];
