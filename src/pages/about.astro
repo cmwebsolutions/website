@@ -6,6 +6,10 @@ import Footer from '../components/Footer.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FeaturedWork from '../components/FeaturedWork.astro';
 import { testimonials } from '../data/testimonials';
+import Search from '@lucide/astro/icons/search';
+import PenTool from '@lucide/astro/icons/pen-tool';
+import CodeXml from '@lucide/astro/icons/code-xml';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
 ---
 
 <Layout
@@ -78,22 +82,30 @@ import { testimonials } from '../data/testimonials';
                     <h2>A process built around your goals.</h2>
                     <div class="approach-grid">
                         <div class="approach-step">
-                            <span class="approach-num">01</span>
+                            <span class="approach-num">
+                                <Search size={20} />
+                            </span>
                             <h3>Discover</h3>
                             <p>We learn about your business, audience, and goals. This shapes everything that follows.</p>
                         </div>
                         <div class="approach-step">
-                            <span class="approach-num">02</span>
+                            <span class="approach-num">
+                                <PenTool size={20} />
+                            </span>
                             <h3>Design</h3>
                             <p>We create a custom design tailored to your brand and your customers' needs.</p>
                         </div>
                         <div class="approach-step">
-                            <span class="approach-num">03</span>
+                            <span class="approach-num">
+                                <CodeXml size={20} />
+                            </span>
                             <h3>Build</h3>
                             <p>We develop your site with clean code, performance optimisation, and thorough testing.</p>
                         </div>
                         <div class="approach-step">
-                            <span class="approach-num">04</span>
+                            <span class="approach-num">
+                                <ArrowUpRight size={20} />
+                            </span>
                             <h3>Launch</h3>
                             <p>We deploy your site, handle the setup, and make sure everything runs smoothly.</p>
                         </div>
@@ -228,7 +240,6 @@ import { testimonials } from '../data/testimonials';
 
     .about-approach {
         text-align: center;
-        max-width: 800px;
         margin-inline: auto;
     }
 
@@ -270,9 +281,11 @@ import { testimonials } from '../data/testimonials';
         border-radius: 12px;
         background: var(--primary);
         color: var(--white);
-        font-size: 0.78rem;
-        font-weight: 900;
         margin-bottom: 14px;
+    }
+
+    .approach-num svg {
+        display: block;
     }
 
     .approach-step h3 {
