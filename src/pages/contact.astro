@@ -87,7 +87,8 @@ import Footer from '../components/Footer.astro';
                         </div>
                         <div class="contact-info-card">
                             <h3>Response time</h3>
-                            <span>Within 24 hours</span>
+                            <span>Mon–Fri, 9am–5pm</span>
+                            <span class="contact-info-note">Usually within 1 business day</span>
                         </div>
                     </aside>
                 </div>
@@ -232,6 +233,14 @@ import Footer from '../components/Footer.astro';
     .contact-info-card span {
         font-weight: 700;
         font-size: 1.02rem;
+    }
+
+    .contact-info-note {
+        display: block;
+        margin-top: 4px;
+        font-weight: 500;
+        font-size: 0.86rem;
+        color: var(--muted);
     }
 
     @media (max-width: 980px) {

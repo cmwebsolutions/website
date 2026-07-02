@@ -6,6 +6,12 @@ import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { testimonials } from '../data/testimonials';
+import Rocket from '@lucide/astro/icons/rocket';
+import Star from '@lucide/astro/icons/star';
+import Gem from '@lucide/astro/icons/gem';
+import Target from '@lucide/astro/icons/target';
+import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
+import Headphones from '@lucide/astro/icons/headphones';
 ---
 
 <Layout
@@ -44,7 +50,7 @@ import { testimonials } from '../data/testimonials';
             <div class="container">
                 <div class="services-grid">
                     <article class="service-card">
-                        <div class="service-icon">01</div>
+                        <div class="service-icon"><Rocket size={24} /></div>
                         <h2 class="service-title">The Launch Pad</h2>
                         <p class="service-price">£1,750 <span>one-off</span></p>
                         <p class="service-desc">A single high-converting landing page designed to turn visitors into leads. Ideal for Google Ads, Meta campaigns, or product launches.</p>
@@ -62,7 +68,7 @@ import { testimonials } from '../data/testimonials';
 
                     <article class="service-card service-card--featured">
                         <span class="service-badge">Most popular</span>
-                        <div class="service-icon">02</div>
+                        <div class="service-icon"><Star size={24} /></div>
                         <h2 class="service-title">The Core Business</h2>
                         <p class="service-price">£2,750 <span>one-off</span></p>
                         <p class="service-desc">A complete business website with up to 5 pages. Perfect for service providers, local businesses, and startups ready to establish their online presence.</p>
@@ -79,7 +85,7 @@ import { testimonials } from '../data/testimonials';
                     </article>
 
                     <article class="service-card">
-                        <div class="service-icon">03</div>
+                        <div class="service-icon"><Gem size={24} /></div>
                         <h2 class="service-title">The Premium Growth</h2>
                         <p class="service-price">£4,250 <span>one-off</span></p>
                         <p class="service-desc">A full-featured website with up to 10 pages and advanced integrations: booking engines, CRM syncing, or custom forms for growing businesses.</p>
@@ -110,19 +116,19 @@ import { testimonials } from '../data/testimonials';
 
                 <div class="expect-grid">
                     <article class="expect-card">
-                        <div class="expect-icon">01</div>
+                        <div class="expect-icon"><Target size={24} /></div>
                         <h3>Built around your goals</h3>
                         <p>Designed around your specific audience and what you need them to do. No generic layouts, no one-size-fits-all approach.</p>
                     </article>
 
                     <article class="expect-card">
-                        <div class="expect-icon">02</div>
+                        <div class="expect-icon"><MonitorSmartphone size={24} /></div>
                         <h3>Tested on every device</h3>
                         <p>Every site is built and checked across mobile, tablet, and desktop screen sizes so you never lose a visitor to a broken layout.</p>
                     </article>
 
                     <article class="expect-card">
-                        <div class="expect-icon">03</div>
+                        <div class="expect-icon"><Headphones size={24} /></div>
                         <h3>Ongoing support available</h3>
                         <p>Optional hosting, updates, and maintenance plans keep your site running smoothly once it's live. You're not on your own after launch.</p>
                     </article>
@@ -272,9 +278,11 @@ import { testimonials } from '../data/testimonials';
         border-radius: 15px;
         color: var(--white);
         background: var(--primary);
-        font-size: 0.82rem;
-        font-weight: 900;
         margin-bottom: 20px;
+    }
+
+    .service-icon svg {
+        display: block;
     }
 
     .service-card--featured .service-icon {
@@ -412,8 +420,10 @@ import { testimonials } from '../data/testimonials';
         color: var(--white);
         background: var(--primary);
         border-radius: 15px;
-        font-size: 0.82rem;
-        font-weight: 900;
+    }
+
+    .expect-icon svg {
+        display: block;
     }
 
     .expect-card:nth-child(2) .expect-icon {

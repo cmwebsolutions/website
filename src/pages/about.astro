@@ -10,6 +10,8 @@ import Search from '@lucide/astro/icons/search';
 import PenTool from '@lucide/astro/icons/pen-tool';
 import CodeXml from '@lucide/astro/icons/code-xml';
 import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import Zap from '@lucide/astro/icons/zap';
+import BadgeCheck from '@lucide/astro/icons/badge-check';
 ---
 
 <Layout
@@ -54,17 +56,17 @@ import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
                     </div>
                     <div class="about-story-values">
                         <div class="value-card">
-                            <span class="value-icon">01</span>
+                            <span class="value-icon"><PenTool size={20} /></span>
                             <h3>Design that converts</h3>
                             <p>Every pixel serves a purpose. We design for your audience, not our portfolio.</p>
                         </div>
                         <div class="value-card">
-                            <span class="value-icon">02</span>
+                            <span class="value-icon"><Zap size={20} /></span>
                             <h3>Built to perform</h3>
                             <p>Fast load times, perfect scores, and responsive by default, on every device.</p>
                         </div>
                         <div class="value-card">
-                            <span class="value-icon">03</span>
+                            <span class="value-icon"><BadgeCheck size={20} /></span>
                             <h3>No hidden costs</h3>
                             <p>Fixed prices, clear scopes, and honest timelines. What you see is what you pay.</p>
                         </div>
@@ -225,9 +227,11 @@ import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
         border-radius: 12px;
         background: var(--primary);
         color: var(--white);
-        font-size: 0.78rem;
-        font-weight: 900;
         margin-bottom: 14px;
+    }
+
+    .value-icon svg {
+        display: block;
     }
 
     .value-card h3 {

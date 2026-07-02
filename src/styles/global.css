@@ -267,8 +267,10 @@ p {
     border-radius: 15px;
     color: var(--white);
     background: var(--primary);
-    font-size: 0.82rem;
-    font-weight: 900;
+}
+
+.icon svg {
+    display: block;
 }
 
 /* Check list */

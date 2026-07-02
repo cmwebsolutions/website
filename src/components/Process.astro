@@ -1,4 +1,9 @@
 ---
+import Search from '@lucide/astro/icons/search';
+import Layers from '@lucide/astro/icons/layers';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import Headphones from '@lucide/astro/icons/headphones';
+
 interface Step {
     heading: string;
     description: string;
@@ -34,6 +39,8 @@ const {
         }
     ]
 } = Astro.props;
+
+const stepIcons = [Search, Layers, ArrowUpRight, Headphones];
 ---
 
 <section class="section section-soft" id="process">
@@ -48,9 +55,12 @@ const {
 
         <div class="process-grid">
             {steps.map((step, i) => {
-                const num = String(i + 1).padStart(2, '0');
+                const Icon = stepIcons[i];
                 return (
-                    <article class="process-step" data-step={num}>
+                    <article class="process-step">
+                        <span class="process-step-icon">
+                            <Icon size={24} />
+                        </span>
                         <h3>{step.heading}</h3>
                         <p>{step.description}</p>
                     </article>
@@ -76,8 +86,7 @@ const {
         border-radius: var(--radius-md);
     }
 
-    .process-step::before {
-        content: attr(data-step);
+    .process-step-icon {
         width: 46px;
         height: 46px;
         display: grid;
@@ -86,16 +95,18 @@ const {
         color: var(--white);
         background: var(--primary);
         border-radius: 15px;
-        font-size: 0.82rem;
-        font-weight: 900;
     }
 
-    .process-step:nth-child(2)::before {
+    .process-step-icon svg {
+        display: block;
+    }
+
+    .process-step:nth-child(2) .process-step-icon {
         color: var(--black);
         background: var(--accent);
     }
 
-    .process-step:nth-child(3)::before {
+    .process-step:nth-child(3) .process-step-icon {
         color: var(--accent);
         background: var(--black);
     }

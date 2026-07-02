@@ -6,7 +6,7 @@ interface Props {
 const { transparent = true } = Astro.props;
 ---
 
-<header class="site-header" class:list={{ 'site-header--scrolled': !transparent }}>
+<header class="site-header" class:list={{ 'site-header--scrolled': !transparent, 'site-header--solid': !transparent }}>
     <div class="container">
         <nav class="nav" aria-label="Primary navigation">
             <a class="brand" href="/" aria-label="CM Web Solutions home">
@@ -87,6 +87,31 @@ const { transparent = true } = Astro.props;
         background: rgba(252, 252, 252, 0.82);
         border-bottom: 1px solid rgba(27, 25, 25, 0.08);
         backdrop-filter: blur(18px);
+    }
+
+    .site-header--solid {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .site-header--solid .brand-logo--white {
+        display: none;
+    }
+
+    .site-header--solid .brand-logo--dark {
+        display: block;
+    }
+
+    .site-header--solid .nav-links {
+        color: var(--muted);
+    }
+
+    .site-header--solid .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .site-header--solid .hamburger span {
+        background: var(--black);
     }
 
     .nav {
