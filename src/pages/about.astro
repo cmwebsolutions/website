@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Testimonials from '../components/Testimonials.astro';
+import FeaturedWork from '../components/FeaturedWork.astro';
 import { testimonials } from '../data/testimonials';
 ---
 
@@ -68,28 +69,7 @@ import { testimonials } from '../data/testimonials';
             </div>
         </section>
 
-        <section class="section section-soft founder-section">
-            <div class="container">
-                <div class="founder-grid">
-                    <div class="founder-image-col">
-                        <div class="founder-image-wrap">
-                            <img src="https://ui-avatars.com/api/?name=Ciaran+Murray&background=4100F5&color=fff&size=400" alt="Ciaran Murray" class="founder-photo" />
-                            <span class="founder-role-badge">Founder & Lead Developer</span>
-                        </div>
-                    </div>
-                    <div class="founder-content">
-                        <span class="eyebrow">Meet the founder</span>
-                        <h2>Hi, I'm Ciaran.</h2>
-                        <p class="founder-bio">I started Custom Made Web Solutions after years of seeing small businesses get burned by agencies that overpromise and underdeliver. Bloated contracts, hidden fees, and websites that look great in a mockup but fall apart in the real world. I knew there had to be a better way — so I built it.</p>
-                        <p class="founder-bio">Every project I take on gets my full attention, from the first discovery call to the final launch and beyond. I don't pass you off to an account manager or outsource your build. You get direct access to the person writing your code, optimising your performance, and answering your questions.</p>
-                        <div class="founder-cta-line">
-                            <span class="icon">&#8594;</span>
-                            <span>Your website, built by someone who actually cares about the result.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <FeaturedWork />
 
         <section class="section section-soft">
             <div class="container">
@@ -188,95 +168,6 @@ import { testimonials } from '../data/testimonials';
     .about-hero-content :global(.eyebrow)::before {
         background: var(--accent);
         box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
-    }
-
-    .founder-section {
-        background: var(--white);
-    }
-
-    .founder-grid {
-        display: grid;
-        grid-template-columns: 0.6fr 1fr;
-        gap: 60px;
-        align-items: center;
-    }
-
-    .founder-image-col {
-        display: grid;
-        gap: 16px;
-        justify-items: center;
-    }
-
-    .founder-image-wrap {
-        position: relative;
-        display: inline-flex;
-    }
-
-    .founder-photo {
-        width: 100%;
-        max-width: 340px;
-        aspect-ratio: 1;
-        border-radius: var(--radius-xl);
-        object-fit: cover;
-        box-shadow: var(--shadow-card);
-        transition: transform 300ms ease, box-shadow 300ms ease;
-    }
-
-    .founder-photo:hover {
-        transform: scale(1.02);
-        box-shadow: var(--shadow-soft);
-    }
-
-    .founder-role-badge {
-        position: absolute;
-        bottom: -8px;
-        left: 50%;
-        translate: -50% 0;
-        padding: 10px 18px;
-        background: var(--primary);
-        color: var(--white);
-        border-radius: 999px;
-        font-size: 0.82rem;
-        font-weight: 800;
-        white-space: nowrap;
-        box-shadow: var(--shadow-primary);
-    }
-
-    .founder-content h2 {
-        margin-bottom: 20px;
-    }
-
-    .founder-bio {
-        font-size: 1.04rem;
-        margin-top: 16px;
-    }
-
-    .founder-cta-line {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-top: 28px;
-        padding: 18px 22px;
-        background: var(--surface-soft);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        font-size: 0.96rem;
-        font-weight: 700;
-    }
-
-    @media (max-width: 980px) {
-        .founder-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        .founder-photo {
-            max-width: 240px;
-        }
-
-        .founder-content h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-        }
     }
 
     .about-story-grid {
