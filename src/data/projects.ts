@@ -10,7 +10,7 @@ export interface Project {
 export const projects: Project[] = [
     {
         title: "Aila Recruitment",
-        description: "A custom-designed recruitment website with integrated job listings. Roles are synced directly from their platform and can be posted manually or updated automatically — keeping candidates informed without extra effort.",
+        description: "A custom-designed recruitment website with integrated job listings. Roles are synced directly from their platform and can be posted manually or updated automatically, keeping candidates informed without extra effort.",
         label: "Recruitment",
         gradient: 1,
         image: "/projects/ailarecruitment.webp",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     },
     {
         title: "SAS Micro",
-        description: "Rebuilt alongside their main site with the same Gutenberg approach — redesigned content and layout tailored to their micro-business accounting services, now easy for the client to manage themselves.",
+        description: "Rebuilt alongside their main site with the same Gutenberg approach, redesigned content and layout tailored to their micro-business accounting services, now easy for the client to manage themselves.",
         label: "Finance",
         gradient: 1,
         image: "/projects/sasmicro.webp",
@@ -118,21 +118,21 @@ export const projects: Project[] = [
     },
     {
         title: "Monster Clearance",
-        description: "A fast, static site with a headless form integration — lightweight, performant, and purpose-built for their clearance business.",
+        description: "A fast, static site with a headless form integration, lightweight, performant, and purpose-built for their clearance business.",
         label: "Trade",
         gradient: 4,
         image: "/projects/monsterclearance.webp",
     },
     {
         title: "29homes",
-        description: "Custom child theme with a specialised property listing page. Features a frontend bill toggle to display prices with or without bills included — a tailored solution for their lettings business.",
+        description: "Custom child theme with a specialised property listing page. Features a frontend bill toggle to display prices with or without bills included, a tailored solution for their lettings business.",
         label: "Real Estate",
         gradient: 5,
         image: "/projects/29homes.webp",
     },
     {
         title: "Bijoux Brows",
-        description: "A custom ecommerce and membership site with LMS course delivery and event ticketing — built from the ground up to the client's spec.",
+        description: "A custom ecommerce and membership site with LMS course delivery and event ticketing, built from the ground up to the client's spec.",
         label: "Beauty",
         gradient: 6,
         image: "/projects/bijouxbrows.webp",
@@ -189,14 +189,14 @@ export const projects: Project[] = [
     },
     {
         title: "Blackbridge Advisory",
-        description: "Custom static website build for Blackbridge Advisory, created to the client’s specifications—presenting independent, confidential director support, clarifying financial difficulty options, and promoting their core “90‑Minute Call” service.",
+        description: "Custom static website build for Blackbridge Advisory, created to the client's specifications, presenting independent, confidential director support, clarifying financial difficulty options, and promoting their core “90‑Minute Call” service.",
         label: "Business Advisory",
         gradient: 2,
         image: "/projects/blackbridgeadvisory.webp",
     },
     {
         title: "De-Havilland Advisory",
-        description: "A custom static site built with Astro for speed, security, and reliability — no backend to maintain. Designed for a firm specialising in workforce risk due diligence for M&A, helping buyers gain deeper insight into contingent labour risk.",
+        description: "A custom static site built with Astro for speed, security, and reliability with no backend to maintain. Designed for a firm specialising in workforce risk due diligence for M&A, helping buyers gain deeper insight into contingent labour risk.",
         label: "Business Advisory",
         gradient: 5,
         image: "/projects/de-havilland-advisory.webp",
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     },
     {
         title: "Pendragon Consultancy",
-        description: "A multi-brand WordPress site built for Pendragon Consultancy, covering their full range of business advisory and compliance services — including employment of records, PEO, and more — all under one unified platform.",
+        description: "A multi-brand WordPress site built for Pendragon Consultancy, covering their full range of business advisory and compliance services including employment of records, PEO, and more, all under one unified platform.",
         label: "Business Consultancy",
         gradient: 1,
         image: "/projects/pendragon-consultancy.webp",
