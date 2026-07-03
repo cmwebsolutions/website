@@ -1,0 +1,34 @@
+---
+title: "Trailing slashes and SEO: a small detail that matters"
+description: "A trailing slash at the end of a URL might seem trivial, but inconsistency can cause duplicate content issues and weaken your search rankings."
+date: 2026-06-26
+tags: ["SEO", "Web Design"]
+---
+
+import CTA from '../../components/CTA.astro';
+
+## It's just a slash, right?
+
+If you've never thought about whether your website URLs end with a trailing slash or not, you're not alone. Most business owners don't even notice. But search engines do.
+
+Here's the issue: `https://yoursite.com/about/` and `https://yoursite.com/about` can be treated as two different pages by Google. If both versions are accessible, you've accidentally created duplicate content — and that can dilute your search rankings.
+
+### How it happens
+
+It's surprisingly easy to end up with both versions live. Your CMS might serve one, your internal links might use the other, and your server might be set up to serve both without redirecting one to the other. Before you know it, Google sees two pages with the same content and has to guess which one to rank.
+
+### One or the other, not both
+
+The fix is simple: pick one format and stick with it. Either every URL ends with a slash, or none of them do. Then make sure your server redirects the other version to your chosen format. From that point on, every link on your site — and every page Google crawls — uses the same structure.
+
+On this site, for example, we serve URLs without trailing slashes consistently. If someone lands on the slashed version, they get redirected to the cleaner format.
+
+### It's not just about SEO
+
+Consistent URLs also help with analytics. If your traffic is split across two URL variations for the same page, your data gets fragmented too. You end up with half the numbers in one report and half in another, making it harder to see the full picture.
+
+### The takeaway
+
+Before you launch, pick one URL format and make sure every internal link on your site follows it. A single `href="/about/"` in a navigation bar when everything else is `/about` creates an extra redirect every time that link is clicked. It's an easy detail to overlook, but getting it right from the start saves you from splitting your rankings down the middle.
+
+<CTA heading="Worried about your site's SEO?" description="Let's take a look and make sure everything's set up properly." formId="mlgydvbn" />
