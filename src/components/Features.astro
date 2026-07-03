@@ -1,0 +1,150 @@
+---
+import Paintbrush from '@lucide/astro/icons/paintbrush';
+import Gauge from '@lucide/astro/icons/gauge';
+import Shield from '@lucide/astro/icons/shield';
+import RefreshCw from '@lucide/astro/icons/refresh-cw';
+import LifeBuoy from '@lucide/astro/icons/life-buoy';
+import HardDrive from '@lucide/astro/icons/hard-drive';
+---
+
+<section class="section" id="included">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">What's included</span>
+                <h2>A managed website, not just a page builder.</h2>
+            </div>
+
+            <p>
+                Everything your business needs to launch and maintain a credible web presence, wrapped into one simple monthly subscription.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><Paintbrush size={24} /></div>
+                </div>
+                <div>
+                    <h3>Professional design & development</h3>
+                    <p>Up to 5 custom pages designed and built for your business, your offer, and the customers you want to reach.</p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><Gauge size={24} /></div>
+                </div>
+                <div>
+                    <h3>Performance-focused build</h3>
+                    <p>
+                        A fast, lightweight website built for speed. Optimised for Core Web Vitals and smooth across desktop, tablet and mobile.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><Shield size={24} /></div>
+                </div>
+                <div>
+                    <h3>Premium hosting & security</h3>
+                    <p>
+                        Managed hosting with SSL certificates, automated backups, real-time monitoring and security patching. Handled for you.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><RefreshCw size={24} /></div>
+                </div>
+                <div>
+                    <h3>Ongoing content updates</h3>
+                    <p>
+                        Minor text and image changes handled as part of your plan. Your website stays current without extra fees or hassle.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><LifeBuoy size={24} /></div>
+                </div>
+                <div>
+                    <h3>Technical support & maintenance</h3>
+                    <p>
+                        Ongoing care including updates, patches, and a reliable point of contact for any website issues or questions.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div>
+                    <div class="icon"><HardDrive size={24} /></div>
+                </div>
+                <div>
+                    <h3>Performance monitoring & backups</h3>
+                    <p>
+                        Your site is monitored around the clock with regular backups stored securely, so you never have to worry about downtime or data loss.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .feature-card {
+        min-height: 240px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition:
+            transform 180ms ease,
+            box-shadow 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(65, 0, 245, 0.22);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .feature-card p {
+        margin-top: 12px;
+    }
+
+    .feature-card:nth-child(2n) :global(.icon) {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .feature-card:nth-child(3n) :global(.icon) {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    @media (max-width: 980px) {
+        .feature-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

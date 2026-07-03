@@ -10,10 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^5.1.5",
-    "astro": "^5.1.5",
-    "tailwindcss": "^3.4.17",
+    "@astrojs/check": "^0.9.2",
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/geist": "^5.2.9",
+    "@formspree/ajax": "^1.1.5",
+    "@lucide/astro": "^1.23.0",
+    "astro": "^6.4.7",
+    "astro-seo": "^1.1.0",
     "typescript": "^5.5.3"
   }
 }

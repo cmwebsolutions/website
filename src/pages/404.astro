@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+    title="404 | CM Web Solutions"
+    description="Page not found"
+    noindex={true}
+>
+    <Header />
+    <main>
+        <section class="error-hero">
+            <div class="error-bg"></div>
+            <div class="container">
+                <div class="error-content">
+                    <span class="eyebrow">404</span>
+                    <h1>Page not found</h1>
+                    <p class="lead">That page doesn't exist. Let's get you back on track.</p>
+                    <div class="error-actions">
+                        <a class="btn btn-primary" href="/">Go back home</a>
+                        <a class="btn btn-ghost" href="/contact">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .error-hero {
+        position: relative;
+        padding: 186px 0 140px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .error-bg {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 70% 50% at 50% 30%, rgba(65, 0, 245, 0.28) 0%, transparent 100%),
+            radial-gradient(ellipse 50% 40% at 80% 80%, rgba(15, 210, 187, 0.10) 0%, transparent 100%),
+            var(--black);
+        z-index: 0;
+    }
+
+    .error-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+    }
+
+    .error-content {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .error-content :global(.eyebrow) {
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.10);
+        border-color: rgba(15, 210, 187, 0.20);
+        margin-inline: auto;
+    }
+
+    .error-content :global(.eyebrow)::before {
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
+    }
+
+    .error-content h1 {
+        color: var(--white);
+        margin-inline: auto;
+    }
+
+    .error-content :global(.lead) {
+        color: var(--dark-muted);
+        margin-inline: auto;
+    }
+
+    .error-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        justify-content: center;
+        margin-top: 34px;
+    }
+
+    @media (max-width: 640px) {
+        .error-hero {
+            padding: 156px 0 100px;
+        }
+
+        .error-actions,
+        .error-actions :global(.btn) {
+            width: 100%;
+        }
+    }
+</style>

@@ -1,0 +1,130 @@
+---
+import Search from '@lucide/astro/icons/search';
+import Layers from '@lucide/astro/icons/layers';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import Headphones from '@lucide/astro/icons/headphones';
+
+interface Step {
+    heading: string;
+    description: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    steps?: Step[];
+}
+
+const {
+    eyebrow = "How it works",
+    heading = "Four steps from stuck to live.",
+    description = "A simple process designed to keep the project moving without overwhelming you or your team.",
+    steps = [
+        {
+            heading: "Discover",
+            description: "We learn about your business, your offer, your audience and what the website needs to achieve."
+        },
+        {
+            heading: "Shape",
+            description: "We turn your business into a clear website structure with focused pages and messaging."
+        },
+        {
+            heading: "Launch",
+            description: "We design, build, test and launch your website so it is ready to start generating trust."
+        },
+        {
+            heading: "Support",
+            description: "Your site is live and we're here when you need us. Hosting and ongoing support plans are available separately."
+        }
+    ]
+} = Astro.props;
+
+const stepIcons = [Search, Layers, ArrowUpRight, Headphones];
+---
+
+<section class="section section-soft" id="process">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
+            </div>
+            <p>{description}</p>
+        </div>
+
+        <div class="process-grid">
+            {steps.map((step, i) => {
+                const Icon = stepIcons[i];
+                return (
+                    <article class="process-step">
+                        <span class="process-step-icon">
+                            <Icon size={24} />
+                        </span>
+                        <h3>{step.heading}</h3>
+                        <p>{step.description}</p>
+                    </article>
+                );
+            })}
+        </div>
+    </div>
+</section>
+
+<style>
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .process-step {
+        position: relative;
+        min-height: 230px;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .process-step-icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 36px;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 15px;
+    }
+
+    .process-step-icon svg {
+        display: block;
+    }
+
+    .process-step:nth-child(2) .process-step-icon {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .process-step:nth-child(3) .process-step-icon {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    .process-step p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+        .process-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .process-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

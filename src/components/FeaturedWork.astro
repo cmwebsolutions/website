@@ -1,0 +1,96 @@
+---
+interface Props {
+    image?: string;
+    projectName?: string;
+}
+
+const { image = "/featured/aila-presentation.webp", projectName = "Aila Recruitment" } = Astro.props;
+---
+
+<section class="section founder-section">
+    <div class="container">
+        <div class="founder-grid">
+            <div class="founder-image-col">
+                <div class="founder-image-wrap">
+                    <img src={image} alt={`${projectName} — Featured project`} class="featured-image" />
+                </div>
+            </div>
+            <div class="founder-content">
+                <span class="eyebrow">Our work in action</span>
+                <h2>Every pixel has a purpose.</h2>
+                <p class="founder-bio">{projectName} needed a site that did more than look good — it needed to sync live job listings, represent a premium brand, and convert candidates into applicants. We built exactly that.</p>
+                <p class="founder-bio">Your project deserves the same attention to detail, whether it's a single landing page or a full platform.</p>
+                <div class="founder-cta-line">
+                    <span class="icon">&#8594;</span>
+                    <span>Your next project could be our best work yet.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .founder-grid {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .founder-image-col {
+        display: grid;
+        gap: 16px;
+        justify-items: center;
+    }
+
+    .founder-image-wrap {
+        position: relative;
+        display: inline-flex;
+    }
+
+    .featured-image {
+        width: 100%;
+        transform: scale(1.65);
+        display: block;
+    }
+
+    .founder-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .founder-content h2 {
+        margin-bottom: 20px;
+    }
+
+    .founder-bio {
+        font-size: 1.04rem;
+        margin-top: 16px;
+    }
+
+    .founder-cta-line {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 28px;
+        padding: 18px 22px;
+        background: var(--surface-soft);
+        font-size: 0.96rem;
+        font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+        .founder-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .featured-image {
+            max-width: 320px;
+        }
+
+        .founder-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+    }
+</style>

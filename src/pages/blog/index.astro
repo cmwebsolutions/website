@@ -1,0 +1,239 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+interface PostMeta {
+    slug: string;
+    frontmatter: {
+        title: string;
+        description: string;
+        date: Date;
+        tags?: string[];
+    };
+}
+
+const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.mdx', { eager: true }))
+    .map(([path, module]: [string, any]) => ({
+        slug: path.split('/').pop()?.replace('.mdx', '') || '',
+        frontmatter: module.frontmatter,
+    }))
+    .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+---
+
+<Layout
+    title="Blog | CM Web Solutions"
+    description="Tips, guides, and thoughts on web design, development, and growing your business online. Read the CM Web Solutions blog."
+    openGraph={{
+        basic: {
+            title: "Blog | CM Web Solutions",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section blog-hero">
+            <div class="blog-bg"></div>
+            <div class="container">
+                <div class="blog-hero-content">
+                    <span class="eyebrow">Blog</span>
+                    <h1>Insights and advice for your website.</h1>
+                    <p class="lead">Tips, guides, and thoughts on web design, development, and growing your business online.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft">
+            <div class="container">
+                <div class="blog-grid">
+                    {posts.map((post) => (
+                        <article class="blog-card">
+                            {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                                <div class="blog-tags">
+                                    {post.frontmatter.tags.map((tag: string) => (
+                                        <span class="blog-tag">{tag}</span>
+                                    ))}
+                                </div>
+                            )}
+                            <div class="blog-card-body">
+                                <time class="blog-date">{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                                <h2 class="blog-title">{post.frontmatter.title}</h2>
+                                <p class="blog-desc">{post.frontmatter.description}</p>
+                                <a class="blog-link" href={`/blog/${post.slug}`}>Read more →</a>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+
+                {posts.length === 0 && (
+                    <p class="blog-empty">No posts yet. Check back soon.</p>
+                )}
+            </div>
+        </section>
+
+        <CTA />
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .blog-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .blog-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(65, 0, 245, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15, 210, 187, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .blog-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .blog-hero .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .blog-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .blog-hero-content h1 {
+        color: var(--white);
+        margin-inline: auto;
+    }
+
+    .blog-hero-content :global(.lead) {
+        color: var(--dark-muted);
+        margin-inline: auto;
+    }
+
+    .blog-hero-content :global(.eyebrow) {
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.1);
+        border-color: rgba(15, 210, 187, 0.2);
+        margin-inline: auto;
+    }
+
+    .blog-hero-content :global(.eyebrow)::before {
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .blog-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .blog-card-body {
+        padding: 24px;
+    }
+
+    .blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 16px 24px 0;
+    }
+
+    .blog-tag {
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: var(--primary);
+        background: rgba(65, 0, 245, 0.08);
+    }
+
+    .blog-date {
+        display: block;
+        font-size: 0.84rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+    }
+
+    .blog-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 8px;
+    }
+
+    .blog-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 16px;
+    }
+
+    .blog-link {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 0.9rem;
+        transition: gap 180ms ease;
+    }
+
+    .blog-link:hover {
+        gap: 6px;
+    }
+
+    .blog-empty {
+        text-align: center;
+        padding: 60px 0;
+        color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+        .blog-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .blog-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

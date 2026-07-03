@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { testimonials } from '../data/testimonials';
+import { projects } from '../data/projects';
+---
+
+<Layout
+    title="Our Work | CM Web Solutions | Portfolio"
+    description="Browse our portfolio of custom-built websites for UK businesses. See real projects designed and developed by CM Web Solutions."
+    openGraph={{
+        basic: {
+            title: "Our Work | CM Web Solutions | Portfolio",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section work-hero">
+            <div class="work-bg"></div>
+            <div class="container">
+                <div class="work-hero-content">
+                    <span class="eyebrow">Our work</span>
+                    <h1>Real websites for real businesses.</h1>
+                    <p class="lead">Every project is different, but our approach stays the same: understand the goal, design with purpose, and deliver something that works.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft">
+            <div class="container">
+                <div class="work-grid">
+                    {projects.map(p => (
+                        <article class="work-card">
+                            <div class="work-thumb">
+                                {p.image && <img src={p.image} alt="" class="work-thumb-img" />}
+                                <div class={`work-thumb-overlay work-thumb--${p.gradient}`} style={`opacity: ${p.image ? 0.65 : 1};`}></div>
+                                <span class="work-label">{p.label}</span>
+                            </div>
+                            <div class="work-info">
+                                <h2 class="work-title">{p.title}</h2>
+                                <p class="work-desc">{p.description}</p>
+                                {p.partner && (
+                                    <p class="work-partner">In partnership with <a href={p.partner.url} target="_blank" rel="noopener">{p.partner.name}</a></p>
+                                )}
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <Testimonials
+            heading="Websites our clients are proud of."
+            description="See what our clients say about the websites we've built for them."
+            testimonials={[
+                testimonials[0],
+                testimonials[1],
+            ]}
+        />
+
+        <CTA />
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .work-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .work-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(65, 0, 245, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15, 210, 187, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .work-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .work-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 640px;
+    }
+
+    .work-hero-content h1 {
+        color: var(--white);
+    }
+
+    .work-hero-content :global(.lead) {
+        color: var(--dark-muted);
+    }
+
+    .work-hero-content :global(.eyebrow) {
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.1);
+        border-color: rgba(15, 210, 187, 0.2);
+    }
+
+    .work-hero-content :global(.eyebrow)::before {
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
+    }
+
+    .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .work-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .work-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .work-thumb {
+        position: relative;
+        height: 220px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 18px;
+        overflow: hidden;
+        background: var(--surface-soft);
+    }
+
+    .work-thumb-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .work-thumb-overlay {
+        position: absolute;
+        inset: 0;
+    }
+
+    .work-thumb--1 { background: linear-gradient(135deg, #4100F5, #7B4AFF); }
+    .work-thumb--2 { background: linear-gradient(135deg, #0FD2BB, #0AA8D2); }
+    .work-thumb--3 { background: linear-gradient(135deg, #FF6B6B, #EE5A24); }
+    .work-thumb--4 { background: linear-gradient(135deg, #6C5CE7, #A29BFE); }
+    .work-thumb--5 { background: linear-gradient(135deg, #1B1919, #444); }
+    .work-thumb--6 { background: linear-gradient(135deg, #00B894, #00CEC9); }
+
+    .work-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: var(--white);
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+        z-index: 1;
+    }
+
+    .work-info {
+        padding: 22px 24px 24px;
+    }
+
+    .work-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.08;
+        margin-bottom: 8px;
+    }
+
+    .work-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    .work-partner {
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: var(--muted);
+    }
+
+    .work-partner a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .work-partner a:hover {
+        color: var(--black);
+    }
+
+    @media (max-width: 980px) {
+        .work-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .work-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

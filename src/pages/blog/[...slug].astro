@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/post.css';
+
+export async function getStaticPaths() {
+    return Object.entries(import.meta.glob('/src/content/blog/*.mdx', {eager: true}))
+        .map(([path, module]: [string, any]) => {
+            const slug = path.split('/').pop()?.replace('.mdx', '') || '';
+            return {
+                params: {slug},
+                props: {frontmatter: module.frontmatter, Content: module.Content},
+            };
+        });
+}
+
+const { frontmatter, Content } = Astro.props;
+
+const formattedDate = new Date(frontmatter.date).toISOString();
+---
+
+<Layout
+    title={`${frontmatter.title} | CM Web Solutions`}
+    description={frontmatter.description}
+    openGraph={{
+        basic: {
+            title: `${frontmatter.title} | CM Web Solutions`,
+            type: "article",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+        article: {
+            publishedTime: formattedDate,
+            tags: frontmatter.tags ?? [],
+            authors: ["https://cmwebsolutions.com/about"],
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+        title: `${frontmatter.title} | CM Web Solutions`,
+        description: frontmatter.description,
+    }}
+>
+    <Header />
+    <main>
+        <article class="section post-hero">
+            <div class="post-bg"></div>
+            <div class="container">
+                <div class="post-header">
+                    {frontmatter.tags && frontmatter.tags.length > 0 && (
+                        <div class="post-tags">
+                            {frontmatter.tags.map((tag: string) => (
+                                <span class="post-tag">{tag}</span>
+                            ))}
+                        </div>
+                    )}
+                    <time class="post-date">{new Date(frontmatter.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                    <h1>{frontmatter.title}</h1>
+                    <p class="lead">{frontmatter.description}</p>
+                </div>
+            </div>
+        </article>
+
+        <div class="section post-content-wrap">
+            <div class="container">
+                <div class="post-content">
+                    <Content />
+                </div>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .post-hero {
+        position: relative;
+        padding: 144px 0 80px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .post-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(65, 0, 245, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15, 210, 187, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .post-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .post-header {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+    }
+
+    .post-header h1 {
+        color: var(--white);
+    }
+
+    .post-header :global(.lead) {
+        color: var(--dark-muted);
+    }
+
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+
+    .post-tag {
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.1);
+        border: 1px solid rgba(15, 210, 187, 0.2);
+    }
+
+    .post-date {
+        display: block;
+        font-size: 0.88rem;
+        color: var(--dark-muted);
+        margin-bottom: 16px;
+    }
+
+    .post-content-wrap {
+        background: var(--surface-soft);
+    }
+</style>

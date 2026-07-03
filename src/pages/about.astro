@@ -1,0 +1,319 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FeaturedWork from '../components/FeaturedWork.astro';
+import { testimonials } from '../data/testimonials';
+import Search from '@lucide/astro/icons/search';
+import PenTool from '@lucide/astro/icons/pen-tool';
+import CodeXml from '@lucide/astro/icons/code-xml';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import Zap from '@lucide/astro/icons/zap';
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+---
+
+<Layout
+    title="About | CM Web Solutions"
+    description="Learn about Custom Made Web Solutions — a UK-based web design agency building websites that help businesses grow. Meet founder Ciaran Murray."
+    openGraph={{
+        basic: {
+            title: "About | CM Web Solutions",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "CM Web Solutions",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@cmwebsolutions",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section about-hero">
+            <div class="about-bg"></div>
+            <div class="container">
+                <div class="about-hero-content">
+                    <span class="eyebrow">About us</span>
+                    <h1>We build websites that help UK businesses grow.</h1>
+                    <p class="lead">Custom Made Web Solutions was founded to fix one thing: the gap between what businesses need from their website and what they actually get.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-story">
+            <div class="container">
+                <div class="about-story-grid">
+                    <div class="about-story-text">
+                        <h2>Web design without the headache.</h2>
+                        <p>Too many businesses end up with expensive, bloated websites that are hard to manage and even harder to update. We take a different approach: build it right, keep it simple, and make sure it actually works for your business.</p>
+                        <p>Whether it's a single landing page for a campaign or a full multi-page site with custom integrations, every project gets the same attention to detail, performance optimisation, and clean design.</p>
+                    </div>
+                    <div class="about-story-values">
+                        <div class="value-card">
+                            <span class="value-icon"><PenTool size={20} /></span>
+                            <h3>Design that converts</h3>
+                            <p>Every pixel serves a purpose. We design for your audience, not our portfolio.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon"><Zap size={20} /></span>
+                            <h3>Built to perform</h3>
+                            <p>Fast load times, perfect scores, and responsive by default, on every device.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon"><BadgeCheck size={20} /></span>
+                            <h3>No hidden costs</h3>
+                            <p>Fixed prices, clear scopes, and honest timelines. What you see is what you pay.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <FeaturedWork />
+
+        <section class="section section-soft">
+            <div class="container">
+                <div class="about-approach">
+                    <span class="eyebrow">How we work</span>
+                    <h2>A process built around your goals.</h2>
+                    <div class="approach-grid">
+                        <div class="approach-step">
+                            <span class="approach-num">
+                                <Search size={20} />
+                            </span>
+                            <h3>Discover</h3>
+                            <p>We learn about your business, audience, and goals. This shapes everything that follows.</p>
+                        </div>
+                        <div class="approach-step">
+                            <span class="approach-num">
+                                <PenTool size={20} />
+                            </span>
+                            <h3>Design</h3>
+                            <p>We create a custom design tailored to your brand and your customers' needs.</p>
+                        </div>
+                        <div class="approach-step">
+                            <span class="approach-num">
+                                <CodeXml size={20} />
+                            </span>
+                            <h3>Build</h3>
+                            <p>We develop your site with clean code, performance optimisation, and thorough testing.</p>
+                        </div>
+                        <div class="approach-step">
+                            <span class="approach-num">
+                                <ArrowUpRight size={20} />
+                            </span>
+                            <h3>Launch</h3>
+                            <p>We deploy your site, handle the setup, and make sure everything runs smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Testimonials
+            layout="featured"
+            heading="What it's like to work with us."
+            description="Our clients become long-term partners. Here's what they say about working together."
+            testimonials={[
+                testimonials[6],
+                testimonials[3],
+                testimonials[7],
+            ]}
+        />
+
+        <CTA />
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .about-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .about-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(65, 0, 245, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15, 210, 187, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .about-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+    }
+
+    .about-hero-content h1 {
+        color: var(--white);
+    }
+
+    .about-hero-content :global(.lead) {
+        color: var(--dark-muted);
+    }
+
+    .about-hero-content :global(.eyebrow) {
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.1);
+        border-color: rgba(15, 210, 187, 0.2);
+    }
+
+    .about-hero-content :global(.eyebrow)::before {
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
+    }
+
+    .about-story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    .about-story-text h2 {
+        margin-bottom: 20px;
+    }
+
+    .about-story-text p {
+        font-size: 1.04rem;
+        margin-top: 16px;
+    }
+
+    .about-story-values {
+        display: grid;
+        gap: 20px;
+    }
+
+    .value-card {
+        padding: 24px 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .value-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .value-icon {
+        display: inline-flex;
+        width: 38px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: var(--primary);
+        color: var(--white);
+        margin-bottom: 14px;
+    }
+
+    .value-icon svg {
+        display: block;
+    }
+
+    .value-card h3 {
+        margin-bottom: 6px;
+    }
+
+    .value-card p {
+        font-size: 0.92rem;
+    }
+
+    .about-approach {
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .about-approach :global(.eyebrow) {
+        margin-inline: auto;
+    }
+
+    .about-approach h2 {
+        margin-inline: auto;
+    }
+
+    .approach-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 48px;
+        text-align: left;
+    }
+
+    .approach-step {
+        padding: 28px 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .approach-step:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .approach-num {
+        display: inline-flex;
+        width: 38px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: var(--primary);
+        color: var(--white);
+        margin-bottom: 14px;
+    }
+
+    .approach-num svg {
+        display: block;
+    }
+
+    .approach-step h3 {
+        margin-bottom: 8px;
+    }
+
+    .approach-step p {
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+        .about-story-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .approach-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .approach-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

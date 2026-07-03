@@ -1,40 +1,43 @@
 ---
-interface Props {
+import '../styles/global.css';
+import '@fontsource-variable/geist/wght.css';
+import { SEO } from 'astro-seo';
+import type { SEOProps } from 'astro-seo';
+
+interface Props extends Omit<SEOProps, 'title' | 'description'> {
     title: string;
+    description?: string;
 }
 
-const {title} = Astro.props;
+const { title, description, ...seoProps } = Astro.props;
+const resolvedDescription = description ?? "Professional managed websites for UK businesses. £499 one-off setup, then £249/month. Design, hosting, SSL, backups, maintenance and support included.";
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="description"
-          content="Providing professional web design and development services for growing busineses that are looking to improve their digital presence."/>
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="generator" content={Astro.generator}/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <SEO
+        title={title}
+        description={resolvedDescription}
+        {...seoProps}
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
     <script
-            is:inline
-            defer
-            data-domain="cmwebsolutions.com"
-            src="https://plausible.io/js/script.js"
-    >
-
-    </script>
-
-<script is:inline type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s77rswmzul");
-</script>
-
-    <title>{title}</title>
+        is:inline
+        defer
+        data-domain="cmwebsolutions.com"
+        src="https://plausible.io/js/script.js"
+    ></script>
 </head>
-<body class="h-full">
-	<slot/>
+
+<body>
+    <slot />
 </body>
 </html>

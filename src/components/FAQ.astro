@@ -1,0 +1,149 @@
+---
+import Plus from '@lucide/astro/icons/plus';
+
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    questions?: FAQItem[];
+}
+
+const {
+    eyebrow = "FAQ",
+    heading = "Frequently asked questions.",
+    description = "Got questions? We've got answers. If there's something we haven't covered, feel free to get in touch.",
+    questions = [
+        {
+            question: "What does on-page SEO include?",
+            answer: "Meta titles, meta descriptions, schema markup, Open Graph tags, and XML sitemap submission for every page. This covers the on-page foundations. Ongoing SEO campaigns, keyword research, content creation, and link building are separate services."
+        },
+        {
+            question: "How long does a typical project take?",
+            answer: "It depends on the scope. A single landing page typically takes 1-2 weeks, a 5-page site around 2-3 weeks, and a larger 10-page project with integrations can take 3-5 weeks. We'll give you a clear timeline before we start."
+        },
+        {
+            question: "Do I need to provide content and images?",
+            answer: "We can work with whatever you have. If you have copy and images ready, great. If not, we can help with copywriting and source high-quality stock imagery as part of the project."
+        },
+        {
+            question: "Will my website be mobile-friendly?",
+            answer: "Absolutely. Every site we build is fully responsive, so it'll look and perform great on phones, tablets, and desktops. We don't do separate mobile sites."
+        },
+        {
+            question: "Can I edit the content myself?",
+            answer: "The site is built as a static website, so it doesn't have a built-in editor. If you'd like the ability to make edits yourself, we can add a content management system for a one-off fee. If you'd prefer us to handle updates for you, we offer ongoing support and maintenance packages."
+        },
+        {
+            question: "What if I'm not happy with the design?",
+            answer: "We include rounds of revisions in every package to make sure you're happy with the result. We work closely with you throughout the process, so there are no surprises at the end."
+        },
+        {
+            question: "Do you offer a managed website subscription?",
+            answer: "Yes. Our managed website plan is £249/month with a £499 one-off setup fee. It includes design, development, premium hosting, SSL certificate, backups, monitoring, security, ongoing content updates and technical support. After the 12-month minimum term, ownership of the website transfers to you."
+        },
+        {
+            question: "What's the process from start to launch?",
+            answer: "We start with a discovery call to understand your goals. Then we design a custom mockup, build the site, review it with you, and finally deploy it live. The whole process is collaborative, with regular check-ins."
+        }
+    ]
+} = Astro.props;
+---
+
+<section class="section section-soft" id="faq">
+    <div class="container">
+        <div class="faq-grid">
+            <div class="faq-copy">
+                <span class="eyebrow">{eyebrow}</span>
+                <h2>{heading}</h2>
+                <p class="lead">{description}</p>
+            </div>
+
+            <div class="faq-list">
+                {questions.map((item) => (
+                    <details>
+                        <summary>{item.question}<span class="faq-toggle"><Plus size={16} /></span></summary>
+                        <p>{item.answer}</p>
+                    </details>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .faq-grid {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 42px;
+        align-items: start;
+    }
+
+    .faq-copy {
+        position: sticky;
+        top: 110px;
+    }
+
+    .faq-list {
+        display: grid;
+        gap: 12px;
+    }
+
+    details {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 20px 22px;
+        color: var(--black);
+        font-weight: 800;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-toggle {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 999px;
+        transition: transform 180ms ease;
+    }
+
+    details[open] .faq-toggle {
+        transform: rotate(45deg);
+    }
+
+    details p {
+        padding: 0 22px 22px;
+        font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+        .faq-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .faq-copy {
+            position: static;
+        }
+    }
+</style>

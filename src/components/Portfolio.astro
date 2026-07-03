@@ -1,0 +1,175 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+    projects?: Project[];
+}
+
+const { projects = [] } = Astro.props;
+---
+
+<section class="section portfolio" id="work">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Our work</span>
+                <h2>Sites we've built for businesses like yours.</h2>
+            </div>
+            <p>From landing pages to full business sites, each project is tailored to the client's goals and audience.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            {projects.map(p => (
+                <article class="project-card">
+                    <div class="project-thumb">
+                        {p.image && <img src={p.image} alt="" class="project-thumb-img" />}
+                        <div class={`project-thumb-overlay project-thumb--${p.gradient}`} style={`opacity: ${p.image ? 0.65 : 1};`}></div>
+                        <span class="project-label">{p.label}</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">{p.title}</h3>
+                        <p class="project-desc">{p.description}</p>
+                        <a href="/work" class="project-link">View project &rarr;</a>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <div class="portfolio-cta">
+            <a href="/work" class="btn btn-primary">See all projects</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .project-thumb {
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 16px;
+        overflow: hidden;
+        background: var(--surface-soft);
+    }
+
+    .project-thumb-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-thumb-overlay {
+        position: absolute;
+        inset: 0;
+    }
+
+    .project-thumb--1 { background: linear-gradient(135deg, #4100F5, #7B4AFF); }
+    .project-thumb--2 { background: linear-gradient(135deg, #0FD2BB, #0AA8D2); }
+    .project-thumb--3 { background: linear-gradient(135deg, #FF6B6B, #EE5A24); }
+    .project-thumb--4 { background: linear-gradient(135deg, #6C5CE7, #A29BFE); }
+    .project-thumb--5 { background: linear-gradient(135deg, #1B1919, #444); }
+    .project-thumb--6 { background: linear-gradient(135deg, #00B894, #00CEC9); }
+
+    .project-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: var(--white);
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+        z-index: 1;
+    }
+
+    .project-info {
+        padding: 20px 22px 22px;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        line-height: 1.08;
+    }
+
+    .project-desc {
+        margin-top: 8px;
+        font-size: 0.88rem;
+        color: var(--muted);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .project-link {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--primary);
+        transition: gap 180ms ease;
+    }
+
+    .project-link:hover {
+        gap: 6px;
+    }
+
+    .project-partner {
+        margin-top: 10px;
+        font-size: 0.82rem;
+        color: var(--muted);
+    }
+
+    .project-partner a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .project-partner a:hover {
+        color: var(--black);
+    }
+
+    .portfolio-cta {
+        display: flex;
+        justify-content: center;
+        margin-top: 48px;
+    }
+
+    @media (max-width: 980px) {
+        .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .portfolio-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

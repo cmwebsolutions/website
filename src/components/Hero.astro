@@ -1,0 +1,282 @@
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <span class="eyebrow">Managed website</span>
+
+                <h1>Launch a website without paying thousands upfront.</h1>
+
+                <p class="lead">
+                    A fully managed website for UK startups, local businesses and service providers. Design, development, hosting, maintenance, support and security included from £249/month.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-accent" href="#consultation">Book a free consultation</a>
+                    <a class="btn btn-ghost" href="#included">See what's included</a>
+                </div>
+
+                <div class="hero-pills" aria-label="Key benefits">
+                    <span class="pill">
+                        <span class="check">&#10003;</span>
+                        £499 one‑off setup
+                    </span>
+                    <span class="pill">
+                        <span class="check">&#10003;</span>
+                        Hosting and support included
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="hero-card" aria-label="Website subscription summary">
+                <div class="hero-card-inner">
+                    <div class="browser-dots" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span class="mock-label">Managed website</span>
+
+                    <div class="mock-title">
+                        A professional site built, hosted and managed monthly.
+                    </div>
+
+                    <p class="mock-copy">
+                        For businesses that need to look credible fast, without dealing with the technical side.
+                    </p>
+
+                    <div class="mock-grid">
+                        <div class="mock-stat">
+                            <strong>&pound;249</strong>
+                            <span>per month</span>
+                        </div>
+
+                        <div class="mock-stat">
+                            <strong>&pound;499</strong>
+                            <span>one‑off setup</span>
+                        </div>
+
+                        <div class="mock-stat">
+                            <strong>12mo</strong>
+                            <span>minimum term</span>
+                        </div>
+
+                        <div class="mock-stat">
+                            <strong>5</strong>
+                            <span>pages included</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 168px 0 82px;
+        color: var(--white);
+        background:
+            radial-gradient(circle at 10% 0%, rgba(65, 0, 245, 0.52), transparent 34rem),
+            radial-gradient(circle at 92% 8%, rgba(15, 210, 187, 0.30), transparent 30rem),
+            linear-gradient(135deg, #111010 0%, #1B1919 46%, #26007A 100%);
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+            linear-gradient(rgba(252, 252, 252, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(252, 252, 252, 0.045) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+    }
+
+    .hero :global(.container) {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+        align-items: center;
+        gap: 58px;
+    }
+
+    .hero :global(.eyebrow) {
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.12);
+        border-color: rgba(15, 210, 187, 0.24);
+    }
+
+    .hero :global(h1) {
+        color: var(--white);
+    }
+
+    .hero :global(.lead) {
+        color: var(--dark-muted);
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-top: 34px;
+    }
+
+    .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+    }
+
+    .hero-card {
+        position: relative;
+        padding: 18px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, rgba(252, 252, 252, 0.18), rgba(252, 252, 252, 0.05));
+        border: 1px solid rgba(252, 252, 252, 0.16);
+        box-shadow: 0 38px 110px rgba(0, 0, 0, 0.32);
+        backdrop-filter: blur(20px);
+    }
+
+    .hero-card-inner {
+        position: relative;
+        overflow: hidden;
+        padding: 30px;
+        border-radius: 34px;
+        background:
+            radial-gradient(circle at 100% 0%, rgba(15, 210, 187, 0.30), transparent 18rem),
+            rgba(252, 252, 252, 0.08);
+        border: 1px solid rgba(252, 252, 252, 0.12);
+    }
+
+    .hero-card-inner::after {
+        content: "";
+        position: absolute;
+        right: -42px;
+        bottom: -42px;
+        width: 160px;
+        height: 160px;
+        border-radius: 999px;
+        background: var(--accent);
+        opacity: 0.14;
+        filter: blur(2px);
+    }
+
+    .browser-dots {
+        display: flex;
+        gap: 7px;
+        margin-bottom: 26px;
+    }
+
+    .browser-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(252, 252, 252, 0.22);
+    }
+
+    .browser-dots span:nth-child(1) {
+        background: var(--accent);
+    }
+
+    .browser-dots span:nth-child(2) {
+        background: var(--primary);
+    }
+
+    .mock-label {
+        display: inline-flex;
+        margin-bottom: 16px;
+        padding: 7px 10px;
+        color: var(--accent);
+        background: rgba(15, 210, 187, 0.12);
+        border: 1px solid rgba(15, 210, 187, 0.22);
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .mock-title {
+        position: relative;
+        z-index: 1;
+        max-width: 440px;
+        color: var(--white);
+        font-size: clamp(2rem, 4vw, 2.35rem);
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .mock-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 390px;
+        margin-top: 18px;
+        color: rgba(252, 252, 252, 0.64);
+    }
+
+    .mock-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 26px;
+    }
+
+    .mock-stat {
+        min-height: 116px;
+        padding: 18px;
+        border-radius: 22px;
+        background: rgba(252, 252, 252, 0.09);
+        border: 1px solid rgba(252, 252, 252, 0.12);
+    }
+
+    .mock-stat strong {
+        display: block;
+        color: var(--white);
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .mock-stat span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(252, 252, 252, 0.54);
+        font-size: 0.82rem;
+    }
+
+    @media (max-width: 980px) {
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero {
+            padding: 140px 0 64px;
+        }
+
+        .hero-actions,
+        .hero-actions :global(.btn) {
+            width: 100%;
+        }
+
+        .mock-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-card-inner {
+            padding: 24px;
+        }
+    }
+</style>
