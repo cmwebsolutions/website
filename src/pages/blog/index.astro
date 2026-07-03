@@ -70,7 +70,7 @@ const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.m
                                 <time class="blog-date">{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
                                 <h2 class="blog-title">{post.frontmatter.title}</h2>
                                 <p class="blog-desc">{post.frontmatter.description}</p>
-                                <a class="blog-link" href={`/blog/${post.slug}`}>Read more →</a>
+                                <a class="blog-link" href={`/blog/${post.slug}`} aria-label={`Read more about ${post.frontmatter.title}`}>Read more →</a>
                             </div>
                         </article>
                     ))}
