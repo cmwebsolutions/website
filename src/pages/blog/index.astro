@@ -46,9 +46,11 @@ const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.m
         <section class="section blog-hero">
             <div class="blog-bg"></div>
             <div class="container">
-                <span class="eyebrow">Blog</span>
-                <h1>Insights and advice for your website.</h1>
-                <p class="lead">Tips, guides, and thoughts on web design, development, and growing your business online.</p>
+                <div class="blog-hero-content">
+                    <span class="eyebrow">Blog</span>
+                    <h1>Insights and advice for your website.</h1>
+                    <p class="lead">Tips, guides, and thoughts on web design, development, and growing your business online.</p>
+                </div>
             </div>
         </section>
 
@@ -115,25 +117,34 @@ const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.m
     .blog-hero .container {
         position: relative;
         z-index: 1;
-        max-width: 680px;
     }
 
-    .blog-hero h1 {
+    .blog-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .blog-hero-content h1 {
         color: var(--white);
+        margin-inline: auto;
     }
 
-    .blog-hero :global(.lead) {
+    .blog-hero-content :global(.lead) {
         color: var(--dark-muted);
+        margin-inline: auto;
     }
 
-    .blog-hero :global(.eyebrow) {
+    .blog-hero-content :global(.eyebrow) {
         color: var(--accent);
         background: rgba(15, 210, 187, 0.1);
         border-color: rgba(15, 210, 187, 0.2);
         margin-inline: auto;
     }
 
-    .blog-hero :global(.eyebrow)::before {
+    .blog-hero-content :global(.eyebrow)::before {
         background: var(--accent);
         box-shadow: 0 0 0 5px rgba(15, 210, 187, 0.18);
     }
