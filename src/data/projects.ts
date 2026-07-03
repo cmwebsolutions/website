@@ -196,9 +196,30 @@ export const projects: Project[] = [
     },
     {
         title: "De-Havilland Advisory",
-        description: "A custom build for De-Havilland Advisory, a London-based financial advisory firm, featuring a modern, responsive design, a clear call-to-action, and a focus on user experience.",
+        description: "A custom static site built with Astro for speed, security, and reliability — no backend to maintain. Designed for a firm specialising in workforce risk due diligence for M&A, helping buyers gain deeper insight into contingent labour risk.",
         label: "Business Advisory",
         gradient: 5,
         image: "/projects/de-havilland-advisory.webp",
+    },
+    {
+        title: "Brightgen",
+        description: "Rebult Brightgen's London-based Salesforce consultancy site with  a fresh redesign, improved UX and CTAs, and a Gutenberg-first WordPress implementation that empowers the marketing team to update pages without developer support.",
+        label: "Business Advisory",
+        gradient: 6,
+        image: "/projects/brightgen.webp",
+    },
+    {
+        title: "Pendragon Consultancy",
+        description: "A multi-brand WordPress site built for Pendragon Consultancy, covering their full range of business advisory and compliance services — including employment of records, PEO, and more — all under one unified platform.",
+        label: "Business Consultancy",
+        gradient: 1,
+        image: "/projects/pendragon-consultancy.webp",
+    },
+    {
+        title: "Karemill Homecare",
+        description: "Delivered a clear, patient-focused website for Karemill Homecare (Bedfordshire startup), improving navigation and making it easier for visitors to understand services and get in touch.",
+        label: "Homecare",
+        gradient: 2,
+        image: "/projects/karemillhomecare.webp",
     }
 ];
