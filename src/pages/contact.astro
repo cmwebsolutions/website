@@ -40,18 +40,27 @@ import Footer from '../components/Footer.astro';
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-form-wrap">
-                        <form class="contact-form" action="https://formspree.io/f/xdarkjga" method="POST">
+                        <div data-fs-success>
+                            <strong>Thanks for your message!</strong> We'll be in touch within 24 hours.
+                        </div>
+                        <div data-fs-error>
+                            <strong>Oops!</strong> Something went wrong. Please try again or email us directly.
+                        </div>
+                        <form id="contact-form" class="contact-form" data-form-id="xdarkjga">
                             <div class="form-row">
                                 <label class="form-label" for="name">Full name</label>
                                 <input class="form-input" type="text" id="name" name="name" required placeholder="e.g. Jane Smith" />
+                                <span data-fs-error="name"></span>
                             </div>
                             <div class="form-row">
                                 <label class="form-label" for="email">Email address</label>
                                 <input class="form-input" type="email" id="email" name="email" required placeholder="jane@example.com" />
+                                <span data-fs-error="email"></span>
                             </div>
                             <div class="form-row">
                                 <label class="form-label" for="phone">Phone number</label>
                                 <input class="form-input" type="tel" id="phone" name="phone" placeholder="07700 900000" />
+                                <span data-fs-error="phone"></span>
                             </div>
                             <div class="form-row">
                                 <label class="form-label" for="budget">Which package interests you?</label>
@@ -63,10 +72,12 @@ import Footer from '../components/Footer.astro';
                                     <option value="subscription">Managed website – £249/mo</option>
                                     <option value="not-sure">Not sure yet</option>
                                 </select>
+                                <span data-fs-error="budget"></span>
                             </div>
                             <div class="form-row">
                                 <label class="form-label" for="message">Tell us about your project</label>
                                 <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What kind of website do you need? What are your goals?"></textarea>
+                                <span data-fs-error="message"></span>
                             </div>
                             <button class="btn btn-accent form-submit" type="submit">Send message</button>
                         </form>
@@ -258,4 +269,58 @@ import Footer from '../components/Footer.astro';
             grid-template-columns: 1fr;
         }
     }
+
+    [data-fs-error] {
+        color: #dc3455;
+        font-size: 0.82rem;
+    }
+
+    input[aria-invalid='true'],
+    select[aria-invalid='true'],
+    textarea[aria-invalid='true'] {
+        border-color: #dc3455;
+    }
+
+    [data-fs-success][data-fs-active] {
+        background: #d4edda;
+        color: #155724;
+        padding: 24px 20px;
+        border-radius: var(--radius-md);
+        font-size: 0.92rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+
+        strong {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+    }
+
+    [data-fs-error=""][data-fs-active] {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 12px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 0.92rem;
+        margin-bottom: 16px;
+    }
 </style>
+
+<script>
+    import { initForm } from "@formspree/ajax";
+
+    initForm({
+        formElement: '#contact-form',
+        formId: 'xdarkjga',
+        onSuccess: () => {
+            const form = document.querySelector('#contact-form') as HTMLFormElement;
+            if (form) {
+                form.style.display = 'none';
+            }
+        }
+    });
+</script>
