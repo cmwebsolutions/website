@@ -23,13 +23,6 @@ export const projects: Project[] = [
         image: "/projects/eorinternational.webp",
     },
     {
-        title: "Impact Personal Training",
-        description: "Full redesign of the client's existing site with integrated third-party booking and enquiry forms, tailored to their fitness brand and client experience.",
-        label: "Fitness",
-        gradient: 3,
-        image: "/projects/impactpt.webp",
-    },
-    {
         title: "JDC Scaffolding",
         description: "Modern redesign of their existing site with a staff document portal, project portfolio, and integrated quote request forms. A cleaner, more professional online presence for their scaffolding business.",
         label: "Trade",
