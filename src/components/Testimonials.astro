@@ -54,7 +54,7 @@ const {
 
         <div class="testimonial-grid" class:list={{ 'testimonial-grid--featured': layout === 'featured' }}>
             {testimonials.map((t, i) => (
-                <article class="card testimonial-card" class:list={{ 'testimonial-card--featured': layout === 'featured' && i === 0 }}>
+                <article class="card testimonial-card" class:list={{ 'testimonial-card--featured': layout === 'featured' && (i === 0 || i === testimonials.length - 1) }}>
                     <div class="testimonial-content">
                         <span class="quote-mark" aria-hidden="true">&ldquo;</span>
                         <div class="quote-text">

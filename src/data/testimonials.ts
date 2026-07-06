@@ -71,5 +71,11 @@ export const testimonials: Testimonial[] = [
         company: "29homes",
         heading: "Reliable partner for years",
         quote: "I have used Custom Made Web Solutions for years for website design, hosting and maintenance. Always friendly, knowledgeable and gets the job done as required."
+    },
+    {
+        name: "Matthew Bushnell",
+        company: "Mary Seacole Housing Association",
+        heading: "A trusted digital partner for complex projects",
+        quote: "We've had the pleasure of working with Custom Made Web Solutions across a number of complex digital projects, and I wouldn't hesitate to recommend them.\n\nFrom the outset, they've been professional, patient, and incredibly responsive. No matter how many ideas, changes or challenges we've thrown their way, they've always taken the time to understand what we're trying to achieve.\n\nWhat really sets them apart is that they don't just build websites \u2014 they genuinely invest in the success of the project. Their technical knowledge, attention to detail, and willingness to go the extra mile have helped us deliver high-quality digital platforms for local authority, NHS and community projects, often within challenging timescales.\n\nIf you're looking for a digital partner who combines technical expertise with outstanding customer service, I would highly recommend Custom Made Web Solutions."
     }
 ];
