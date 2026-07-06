@@ -6,9 +6,9 @@ export interface SiteImage {
 export const topSites: SiteImage[] = [
     { src: `/projects/ailarecruitment.webp`, alt: "Aila Recruitment website" },
     { src: `/projects/eorinternational.webp`, alt: "EOR International website" },
-    { src: `/projects/impactpt.webp`, alt: "Impact Personal Training website" },
+    { src: `/projects/de-havilland-advisory.webp`, alt: "De Havilland Advisory website" },
     { src: `/projects/jdcscaffolding.webp`, alt: "JDC Scaffolding website" },
-    { src: `/projects/lutonjobsandskills.webp`, alt: "Luton Jobs and Skills website" },
+    { src: `/projects/djcarr.webp`, alt: "DJ Carr website" },
     { src: `/projects/monsterclearance.webp`, alt: "Monster Clearance website" },
 ];
 
