@@ -224,7 +224,6 @@ p {
     place-items: center;
     flex: 0 0 auto;
     color: var(--black);
-    /*background: var(--accent);*/
     border-radius: 999px;
     font-size: 0.72rem;
     font-weight: 900;
