@@ -29,7 +29,6 @@ const { projects = [] } = Astro.props;
                     <div class="project-info">
                         <h3 class="project-title">{p.title}</h3>
                         <p class="project-desc">{p.description}</p>
-                        <a href="/work" class="project-link" aria-label="View {p.title} project details">View project &rarr;</a>
                     </div>
                 </article>
             ))}
@@ -123,19 +122,6 @@ const { projects = [] } = Astro.props;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-    }
-
-    .project-link {
-        display: inline-block;
-        margin-top: 14px;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--primary);
-        transition: gap 180ms ease;
-    }
-
-    .project-link:hover {
-        gap: 6px;
     }
 
     .project-partner {
