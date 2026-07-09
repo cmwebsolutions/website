@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import HeroHome from '../components/HeroHome.astro';
 import TrustStrip from '../components/TrustStrip.astro';
-import Packages from '../components/Packages.astro';
+import ProblemHome from '../components/ProblemHome.astro';
 import Process from '../components/Process.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -58,9 +58,19 @@ import { projects } from '../data/projects';
                 }
             ]}
         />
-        <Packages />
+        <ProblemHome />
         <Process />
         <Portfolio projects={projects.slice(0, 6)} />
+        <section class="section section-soft">
+            <div class="container">
+                <div class="cta-banner">
+                    <h2>Ready to get started?</h2>
+                    <p>Your website built by a developer who knows code. We use the right approach for each project based on what you actually need.</p>
+                    <a href="/services" class="btn btn-accent cta-banner-btn">View Packages</a>
+                </div>
+            </div>
+        </section>
+
         <Testimonials
             layout="featured"
             testimonials={[
@@ -75,3 +85,24 @@ import { projects } from '../data/projects';
     </main>
     <Footer />
 </Layout>
+
+<style>
+    .cta-banner {
+        text-align: center;
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    .cta-banner h2 {
+        margin-inline: auto;
+    }
+
+    .cta-banner p {
+        margin-top: 16px;
+        font-size: 1.04rem;
+    }
+
+    .cta-banner-btn {
+        margin-top: 32px;
+    }
+</style>
