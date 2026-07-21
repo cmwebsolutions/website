@@ -40,7 +40,7 @@ export const testimonials: Testimonial[] = [
         name: "Adam Callow",
         company: "Design Manager - JDC Scaffolding",
         heading: "Responsive, reliable, and exceeded expectations",
-        quote: "CM Web Solutions are an amazing team. CM helped us launch an entirely new website! They were responsive, reliable, and flexible to meet our needs and the project went smoothly, exceeding our expectations. As someone who is not an expert in managing a website, we can rely on CM to assist JDC and give advice on best practices. Would highly recommend!"
+        quote: "Custom Made Web Solutions are an amazing team. They helped us launch an entirely new website! They were responsive, reliable, and flexible to meet our needs and the project went smoothly, exceeding our expectations. As someone who is not an expert in managing a website, we can rely on Ciaran to assist JDC and give advice on best practices. Would highly recommend!"
     },
     {
         name: "Jane Kisnica",

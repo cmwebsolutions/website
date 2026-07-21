@@ -4,13 +4,15 @@ interface Props {
     heading?: string;
     description?: string;
     formId?: string;
+    dropdownType?: 'business' | 'package';
 }
 
 const {
     eyebrow = "Free consultation",
     heading = "Ready to get started on your website?",
     description = "Tell us about your project and we'll put together a custom proposal. No obligation, just a friendly chat.",
-    formId = "mlgydvbn"
+    formId = "mlgydvbn",
+    dropdownType = "business"
 } = Astro.props;
 
 const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
@@ -54,16 +56,34 @@ const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
                     </div>
 
                     <div class="field">
-                        <label for="business-type">Business type</label>
-                        <select id="business-type" name="business-type">
-                            <option value="">Select one</option>
-                            <option>Startup</option>
-                            <option>Local business</option>
-                            <option>Service provider</option>
-                            <option>Trade business</option>
-                            <option>Consultant</option>
-                            <option>Other</option>
-                        </select>
+                        {
+                            dropdownType === "package" ? (
+                                <>
+                                    <label for="business-type">Which package interests you?</label>
+                                    <select id="business-type" name="business-type">
+                                        <option value="">Select a package</option>
+                                        <option>The Launch Pad – from £1,750</option>
+                                        <option>The Core Business – from £2,750</option>
+                                        <option>The Premium Growth – from £4,250</option>
+                                        <option>Managed website – £249/mo</option>
+                                        <option>Not sure yet</option>
+                                    </select>
+                                </>
+                            ) : (
+                                <>
+                                    <label for="business-type">Business type</label>
+                                    <select id="business-type" name="business-type">
+                                        <option value="">Select one</option>
+                                        <option>Startup</option>
+                                        <option>Local business</option>
+                                        <option>Service provider</option>
+                                        <option>Trade business</option>
+                                        <option>Consultant</option>
+                                        <option>Other</option>
+                                    </select>
+                                </>
+                            )
+                        }
                         <span data-fs-error="business-type"></span>
                     </div>
                 </div>

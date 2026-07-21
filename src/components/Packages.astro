@@ -7,7 +7,7 @@ import {CircleCheckBig} from "@lucide/astro";
         <div class="section-head">
             <div>
                 <span class="eyebrow">Our packages</span>
-                <h2>Fixed-price websites, built to perform.</h2>
+                <h2>Websites built around your needs.</h2>
             </div>
             <p>Choose the package that fits your goals. Every site is custom-designed, mobile-optimised, and built with performance in mind.</p>
         </div>
@@ -18,8 +18,8 @@ import {CircleCheckBig} from "@lucide/astro";
                     <span class="package-name">The Launch Pad</span>
                     <p class="package-desc">A single high-converting landing page. Perfect for Google and Meta ad campaigns, product launches, or lead generation.</p>
                     <div class="package-price">
+                        <span class="price-from">from</span>
                         <span class="price-value">£1,750</span>
-                        <span class="price-note">one-off</span>
                     </div>
                     <ul class="check-list">
                         <li><span class="check"><CircleCheckBig size={20} /></span> Single long-form landing page</li>
@@ -39,8 +39,8 @@ import {CircleCheckBig} from "@lucide/astro";
                     <span class="package-name">The Core Business</span>
                     <p class="package-desc">A complete business website with up to 5 pages. Ideal for service providers, local businesses, and startups.</p>
                     <div class="package-price">
+                        <span class="price-from">from</span>
                         <span class="price-value">£2,750</span>
-                        <span class="price-note">one-off</span>
                     </div>
                     <ul class="check-list">
                         <li><span class="check"><CircleCheckBig size={20} /></span> Up to 5 custom pages</li>
@@ -59,8 +59,8 @@ import {CircleCheckBig} from "@lucide/astro";
                     <span class="package-name">The Premium Growth</span>
                     <p class="package-desc">A full-featured website with up to 10 pages and advanced integrations: booking engines, CRM syncing, or custom forms.</p>
                     <div class="package-price">
+                        <span class="price-from">from</span>
                         <span class="price-value">£4,250</span>
-                        <span class="price-note">one-off</span>
                     </div>
                     <ul class="check-list">
                         <li><span class="check"><CircleCheckBig size={20} /></span> Up to 10 custom pages</li>
@@ -164,11 +164,13 @@ import {CircleCheckBig} from "@lucide/astro";
         line-height: 1;
     }
 
-    .price-note {
-        margin-left: 8px;
-        font-size: 0.88rem;
-        color: var(--muted);
+    .price-from {
+        display: block;
+        font-size: 0.78rem;
         font-weight: 600;
+        color: var(--muted);
+        line-height: 1;
+        margin-bottom: 2px;
     }
 
     .package-card :global(.check-list) {
