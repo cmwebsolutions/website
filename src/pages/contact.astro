@@ -79,6 +79,13 @@ import Footer from '../components/Footer.astro';
                                 <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What kind of website do you need? What are your goals?"></textarea>
                                 <span data-fs-error="message"></span>
                             </div>
+                            <div class="form-row">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacy" required />
+                                    <span>I've read and agree to the <a href="/privacy" target="_blank">Privacy Policy</a></span>
+                                </label>
+                                <span data-fs-error="privacy"></span>
+                            </div>
                             <button class="btn btn-accent form-submit" type="submit">Send message</button>
                         </form>
                     </div>
@@ -211,6 +218,29 @@ import Footer from '../components/Footer.astro';
     .form-submit {
         width: 100%;
         margin-top: 8px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 0.84rem;
+        color: var(--muted);
+        line-height: 1.4;
+    }
+
+    .checkbox-label a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        accent-color: var(--primary);
+        cursor: pointer;
     }
 
     .contact-info {
