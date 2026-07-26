@@ -191,7 +191,7 @@ p {
 
 /* Eyebrow badge */
 .eyebrow {
-    display: inline-flex;
+    display: none;
     align-items: center;
     gap: 9px;
     width: fit-content;
