@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -28,6 +29,7 @@ import Footer from '../components/Footer.astro';
         <section class="section contact-hero">
             <div class="contact-bg"></div>
             <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
                 <div class="contact-hero-content">
                     <span class="eyebrow">Contact us</span>
                     <h1>Let's talk about your next website.</h1>

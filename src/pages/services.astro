@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
@@ -39,6 +40,7 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
         <section class="section services-hero">
             <div class="services-bg"></div>
             <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
                 <div class="services-hero-content">
                     <span class="eyebrow">What we offer</span>
                     <h1>Web design services for every stage of your business.</h1>

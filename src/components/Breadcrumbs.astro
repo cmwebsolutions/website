@@ -1,0 +1,35 @@
+---
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+
+interface Props {
+    items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const siteUrl = "https://www.cmwebsolutions.com";
+
+function resolveUrl(item: BreadcrumbItem, index: number): string {
+    if (item.href) {
+        return item.href.startsWith("http") ? item.href : `${siteUrl}${item.href}`;
+    }
+    if (index === 0) return siteUrl;
+    return `${siteUrl}/${items.slice(1, index + 1).map(i => i.href?.replace(/^\//, '') ?? '').filter(Boolean).join('/')}`;
+}
+
+const breadcrumbJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.label,
+        "item": resolveUrl(item, i),
+    })),
+});
+---
+
+<Fragment set:html={`<script type="application/ld+json">${breadcrumbJson}</script>`} />

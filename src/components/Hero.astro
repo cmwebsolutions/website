@@ -1,5 +1,21 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+
+interface Props {
+    breadcrumbs?: BreadcrumbItem[];
+}
+
+const { breadcrumbs } = Astro.props;
+---
+
 <section class="hero">
     <div class="container">
+        {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <div class="hero-grid">
             <div>
                 <span class="eyebrow">Managed website</span>

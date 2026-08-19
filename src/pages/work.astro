@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -32,6 +33,7 @@ import { projects } from '../data/projects';
         <section class="section work-hero">
             <div class="work-bg"></div>
             <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Our Work' }]} />
                 <div class="work-hero-content">
                     <span class="eyebrow">Our work</span>
                     <h1>Real websites for real businesses.</h1>

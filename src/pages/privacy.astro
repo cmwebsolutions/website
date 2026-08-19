@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -28,6 +29,7 @@ import Footer from '../components/Footer.astro';
 
     <main class="page-content">
         <div class="container page-container">
+            <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
             <a href="/" class="back-link">&larr; Back to home</a>
 
             <h1>Privacy Policy</h1>

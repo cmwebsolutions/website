@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -38,6 +39,7 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
         <section class="section about-hero">
             <div class="about-bg"></div>
             <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
                 <div class="about-hero-content">
                     <span class="eyebrow">About us</span>
                     <h1>Websites built properly, by people who understand code.</h1>
