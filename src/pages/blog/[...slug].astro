@@ -19,6 +19,10 @@ export async function getStaticPaths() {
 const { frontmatter, Content } = Astro.props;
 
 const formattedDate = new Date(frontmatter.date).toISOString();
+
+function slugify(str: string): string {
+    return str.toLowerCase().replace(/\s+/g, '-');
+}
 ---
 
 <Layout
@@ -36,7 +40,7 @@ const formattedDate = new Date(frontmatter.date).toISOString();
         },
         article: {
             publishedTime: formattedDate,
-            tags: frontmatter.tags ?? [],
+            tags: frontmatter.tags ?? [frontmatter.category],
             authors: ["https://cmwebsolutions.com/about"],
         },
     }}
@@ -54,11 +58,9 @@ const formattedDate = new Date(frontmatter.date).toISOString();
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: frontmatter.title }]} />
                 <div class="post-header">
-                    {frontmatter.tags && frontmatter.tags.length > 0 && (
-                        <div class="post-tags">
-                            {frontmatter.tags.map((tag: string) => (
-                                <span class="post-tag">{tag}</span>
-                            ))}
+                    {frontmatter.category && (
+                        <div class="post-categories">
+                            <a class="post-category" href={`/blog/category/${slugify(frontmatter.category)}`}>{frontmatter.category}</a>
                         </div>
                     )}
                     <time class="post-date">{new Date(frontmatter.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
@@ -120,14 +122,14 @@ const formattedDate = new Date(frontmatter.date).toISOString();
         color: var(--dark-muted);
     }
 
-    .post-tags {
+    .post-categories {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
         margin-bottom: 16px;
     }
 
-    .post-tag {
+    .post-category {
         font-size: 0.76rem;
         font-weight: 700;
         padding: 4px 10px;
@@ -135,6 +137,13 @@ const formattedDate = new Date(frontmatter.date).toISOString();
         color: var(--accent);
         background: rgba(15, 210, 187, 0.1);
         border: 1px solid rgba(15, 210, 187, 0.2);
+        text-decoration: none;
+        transition: background 180ms ease, color 180ms ease;
+    }
+
+    .post-category:hover {
+        background: var(--accent);
+        color: var(--black);
     }
 
     .post-date {

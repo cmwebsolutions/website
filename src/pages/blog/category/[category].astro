@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import CTA from '../../components/CTA.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTA from '../../../components/CTA.astro';
+import Footer from '../../../components/Footer.astro';
 
 interface PostMeta {
     slug: string;
@@ -11,29 +11,39 @@ interface PostMeta {
         title: string;
         description: string;
         date: Date;
-        category?: string;
-        tags?: string[];
+        category: string;
     };
 }
 
-const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.mdx', { eager: true }))
-    .map(([path, module]: [string, any]) => ({
-        slug: path.split('/').pop()?.replace('.mdx', '') || '',
-        frontmatter: module.frontmatter,
-    }))
-    .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+export async function getStaticPaths() {
+    const posts: PostMeta[] = Object.entries(import.meta.glob('/src/content/blog/*.mdx', { eager: true }))
+        .map(([path, module]: [string, any]) => ({
+            slug: path.split('/').pop()?.replace('.mdx', '') || '',
+            frontmatter: module.frontmatter,
+        }));
 
-function slugify(str: string): string {
-    return str.toLowerCase().replace(/\s+/g, '-');
+    const categories = [...new Set(posts.map(p => p.frontmatter.category).filter(Boolean))];
+
+    return categories.map(category => {
+        const slug = category.toLowerCase().replace(/\s+/g, '-');
+        return {
+            params: { category: slug },
+            props: { category, posts: posts.filter(p => p.frontmatter.category === category) },
+        };
+    });
 }
+
+const { category, posts } = Astro.props;
+
+const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 ---
 
 <Layout
-    title="Blog | CM Web Solutions"
-    description="Tips, guides, and thoughts on web design, development, and growing your business online. Read the CM Web Solutions blog."
+    title={`${category} Articles | Blog | CM Web Solutions`}
+    description={`Browse our articles about ${category.toLowerCase()} — tips, guides, and insights from CM Web Solutions.`}
     openGraph={{
         basic: {
-            title: "Blog | CM Web Solutions",
+            title: `${category} Articles | CM Web Solutions`,
             type: "website",
             image: "/og-image.png",
         },
@@ -52,11 +62,11 @@ function slugify(str: string): string {
         <section class="section blog-hero">
             <div class="blog-bg"></div>
             <div class="container">
-                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: category }]} />
                 <div class="blog-hero-content">
-                    <span class="eyebrow">Blog</span>
-                    <h1>Insights and advice for your website.</h1>
-                    <p class="lead">Tips, guides, and thoughts on web design, development, and growing your business online.</p>
+                    <span class="eyebrow">{category}</span>
+                    <h1>{category} articles</h1>
+                    <p class="lead">Browse our articles about {category.toLowerCase()}.</p>
                 </div>
             </div>
         </section>
@@ -64,13 +74,8 @@ function slugify(str: string): string {
         <section class="section section-soft">
             <div class="container">
                 <div class="blog-grid">
-                    {posts.map((post) => (
+                    {sortedPosts.map((post) => (
                         <article class="blog-card">
-                            {post.frontmatter.category && (
-                                <div class="blog-categories">
-                                    <a class="blog-category" href={`/blog/category/${slugify(post.frontmatter.category)}`}>{post.frontmatter.category}</a>
-                                </div>
-                            )}
                             <div class="blog-card-body">
                                 <time class="blog-date">{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
                                 <h2 class="blog-title">{post.frontmatter.title}</h2>
@@ -81,9 +86,13 @@ function slugify(str: string): string {
                     ))}
                 </div>
 
-                {posts.length === 0 && (
-                    <p class="blog-empty">No posts yet. Check back soon.</p>
+                {sortedPosts.length === 0 && (
+                    <p class="blog-empty">No posts in this category yet. Check back soon.</p>
                 )}
+
+                <div class="blog-back">
+                    <a href="/blog/" class="blog-link">← Back to all articles</a>
+                </div>
             </div>
         </section>
 
@@ -177,29 +186,6 @@ function slugify(str: string): string {
         padding: 24px;
     }
 
-    .blog-categories {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        padding: 16px 24px 0;
-    }
-
-    .blog-category {
-        font-size: 0.76rem;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 999px;
-        color: var(--primary);
-        background: rgba(65, 0, 245, 0.08);
-        text-decoration: none;
-        transition: background 180ms ease, color 180ms ease;
-    }
-
-    .blog-category:hover {
-        background: var(--primary);
-        color: var(--white);
-    }
-
     .blog-date {
         display: block;
         font-size: 0.84rem;
@@ -235,6 +221,11 @@ function slugify(str: string): string {
         text-align: center;
         padding: 60px 0;
         color: var(--muted);
+    }
+
+    .blog-back {
+        text-align: center;
+        margin-top: 48px;
     }
 
     @media (max-width: 980px) {
