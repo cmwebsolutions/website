@@ -68,9 +68,9 @@ export const testimonials: Testimonial[] = [
     },
     {
         name: "Tim Field",
-        company: "29homes",
+        company: "Company Director - 29homes",
         heading: "Reliable partner for years",
-        quote: "I have used Custom Made Web Solutions for years for website design, hosting and maintenance. Always friendly, knowledgeable and gets the job done as required."
+        quote: "I have used Ciaran to design, build  and host my website for almost three years and the support has been second to none and good value considering. However it was not until things went very badly for us being locked out of email accounts and services that Ciaran truly shined. When things were bad he guided us through sorted access and followed up all calmly and helpful no judgement just genuine decent support technically and emotionally when it counted and was needed most. For that reason alone Ciaran gets a 10 from me."
     },
     {
         name: "Matthew Bushnell",
