@@ -26,28 +26,28 @@ function slugify(str: string): string {
 ---
 
 <Layout
-    title={`${frontmatter.title} | CM Web Solutions`}
+    title={`${frontmatter.title} | Ellveren`}
     description={frontmatter.description}
     openGraph={{
         basic: {
-            title: `${frontmatter.title} | CM Web Solutions`,
+            title: `${frontmatter.title} | Ellveren`,
             type: "article",
             image: "/og-image.png",
         },
         optional: {
-            siteName: "CM Web Solutions",
+            siteName: "Ellveren",
             locale: "en_GB",
         },
         article: {
             publishedTime: formattedDate,
             tags: frontmatter.tags ?? [frontmatter.category],
-            authors: ["https://cmwebsolutions.com/about"],
+            authors: ["https://ellveren.com/about"],
         },
     }}
     twitter={{
         card: "summary_large_image",
-        site: "@cmwebsolutions",
-        title: `${frontmatter.title} | CM Web Solutions`,
+        site: "@ellveren",
+        title: `${frontmatter.title} | Ellveren`,
         description: frontmatter.description,
     }}
 >

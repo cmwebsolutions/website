@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.cmwebsolutions.com/sitemap-index.xml
+Sitemap: https://www.ellveren.com/sitemap-index.xml

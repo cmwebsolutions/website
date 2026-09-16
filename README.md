@@ -1,6 +1,6 @@
-# Custom Made Web Solutions: Website
+# Ellveren: Website
 
-This is the main website for CMWS
+This is the main website for Ellveren
 
 ## 🚀 Project Structure
 

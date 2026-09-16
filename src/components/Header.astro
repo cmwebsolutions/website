@@ -9,9 +9,9 @@ const { transparent = true } = Astro.props;
 <header class="site-header" class:list={{ 'site-header--scrolled': !transparent, 'site-header--solid': !transparent }}>
     <div class="container">
         <nav class="nav" aria-label="Primary navigation">
-            <a class="brand" href="/" aria-label="CM Web Solutions home">
-                <img class="brand-logo brand-logo--white" src="/LogoWhite.svg" alt="CM Web Solutions" />
-                <img class="brand-logo brand-logo--dark" src="/Logo.svg" alt="CM Web Solutions" />
+            <a class="brand" href="/" aria-label="Ellveren home">
+                <span class="brand-wordmark brand-wordmark--white">Ellveren</span>
+                <span class="brand-wordmark brand-wordmark--dark">Ellveren</span>
             </a>
 
             <div class="nav-links">
@@ -127,21 +127,28 @@ const { transparent = true } = Astro.props;
         align-items: center;
     }
 
-    .brand-logo {
-        height: 46px;
-        width: auto;
+    .brand-wordmark {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1;
         display: block;
     }
 
-    .brand-logo--dark {
+    .brand-wordmark--dark {
+        display: none;
+        color: var(--black);
+    }
+
+    .brand-wordmark--white {
+        color: var(--white);
+    }
+
+    .site-header--scrolled .brand-wordmark--white {
         display: none;
     }
 
-    .site-header--scrolled .brand-logo--white {
-        display: none;
-    }
-
-    .site-header--scrolled .brand-logo--dark {
+    .site-header--scrolled .brand-wordmark--dark {
         display: block;
     }
 
@@ -272,8 +279,8 @@ const { transparent = true } = Astro.props;
             padding: 12px 0;
         }
 
-        .brand-logo {
-            height: 38px;
+        .brand-wordmark {
+            font-size: 1.25rem;
         }
     }
 </style>

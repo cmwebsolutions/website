@@ -39,22 +39,22 @@ const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() 
 ---
 
 <Layout
-    title={`${category} Articles | Blog | CM Web Solutions`}
-    description={`Browse our articles about ${category.toLowerCase()} — tips, guides, and insights from CM Web Solutions.`}
+    title={`${category} Articles | Blog | Ellveren`}
+    description={`Browse our articles about ${category.toLowerCase()} — tips, guides, and insights from Ellveren.`}
     openGraph={{
         basic: {
-            title: `${category} Articles | CM Web Solutions`,
+            title: `${category} Articles | Ellveren`,
             type: "website",
             image: "/og-image.png",
         },
         optional: {
-            siteName: "CM Web Solutions",
+            siteName: "Ellveren",
             locale: "en_GB",
         },
     }}
     twitter={{
         card: "summary_large_image",
-        site: "@cmwebsolutions",
+        site: "@ellveren",
     }}
 >
     <Header />
