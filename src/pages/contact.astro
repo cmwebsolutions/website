@@ -32,7 +32,7 @@ import Footer from '../components/Footer.astro';
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
                 <div class="contact-hero-content">
                     <span class="eyebrow">Contact us</span>
-                    <h1>Let's talk about your next website.</h1>
+                    <h1>Let's talk about your business.</h1>
                     <p class="lead">Fill in the form below and we'll get back to you within 24 hours. No pressure, just a friendly chat about what you need.</p>
                 </div>
             </div>
@@ -65,20 +65,23 @@ import Footer from '../components/Footer.astro';
                                 <span data-fs-error="phone"></span>
                             </div>
                             <div class="form-row">
-                                <label class="form-label" for="budget">Which package interests you?</label>
+                                <label class="form-label" for="budget">Which service or package interests you?</label>
                                 <select class="form-input" id="budget" name="budget">
-                                    <option value="">Select a package</option>
+                                    <option value="">Select a service or package</option>
                                     <option value="launch-pad">The Launch Pad – from £1,750</option>
                                     <option value="core-business">The Core Business – from £2,750</option>
                                     <option value="premium-growth">The Premium Growth – from £4,250</option>
                                     <option value="subscription">Managed website – £249/mo</option>
+                                    <option value="software">Bespoke software &amp; integrations</option>
+                                    <option value="support">Hosting, maintenance &amp; support</option>
+                                    <option value="growth">SEO &amp; paid advertising</option>
                                     <option value="not-sure">Not sure yet</option>
                                 </select>
                                 <span data-fs-error="budget"></span>
                             </div>
                             <div class="form-row">
                                 <label class="form-label" for="message">Tell us about your project</label>
-                                <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What kind of website do you need? What are your goals?"></textarea>
+                                <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What do you need help with? Tell us about your goals and any existing websites or systems."></textarea>
                                 <span data-fs-error="message"></span>
                             </div>
                             <div class="form-row">
@@ -107,7 +110,7 @@ import Footer from '../components/Footer.astro';
                         </div>
                         <div class="contact-info-card">
                             <h3>Response time</h3>
-                            <span>Mon–Fri, 9am–5pm</span>
+                            <span>Mon–Fri, 9am–5pm UK time</span>
                             <span class="contact-info-note">Usually within 1 business day</span>
                         </div>
                     </aside>

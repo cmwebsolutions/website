@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.ellveren.com',
+  site: 'https://ellveren.com',
   trailingSlash: 'never',
   integrations: [mdx(), sitemap()]
 });

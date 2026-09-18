@@ -17,11 +17,11 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 ---
 
 <Layout
-    title="Services | Ellveren | Packages"
-    description="Web design services for every stage of your business. From landing pages at £1,750 to full-featured websites with custom integrations from £4,250."
+    title="Websites, Software, Support & Growth | Ellveren"
+    description="Website design, bespoke software, hosting and technical support, SEO and paid advertising. Explore Ellveren services and website packages from £1,750."
     openGraph={{
         basic: {
-            title: "Services | Ellveren | Packages",
+            title: "Websites, Software, Support & Growth | Ellveren",
             type: "website",
             image: "/og-image.png",
         },
@@ -43,14 +43,59 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
                 <div class="services-hero-content">
                     <span class="eyebrow">What we offer</span>
-                    <h1>Web design services for every stage of your business.</h1>
-                    <p class="lead">Whether you need a single landing page or a full-featured website with custom integrations, we have a package that fits.</p>
+                    <h1>The right technology for your next step.</h1>
+                    <p class="lead">Websites, software, support and growth. Whether you need a better way to reach customers or a system that makes work easier, we start with your goals.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section section-soft">
+        <section class="section">
             <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Our capabilities</span>
+                        <h2>Four ways we help your business grow.</h2>
+                    </div>
+                    <p>Start with one service or bring them together. We agree the scope and costs before work begins.</p>
+                </div>
+                <div class="expect-grid">
+                    <article class="expect-card" id="websites">
+                        <div class="expect-icon"><MonitorSmartphone size={24} /></div>
+                        <h3>Websites</h3>
+                        <p>Website design and development, from campaign landing pages to business websites with booking tools and CRM integrations. Clear content, thoughtful design and a reliable build.</p>
+                        <a href="#website-packages">Explore website packages</a>
+                    </article>
+                    <article class="expect-card" id="software">
+                        <div class="expect-icon"><Gem size={24} /></div>
+                        <h3>Software</h3>
+                        <p>Bespoke web applications, portals and integrations built around how you work. From staff document access to syncing job listings between systems, we help reduce manual work.</p>
+                        <a href="/contact">Discuss a software project</a>
+                    </article>
+                    <article class="expect-card" id="support">
+                        <div class="expect-icon"><Headphones size={24} /></div>
+                        <h3>Support</h3>
+                        <p>Hosting, maintenance, updates and ongoing technical support. A dependable point of contact to help keep your website running and deal with technical questions as they arise.</p>
+                        <a href="/contact">Talk about ongoing support</a>
+                    </article>
+                    <article class="expect-card" id="growth">
+                        <div class="expect-icon"><Target size={24} /></div>
+                        <h3>Growth</h3>
+                        <p>SEO and paid advertising to help the right customers find you, supported by focused landing pages. We agree the work around your audience, priorities and budget.</p>
+                        <a href="/contact">Discuss your growth goals</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="website-packages">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Website packages</span>
+                        <h2>A clear starting point for your website.</h2>
+                    </div>
+                    <p>From a single landing page to a full business website. Software, ongoing support and growth services are scoped separately.</p>
+                </div>
                 <div class="services-grid">
                     <article class="service-card">
                         <div class="service-icon"><Rocket size={24} /></div>

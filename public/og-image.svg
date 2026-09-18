@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Ellveren — Technology for growing businesses.</title>
+  <rect width="1200" height="630" fill="#1b1919" />
+  <g font-family="Geist, Arial, sans-serif" fill="#fcfcfc">
+    <text x="80" y="155" font-size="56" font-weight="700">ELLVEREN</text>
+    <text x="80" y="285" font-size="64" font-weight="700">Technology for</text>
+    <text x="80" y="365" font-size="64" font-weight="700">growing businesses.</text>
+    <text x="80" y="465" font-size="30" fill="#0fd2bb">Websites. Software. Support. Growth.</text>
+    <text x="80" y="550" font-size="26">ellveren.com</text>
+  </g>
+</svg>
