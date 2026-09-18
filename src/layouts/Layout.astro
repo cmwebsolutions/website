@@ -9,8 +9,30 @@ interface Props extends Omit<SEOProps, 'title' | 'description'> {
     description?: string;
 }
 
-const { title, description, ...seoProps } = Astro.props;
-const resolvedDescription = description ?? "Professional web design and development for UK businesses. Custom websites and landing pages built to help you grow online.";
+const { title, description, openGraph, twitter, canonical, ...seoProps } = Astro.props;
+const resolvedDescription = description ?? "Websites, bespoke software, ongoing technical support and digital growth. Ellveren is a technology partner for growing businesses.";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const socialImage = new URL(openGraph?.basic.image ?? '/og-image.png', Astro.site).href;
+const resolvedOpenGraph = {
+    ...openGraph,
+    basic: {
+        title,
+        type: 'website',
+        ...openGraph?.basic,
+        url: canonicalUrl,
+        image: socialImage,
+    },
+    optional: {
+        siteName: 'Ellveren',
+        locale: 'en_GB',
+        ...openGraph?.optional,
+        description: resolvedDescription,
+    },
+    image: {
+        ...openGraph?.image,
+        alt: 'Ellveren — Technology for growing businesses.',
+    },
+};
 ---
 
 <!doctype html>
@@ -23,6 +45,15 @@ const resolvedDescription = description ?? "Professional web design and developm
         title={title}
         description={resolvedDescription}
         {...seoProps}
+        canonical={canonicalUrl}
+        openGraph={resolvedOpenGraph}
+        twitter={{
+            ...twitter,
+            title,
+            description: resolvedDescription,
+            image: socialImage,
+            imageAlt: 'Ellveren — Technology for growing businesses.',
+        }}
     />
 
     <link rel="sitemap" href="/sitemap-index.xml">
@@ -40,11 +71,14 @@ const resolvedDescription = description ?? "Professional web design and developm
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Ellveren",
-            "url": "https://www.ellveren.com",
-            "logo": "https://www.ellveren.com/Logo.svg",
+            "legalName": "Ellveren Ltd",
+            "description": "Websites, bespoke software, technical support and digital growth for growing businesses.",
+            "email": "hello@ellveren.com",
+            "url": "https://ellveren.com",
+            "logo": "https://ellveren.com/Logo.svg",
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+4403302296586",
+                "telephone": "+443302296586",
                 "contactType": "customer service"
             },
             "sameAs": [

@@ -9,7 +9,7 @@ interface Props {
 
 const {
     eyebrow = "Free consultation",
-    heading = "Ready to get started on your website?",
+    heading = "What would help your business move forward?",
     description = "Tell us about your project and we'll put together a custom proposal. No obligation, just a friendly chat.",
     formId = "mlgydvbn",
     dropdownType = "business"
@@ -43,7 +43,7 @@ const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
                     <div class="field">
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@business.co.uk" required />
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required />
                         <span data-fs-error="email"></span>
                     </div>
                 </div>
@@ -59,13 +59,16 @@ const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
                         {
                             dropdownType === "package" ? (
                                 <>
-                                    <label for="business-type">Which package interests you?</label>
+                                    <label for="business-type">Which service or package interests you?</label>
                                     <select id="business-type" name="business-type">
-                                        <option value="">Select a package</option>
+                                        <option value="">Select a service or package</option>
                                         <option>The Launch Pad – from £1,750</option>
                                         <option>The Core Business – from £2,750</option>
                                         <option>The Premium Growth – from £4,250</option>
                                         <option>Managed website – £249/mo</option>
+                                        <option>Bespoke software &amp; integrations</option>
+                                        <option>Hosting, maintenance &amp; support</option>
+                                        <option>SEO &amp; paid advertising</option>
                                         <option>Not sure yet</option>
                                     </select>
                                 </>
@@ -90,7 +93,7 @@ const formElementId = `cta-form-${formId.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
                 <div class="field">
                     <label for="message">What do you need?</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your current website, business and what you want to improve."></textarea>
+                    <textarea id="message" name="message" placeholder="Tell us about your business, what you need and what you want to improve."></textarea>
                         <span data-fs-error="message"></span>
                 </div>
 
