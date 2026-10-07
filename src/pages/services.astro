@@ -18,7 +18,7 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 
 <Layout
     title="Websites, Software, Support & Growth | Ellveren"
-    description="Website design, bespoke software, hosting and technical support, SEO and paid advertising. Explore Ellveren services and website packages from £1,750."
+    description="Website design, bespoke software, hosting and technical support, SEO and paid advertising. Explore Ellveren services and website packages."
     openGraph={{
         basic: {
             title: "Websites, Software, Support & Growth | Ellveren",
@@ -100,10 +100,6 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
                     <article class="service-card">
                         <div class="service-icon"><Rocket size={24} /></div>
                         <h2 class="service-title">The Launch Pad</h2>
-                        <p class="service-price">
-                            <span class="price-from">from</span>
-                            £1,750
-                        </p>
                         <p class="service-desc">A single high-converting landing page designed to turn visitors into leads. Ideal for Google Ads, Meta campaigns, or product launches.</p>
                         <ul class="check-list">
                             <li><span class="check"><CircleCheckBig size={20} /></span> Single long-form landing page</li>
@@ -120,10 +116,6 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
                         <span class="service-badge">Most popular</span>
                         <div class="service-icon"><Star size={24} /></div>
                         <h2 class="service-title">The Core Business</h2>
-                        <p class="service-price">
-                            <span class="price-from">from</span>
-                            £2,750
-                        </p>
                         <p class="service-desc">A complete business website with up to 5 pages. Perfect for service providers, local businesses, and startups ready to establish their online presence.</p>
                         <ul class="check-list">
                             <li><span class="check"><CircleCheckBig size={20} /></span> Up to 5 custom pages</li>
@@ -139,10 +131,6 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
                     <article class="service-card">
                         <div class="service-icon"><Gem size={24} /></div>
                         <h2 class="service-title">The Premium Growth</h2>
-                        <p class="service-price">
-                            <span class="price-from">from</span>
-                            £4,250
-                        </p>
                         <p class="service-desc">A full-featured website with up to 10 pages and advanced integrations: booking engines, CRM syncing, or custom forms for growing businesses.</p>
                         <ul class="check-list">
                             <li><span class="check"><CircleCheckBig size={20} /></span> Up to 10 custom pages</li>
@@ -352,26 +340,6 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
         font-weight: 800;
         line-height: 1.08;
         margin-bottom: 8px;
-    }
-
-    .service-price {
-        font-size: 2.2rem;
-        font-weight: 900;
-        line-height: 1;
-        margin: 16px 0;
-        padding: 18px 0;
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        color: var(--black);
-    }
-
-    .price-from {
-        display: block;
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--muted);
-        line-height: 1;
-        margin-bottom: 3px;
     }
 
     .service-desc {
