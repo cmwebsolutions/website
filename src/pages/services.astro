@@ -156,7 +156,7 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
                     <p>Every project follows the same commitment to quality, no matter which package you choose.</p>
                 </div>
 
-                <div class="expect-grid">
+                <div class="expect-grid expect-grid--three">
                     <article class="expect-card">
                         <div class="expect-icon"><Target size={24} /></div>
                         <h3>Built around your goals</h3>
@@ -412,8 +412,12 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 
     .expect-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 14px;
+    }
+
+    .expect-grid--three {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .expect-card {
@@ -448,12 +452,12 @@ import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
         display: block;
     }
 
-    .expect-card:nth-child(2) .expect-icon {
+    .expect-card[id="software"] .expect-icon {
         color: var(--black);
         background: var(--accent);
     }
 
-    .expect-card:nth-child(3) .expect-icon {
+    .expect-card[id="support"] .expect-icon {
         color: var(--accent);
         background: var(--black);
     }
