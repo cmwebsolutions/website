@@ -23,6 +23,7 @@
     font-size: 1.08rem;
     font-weight: 800;
     line-height: 1.08;
+    font-family: var(--font-heading);
 }
 
 .post-content h5 {
@@ -30,6 +31,7 @@
     margin-bottom: 6px;
     font-size: 1rem;
     font-weight: 800;
+    font-family: var(--font-heading);
 }
 
 .post-content h6 {
@@ -40,6 +42,7 @@
     color: var(--muted-strong);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    font-family: var(--font-heading);
 }
 
 .post-content p {

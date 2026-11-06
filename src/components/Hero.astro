@@ -96,9 +96,9 @@ const { breadcrumbs } = Astro.props;
         padding: 168px 0 82px;
         color: var(--white);
         background:
-            radial-gradient(circle at 10% 0%, rgba(65, 0, 245, 0.52), transparent 34rem),
-            radial-gradient(circle at 92% 8%, rgba(15, 210, 187, 0.30), transparent 30rem),
-            linear-gradient(135deg, #111010 0%, #1B1919 46%, #26007A 100%);
+            radial-gradient(circle at 10% 0%, rgba(126, 168, 240, 0.52), transparent 34rem),
+            radial-gradient(circle at 92% 8%, rgba(245, 111, 81, 0.30), transparent 30rem),
+            linear-gradient(135deg, #111010 0%, #1D212A 46%, #032E77 100%);
     }
 
     .hero::before {
@@ -107,8 +107,8 @@ const { breadcrumbs } = Astro.props;
         inset: 0;
         pointer-events: none;
         background-image:
-            linear-gradient(rgba(252, 252, 252, 0.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(252, 252, 252, 0.045) 1px, transparent 1px);
+            linear-gradient(rgba(250, 242, 237, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(250, 242, 237, 0.045) 1px, transparent 1px);
         background-size: 44px 44px;
         mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
     }
@@ -127,8 +127,8 @@ const { breadcrumbs } = Astro.props;
 
     .hero :global(.eyebrow) {
         color: var(--accent);
-        background: rgba(15, 210, 187, 0.12);
-        border-color: rgba(15, 210, 187, 0.24);
+        background: rgba(245, 111, 81, 0.12);
+        border-color: rgba(245, 111, 81, 0.24);
     }
 
     .hero :global(h1) {
@@ -157,8 +157,8 @@ const { breadcrumbs } = Astro.props;
         position: relative;
         padding: 18px;
         border-radius: var(--radius-xl);
-        background: linear-gradient(135deg, rgba(252, 252, 252, 0.18), rgba(252, 252, 252, 0.05));
-        border: 1px solid rgba(252, 252, 252, 0.16);
+        background: linear-gradient(135deg, rgba(250, 242, 237, 0.18), rgba(250, 242, 237, 0.05));
+        border: 1px solid rgba(250, 242, 237, 0.16);
         box-shadow: 0 38px 110px rgba(0, 0, 0, 0.32);
         backdrop-filter: blur(20px);
     }
@@ -169,9 +169,9 @@ const { breadcrumbs } = Astro.props;
         padding: 30px;
         border-radius: 34px;
         background:
-            radial-gradient(circle at 100% 0%, rgba(15, 210, 187, 0.30), transparent 18rem),
-            rgba(252, 252, 252, 0.08);
-        border: 1px solid rgba(252, 252, 252, 0.12);
+            radial-gradient(circle at 100% 0%, rgba(245, 111, 81, 0.30), transparent 18rem),
+            rgba(250, 242, 237, 0.08);
+        border: 1px solid rgba(250, 242, 237, 0.12);
     }
 
     .hero-card-inner::after {
@@ -197,7 +197,7 @@ const { breadcrumbs } = Astro.props;
         width: 10px;
         height: 10px;
         border-radius: 999px;
-        background: rgba(252, 252, 252, 0.22);
+        background: rgba(250, 242, 237, 0.22);
     }
 
     .browser-dots span:nth-child(1) {
@@ -213,8 +213,8 @@ const { breadcrumbs } = Astro.props;
         margin-bottom: 16px;
         padding: 7px 10px;
         color: var(--accent);
-        background: rgba(15, 210, 187, 0.12);
-        border: 1px solid rgba(15, 210, 187, 0.22);
+        background: rgba(245, 111, 81, 0.12);
+        border: 1px solid rgba(245, 111, 81, 0.22);
         border-radius: 999px;
         font-size: 0.74rem;
         font-weight: 800;
@@ -229,6 +229,7 @@ const { breadcrumbs } = Astro.props;
         font-size: clamp(2rem, 4vw, 2.35rem);
         font-weight: 800;
         line-height: 1;
+        font-family: var(--font-heading);
     }
 
     .mock-copy {
@@ -236,7 +237,7 @@ const { breadcrumbs } = Astro.props;
         z-index: 1;
         max-width: 390px;
         margin-top: 18px;
-        color: rgba(252, 252, 252, 0.64);
+        color: rgba(250, 242, 237, 0.64);
     }
 
     .mock-grid {
@@ -252,8 +253,8 @@ const { breadcrumbs } = Astro.props;
         min-height: 116px;
         padding: 18px;
         border-radius: 22px;
-        background: rgba(252, 252, 252, 0.09);
-        border: 1px solid rgba(252, 252, 252, 0.12);
+        background: rgba(250, 242, 237, 0.09);
+        border: 1px solid rgba(250, 242, 237, 0.12);
     }
 
     .mock-stat strong {
@@ -267,7 +268,7 @@ const { breadcrumbs } = Astro.props;
     .mock-stat span {
         display: block;
         margin-top: 8px;
-        color: rgba(252, 252, 252, 0.54);
+        color: rgba(250, 242, 237, 0.54);
         font-size: 0.82rem;
     }
 

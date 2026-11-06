@@ -10,8 +10,8 @@ const { transparent = true } = Astro.props;
     <div class="container">
         <nav class="nav" aria-label="Primary navigation">
             <a class="brand" href="/" aria-label="Ellveren home">
-                <span class="brand-wordmark brand-wordmark--white">Ellveren</span>
-                <span class="brand-wordmark brand-wordmark--dark">Ellveren</span>
+                <img class="brand-logo brand-logo--white" src="/LogoWhite.svg" alt="Ellveren" width="160" height="27" />
+                <img class="brand-logo brand-logo--dark" src="/Logo.svg" alt="Ellveren" width="160" height="27" />
             </a>
 
             <div class="nav-links">
@@ -84,8 +84,8 @@ const { transparent = true } = Astro.props;
     }
 
     .site-header--scrolled {
-        background: rgba(252, 252, 252, 0.82);
-        border-bottom: 1px solid rgba(27, 25, 25, 0.08);
+        background: rgba(250, 242, 237, 0.82);
+        border-bottom: 1px solid rgba(29, 33, 42, 0.08);
         backdrop-filter: blur(18px);
     }
 
@@ -99,6 +99,28 @@ const { transparent = true } = Astro.props;
     }
 
     .site-header--solid .brand-logo--dark {
+        display: block;
+    }
+
+    .brand-logo {
+        display: block;
+        height: 27px;
+        width: auto;
+    }
+
+    .brand-logo--dark {
+        display: none;
+    }
+
+    .brand-logo--white {
+        display: block;
+    }
+
+    .site-header--scrolled .brand-logo--white {
+        display: none;
+    }
+
+    .site-header--scrolled .brand-logo--dark {
         display: block;
     }
 
@@ -125,31 +147,6 @@ const { transparent = true } = Astro.props;
     .brand {
         display: inline-flex;
         align-items: center;
-    }
-
-    .brand-wordmark {
-        font-size: 1.5rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        line-height: 1;
-        display: block;
-    }
-
-    .brand-wordmark--dark {
-        display: none;
-        color: var(--black);
-    }
-
-    .brand-wordmark--white {
-        color: var(--white);
-    }
-
-    .site-header--scrolled .brand-wordmark--white {
-        display: none;
-    }
-
-    .site-header--scrolled .brand-wordmark--dark {
-        display: block;
     }
 
     .nav-links {
@@ -232,7 +229,7 @@ const { transparent = true } = Astro.props;
         flex-direction: column;
         gap: 4px;
         padding: 12px 20px 20px;
-        background: rgba(252, 252, 252, 0.82);
+        background: rgba(250, 242, 237, 0.82);
         backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
         opacity: 0;
@@ -255,7 +252,7 @@ const { transparent = true } = Astro.props;
     }
 
     .nav-mobile a:hover {
-        background: rgba(27, 25, 25, 0.06);
+        background: rgba(29, 33, 42, 0.06);
         color: var(--text);
     }
 
@@ -279,8 +276,8 @@ const { transparent = true } = Astro.props;
             padding: 12px 0;
         }
 
-        .brand-wordmark {
-            font-size: 1.25rem;
+        .brand-logo {
+            height: 22px;
         }
     }
 </style>
