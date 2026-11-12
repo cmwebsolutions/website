@@ -1,0 +1,359 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ.astro';
+import PlanTable from '../components/PlanTable.astro';
+import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
+import CircleMinus from '@lucide/astro/icons/circle-minus';
+import { gbp, carePlan, staticPlan, websiteBuilds, managedPlan } from '../data/plans';
+
+const businessFrom = gbp(websiteBuilds.businessFrom);
+const integratedFrom = gbp(websiteBuilds.integratedFrom);
+
+const comparisonRows = [
+    { label: 'From', cells: [businessFrom, integratedFrom, 'Quoted after scoping'] },
+    {
+        label: 'For',
+        cells: [
+            'Firms that need a professional, fast website that brings in enquiries',
+            'Firms whose website needs to work with their other systems',
+            'Client areas, booking or management tools, custom applications',
+        ],
+    },
+    {
+        label: 'Includes',
+        cells: [
+            '5–10 pages, custom design, mobile-friendly, built for search, contact forms',
+            'Everything in Business, plus connections to other platforms',
+            'A paid scoping phase, then a fixed price for the build',
+        ],
+    },
+];
+
+const steps = [
+    { heading: 'We talk.', description: 'A free 30-minute call about your business, what the website needs to do, your timeline and budget.' },
+    { heading: 'I send a proposal.', description: "Within 3 working days: the scope, what's not included, a timeline and a fixed price." },
+    { heading: 'Design.', description: 'I design your site, with 2 rounds of revisions.' },
+    { heading: 'Build and launch.', description: "I build, test and launch your site, and move everything across if you're replacing an old one." },
+    { heading: 'I look after it.', description: 'Every website comes with a Care plan, so it stays secure, updated and backed up.' },
+];
+
+const faqs = [
+    {
+        question: 'How long does a website take?',
+        answer: 'Most Business websites take 2–4 weeks from agreed designs to launch, depending on content. Larger and integrated sites are scheduled in the proposal.',
+    },
+    {
+        question: 'WordPress or static?',
+        answer: "WordPress if you want lots of plugins or a familiar editor; static if you want the fastest, most secure site with the least maintenance. I'll recommend what suits you.",
+    },
+    {
+        question: 'Do I own the website?',
+        answer: 'Yes. Once the project is paid in full, the design, code and content are yours.',
+    },
+    {
+        question: 'Do I have to take a Care plan?',
+        answer: "It's included in every proposal because websites need looking after. If you'd rather maintain it yourself, just say so.",
+    },
+];
+---
+
+<Layout
+    title="Website Design & Development for UK Businesses | Ellveren"
+    description={`Fixed-price websites for established UK businesses, from ${businessFrom}. Business websites, integrated websites connected to your other systems, and client portals.`}
+    openGraph={{
+        basic: {
+            title: "Website Design & Development for UK Businesses | Ellveren",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "Ellveren",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@ellveren",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section websites-hero">
+            <div class="websites-bg"></div>
+            <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Websites' }]} />
+                <div class="websites-hero-content">
+                    <h1>Websites built properly, and looked after properly</h1>
+                    <p class="lead">Fixed-price websites designed and built for your business, connected to the tools you already use where you need them, and looked after on a clear monthly plan once they're live.</p>
+                    <div class="hero-actions">
+                        <a href="/contact?interest=new-website" class="btn btn-accent">Talk about your project</a>
+                        <a href="/plans" class="btn btn-ghost">See the plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="choose">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Choose your website</h2>
+                </div>
+
+                <PlanTable
+                    caption="Choose your website"
+                    columns={['', 'Business website', 'Integrated website', 'Portals and web apps']}
+                    rows={comparisonRows}
+                />
+
+                <div class="types-grid">
+                    <article class="card" id="business">
+                        <h3>Business website — from {businessFrom}</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Custom design for your business, with 2 rounds of revisions</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>5–10 pages, mobile-friendly and fast-loading</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Built on WordPress or as a static site, whichever suits how you'll use it</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Contact forms with spam protection and reliable email delivery</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Search-engine basics set up from day one</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Edit your own pages, if you'd like to</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card" id="integrated">
+                        <h3>Integrated website — from {integratedFrom}</h3>
+                        <p>Everything in a Business website, plus your site connected to the systems you already use, for example:</p>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Jobs, listings or products managed in your own platform and published to your site automatically (for example an applicant tracking system)</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Enquiries sent straight into your CRM</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Booking, payments or finance systems</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>External APIs and AI features, such as smart search or enquiry handling</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card" id="portals">
+                        <h3>Portals and web apps — quoted</h3>
+                        <p>For client areas, dashboards and custom tools. We start with a short, paid scoping phase that produces a clear specification and a firm fixed price. The scoping fee is credited against the build.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="how-it-works">
+            <div class="container">
+                <div class="section-head">
+                    <h2>How it works</h2>
+                </div>
+                <ol class="steps-grid">
+                    {steps.map((step, i) => (
+                        <li class="step">
+                            <span class="step-number">{i + 1}</span>
+                            <h3>{step.heading}</h3>
+                            <p>{step.description}</p>
+                        </li>
+                    ))}
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="prices">
+            <div class="container">
+                <div class="types-grid types-grid--two">
+                    <div class="card">
+                        <h3>Prices and payment</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Fixed prices,</strong> agreed before work starts. No surprise bills.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>50% to book, 50% at launch.</strong> Projects over {gbp(websiteBuilds.stagedPaymentsOver)} are paid in three stages (40% / 40% / 20%).</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Care plan from {gbp(carePlan.price)}/month</strong> once your site is live (or the Static plan at {gbp(staticPlan.price)}/month for static sites). See <a href="/plans">Plans</a>.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>You supply your text and images, or I can quote for copywriting.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>No VAT is added: Ellveren isn't VAT registered.</span></li>
+                        </ul>
+                        <p class="card-note">Smaller business? The <a href="/managed-website-plan">Managed Website Plan</a> gets you a new 5-page website for {gbp(managedPlan.setup)} setup and {gbp(managedPlan.monthly)}/month.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>What I don't build</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleMinus size={20} /></span><span>Online shops. I'll point you to a specialist.</span></li>
+                            <li><span class="check"><CircleMinus size={20} /></span><span>Very low-budget sites. For a simple DIY site, a website builder may suit you better.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <FAQ heading="FAQs" description="" questions={faqs} />
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-banner">
+                    <h2>Ready to talk about your website?</h2>
+                    <a href="/contact?interest=new-website" class="btn btn-accent cta-banner-btn">Book a free 30-minute call</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .websites-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .websites-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(126, 168, 240, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245, 111, 81, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .websites-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .websites-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .websites-hero-content h1 {
+        color: var(--white);
+        margin-inline: auto;
+    }
+
+    .websites-hero-content :global(.lead) {
+        color: var(--dark-muted);
+        margin-inline: auto;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .types-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+        align-items: start;
+    }
+
+    .types-grid--two {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+    }
+
+    .types-grid .card > p {
+        margin-top: 14px;
+    }
+
+    .check-list strong {
+        color: var(--black);
+    }
+
+    .check-list a,
+    .card-note a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .types-grid .card-note {
+        margin-top: 20px;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .step {
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .step-number {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 36px;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 15px;
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .step:nth-child(2) .step-number {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .step:nth-child(3) .step-number {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    .step p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+    }
+
+    .cta-banner {
+        text-align: center;
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    .cta-banner h2 {
+        margin-inline: auto;
+    }
+
+    .cta-banner-btn {
+        margin-top: 32px;
+    }
+
+    @media (max-width: 980px) {
+        .steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .types-grid,
+        .types-grid--two {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .steps-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
