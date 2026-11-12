@@ -127,6 +127,7 @@ export const addOns = [
 export const websiteBuilds = {
     businessFrom: 3500,
     integratedFrom: 6000,
+    stagedPaymentsOver: 8000,
 };
 
 export const managedPlan = {
