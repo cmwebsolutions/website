@@ -1,0 +1,178 @@
+---
+interface Row {
+    label: string;
+    cells: string[];
+}
+
+interface Props {
+    columns: string[];
+    rows: Row[];
+    caption?: string;
+    stackBy?: 'column' | 'row';
+}
+
+// columns[0] heads the row labels; the rest head each data column.
+// On small screens the table becomes cards: one per column (e.g. one per plan)
+// or one per row (e.g. one per add-on).
+const { columns, rows, caption, stackBy = 'column' } = Astro.props;
+const [cornerLabel, ...headings] = columns;
+---
+
+<div class="plan-table-wrap">
+    <table class="plan-table">
+        {caption && <caption class="visually-hidden">{caption}</caption>}
+        <thead>
+            <tr>
+                <th scope="col">{cornerLabel}</th>
+                {headings.map((heading) => <th scope="col">{heading}</th>)}
+            </tr>
+        </thead>
+        <tbody>
+            {rows.map((row) => (
+                <tr>
+                    <th scope="row">{row.label}</th>
+                    {row.cells.map((cell) => <td>{cell}</td>)}
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
+
+<div class="plan-cards">
+    {stackBy === 'column'
+        ? headings.map((heading, i) => (
+            <div class="plan-card">
+                <h3>{heading}</h3>
+                <dl>
+                    {rows.map((row) => (
+                        <div>
+                            <dt>{row.label}</dt>
+                            <dd>{row.cells[i]}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </div>
+        ))
+        : rows.map((row) => (
+            <div class="plan-card">
+                <h3>{row.label}</h3>
+                <dl>
+                    {headings.map((heading, i) => (
+                        <div>
+                            <dt>{heading}</dt>
+                            <dd>{row.cells[i]}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </div>
+        ))}
+</div>
+
+<style>
+    .plan-table-wrap {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+
+    .plan-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 18px 20px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child th,
+    tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    td {
+        color: var(--muted-strong);
+    }
+
+    thead th {
+        color: var(--white);
+        background: var(--black);
+        font-family: var(--font-heading);
+        font-size: 1.12rem;
+        font-weight: 800;
+        line-height: 1.08;
+    }
+
+    tbody th {
+        color: var(--black);
+        font-weight: 800;
+    }
+
+    .plan-cards {
+        display: none;
+        gap: 14px;
+    }
+
+    .plan-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+
+    .plan-card h3 {
+        padding: 18px 22px;
+        color: var(--white);
+        background: var(--black);
+    }
+
+    .plan-card dl {
+        margin: 0;
+        padding: 6px 22px;
+    }
+
+    .plan-card dl div {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .plan-card dl div:last-child {
+        border-bottom: 0;
+    }
+
+    .plan-card dt {
+        color: var(--black);
+        font-size: 0.82rem;
+        font-weight: 800;
+    }
+
+    .plan-card dd {
+        margin: 2px 0 0;
+        color: var(--muted-strong);
+        font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+        .plan-table-wrap {
+            display: none;
+        }
+
+        .plan-cards {
+            display: grid;
+        }
+    }
+</style>

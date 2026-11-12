@@ -1,0 +1,560 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ.astro';
+import PlanTable from '../components/PlanTable.astro';
+import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
+import CircleMinus from '@lucide/astro/icons/circle-minus';
+import {
+    gbp,
+    rates,
+    oneOffs,
+    extraSite,
+    annualPrice,
+    annualDiscountPercent,
+    plans,
+    planPrice,
+    staticPlan,
+    carePlan,
+    careSupportPlan,
+    retainerTiers,
+    addOns,
+    websiteBuilds,
+} from '../data/plans';
+
+const comparisonRows = [
+    { label: 'Price', cells: plans.map(planPrice) },
+    { label: 'For', cells: plans.map((plan) => plan.for) },
+    { label: 'Included hours', cells: plans.map((plan) => plan.hours) },
+    { label: 'Small requests done within', cells: plans.map((plan) => plan.turnaround) },
+    { label: 'Minimum term', cells: plans.map((plan) => plan.minimumTerm) },
+];
+
+const addOnRows = addOns.map((addOn) => ({ label: addOn.name, cells: [addOn.price, addOn.description] }));
+
+const retainerLine = retainerTiers.map((tier) => `${tier.hours} hours ${gbp(tier.price)}`).join(' · ');
+
+const careIncludes = [
+    {
+        heading: 'Updates and security',
+        items: [
+            'Weekly updates to WordPress, your theme and plugins, with a visual check of your site after each update',
+            'Critical security patches applied the same day',
+            "Malware clean-up included on sites I host, unless it's caused on your side (for example a leaked password, a plugin you've added, or access you've given someone else)",
+        ],
+    },
+    {
+        heading: 'Fixes included',
+        items: [
+            'If something on your site that was working stops working, and the cause is within my care (WordPress, the plugins and theme I manage, or the hosting), I fix it at no extra cost',
+            'That includes anything an update breaks',
+            "Changes, new content and new features aren't fixes, so they're quoted separately (see below)",
+        ],
+    },
+    {
+        heading: 'Monitoring',
+        items: [
+            'Uptime checked every 5 minutes',
+            'If your site goes down, I start on it within 4 working hours',
+        ],
+    },
+    {
+        heading: 'Backups',
+        items: [
+            'Daily backups kept for 30 days, stored with a separate provider from your hosting, so a problem with one never takes out both',
+            'Sites I host also get hourly backups from the hosting platform',
+        ],
+    },
+    {
+        heading: 'Hosting (if I host your site)',
+        items: ['Managed UK servers, with SSL included'],
+    },
+    {
+        heading: 'Cookie consent and policies',
+        items: ['A cookie consent banner, privacy policy, cookie policy and terms set up for your site and kept up to date'],
+    },
+    {
+        heading: "Premium tools, included while you're on the plan",
+        items: [
+            'A premium theme, speed optimisation, spam protection for your forms and comments, and a premium form builder, where your site uses them',
+            "Reliable delivery of your website's emails, such as form notifications: through my email delivery service, or I'll connect your own email provider",
+        ],
+    },
+    {
+        heading: 'Help and reporting',
+        items: [
+            'Quick how-to help: questions about using your site answered by email with clear written steps, so you can make changes yourself',
+            'A monthly email report covering updates, uptime, backups and anything I fixed',
+        ],
+    },
+];
+
+const staticIncludes = [
+    'Hosting on a global network, with SSL',
+    'Uptime monitoring, with a response within 4 working hours if your site goes down',
+    'Contact forms with spam protection and reliable email delivery',
+    'A cookie consent banner (where your site needs one), privacy policy and terms set up and kept up to date',
+    'Full version history: every version of your site is stored and can be restored',
+    'Quarterly security and dependency check, with a rebuild if needed',
+    'If hosting or an update breaks something, I fix it free of charge',
+    'Quarterly summary report',
+    "Edit your own pages and blog through a simple page editor, where it's set up for your site (edits you make yourself are free)",
+    'Quick how-to help by email',
+];
+
+const notIncluded = [
+    "Content edits, new pages and new features on Care and Static plans, however small (I'll happily explain how to make simple changes yourself)",
+    'Domain names, DNS and email hosting (mailboxes)',
+    'Third-party services, including fixing problems when a third-party service changes or stops working (for example booking tools, embeds, CRMs or external APIs)',
+    "Plugins or tools you've added yourself",
+    'Your server, if your site runs on your own hosting (unless you add Server care)',
+    "Fixing problems caused on your side, such as plugins you've installed, changes you've made, leaked passwords or access you've given to others",
+    'Problems that were already there when I took over your site',
+    'Premium plugin licences after you leave a plan',
+];
+
+const faqs = [
+    {
+        question: "Why doesn't the Care plan include any changes?",
+        answer: `Care covers the work that keeps your site safe and working: updates, security, backups, monitoring, and fixing anything that stops working. Keeping changes separate is what keeps the price at ${gbp(carePlan.price)}. If you want changes every month, Care + Support includes 2 hours for ${gbp(careSupportPlan.price)}.`,
+    },
+    {
+        question: 'What counts as a fix, and what counts as a change?',
+        answer: `A fix is when something that was working has stopped working, and the cause is within my care: an update, a plugin or theme I manage, or the hosting. That's included. A change is anything new or different: new text or images, moving or restyling something, a new page or feature. Changes are ${gbp(rates.hourly)}/hour, or come out of your hours on a plan that includes them. Problems caused by a third-party service, by changes made on your side, or that were there before I took over the site are quoted separately. If fixes ever start taking more than about 30 minutes a month, I'll talk to you about why.`,
+    },
+    {
+        question: 'Can I ask how to do things on my site?',
+        answer: `Yes. On every plan, send me your "how do I…" questions and I'll reply with clear written steps so you can make the change yourself. If questions regularly take more than about 30 minutes a month, I'll suggest a training session (${gbp(rates.hourly)}/hour) or Care + Support, where I can make the changes for you.`,
+    },
+    {
+        question: 'My site was built by someone else. Can you look after it?',
+        answer: `Yes. Start with a free health check so we both know what we're working with. Taking it over is a one-off ${gbp(oneOffs.takeover)}, then your plan runs as normal.`,
+    },
+    {
+        question: 'Do I pay more if I host my own site?',
+        answer: "No. Plans cost the same either way, because most of the cost is the time spent looking after your site. If your site is on your own server, the server itself is your hosting company's responsibility, unless you add Server care.",
+    },
+    {
+        question: 'Can you just host my site, without the care plan?',
+        answer: "No. WordPress sites that aren't updated are the ones that get hacked, so every site I host is on a plan that keeps it updated and secure. If you only want hosting, a self-managed host will suit you better, and I'm happy to help you move.",
+    },
+    {
+        question: 'What counts as a "small request"?',
+        answer: 'Anything that takes under about an hour: a text or image change, a new team member, a form tweak. Bigger work is scheduled and agreed with you first.',
+    },
+    {
+        question: 'What happens if I go over my hours?',
+        answer: `Nothing happens without your say-so. You'll get a heads-up at 80%, and extra time is only done if you approve it, at ${gbp(rates.hourly)}/hour.`,
+    },
+    {
+        question: 'Do unused hours carry over?',
+        answer: "No. Hours are for each calendar month. Your plan pays for your site to be looked after every month, and for me to be there when something goes wrong; the included hours are on top of that. Near the end of a quiet month I'll suggest useful ways to spend any time left, and if your needs change, you can move plans with one month's notice.",
+    },
+    {
+        question: 'I have more than one website. Do I need a plan for each?',
+        answer: `No. One plan covers all your sites. Your first site is on its normal plan (Care for WordPress, Static for a static site), and each extra site is added on: +${gbp(extraSite.wordpress)}/month for WordPress, +${gbp(extraSite.static)}/month for static. You get one monthly report and one Direct Debit, and on plans with hours, the hours are shared across your sites. Annual billing (${annualDiscountPercent}% off) applies to the whole plan on Care and Static. For example, one WordPress site and two static sites: ${gbp(carePlan.price)} + ${gbp(extraSite.static)} + ${gbp(extraSite.static)} = ${gbp(carePlan.price + extraSite.static * 2)}/month.`,
+    },
+    {
+        question: 'Can I switch plans?',
+        answer: "Yes, up or down, with one month's notice.",
+    },
+    {
+        question: 'Do you host email?',
+        answer: "No. Domains and email mailboxes stay with the providers you choose. I'm happy to point your website's DNS records in the right place, and on Care plans your website's own emails (such as form notifications) are delivered reliably, through my email delivery service or your own provider.",
+    },
+    {
+        question: 'Do you charge VAT?',
+        answer: "No. Ellveren isn't VAT registered, so the prices shown are what you pay.",
+    },
+];
+---
+
+<Layout
+    title="Website Care Plans | Ellveren"
+    description={`WordPress and static website care plans from ${gbp(staticPlan.price)}/month. Weekly updates, same-day security patches, daily backups, monitoring, fixes and UK hosting included, with support hours when you need them.`}
+    openGraph={{
+        basic: {
+            title: "Website Care Plans | Ellveren",
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "Ellveren",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@ellveren",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section plans-hero">
+            <div class="plans-bg"></div>
+            <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Plans' }]} />
+                <div class="plans-hero-content">
+                    <h1>Website care plans</h1>
+                    <p class="lead">Every plan keeps your website secure, up to date, backed up and monitored, and if something stops working, I fix it. If you need regular changes too, the plans with hours give you time each month from the person who looks after your site.</p>
+                    <div class="hero-actions">
+                        <a href="#plan-comparison" class="btn btn-accent">See the plans</a>
+                        <a href="/contact" class="btn btn-ghost">Get a free health check</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="plan-comparison">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Plan comparison</h2>
+                </div>
+
+                <PlanTable
+                    caption="Plan comparison"
+                    columns={['', ...plans.map((plan) => plan.name)]}
+                    rows={comparisonRows}
+                />
+
+                <p class="table-note">Retainer: {retainerLine}. Planned work scheduled monthly.</p>
+
+                <div class="plans-detail-grid">
+                    <div class="card">
+                        <h3>More than one website?</h3>
+                        <p>One plan covers them all, with one monthly report and one Direct Debit. Your first site is on its normal plan, and each extra site for the same business is added on:</p>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Each extra WordPress website: <strong class="nowrap">+{gbp(extraSite.wordpress)}/month</strong></span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Each extra static website: <strong class="nowrap">+{gbp(extraSite.static)}/month</strong></span></li>
+                        </ul>
+                        <p>If you have both, the plan is based on a WordPress site. On plans with hours, the hours are shared across all your sites.</p>
+                        <p>Same price whether I host your site or it runs on your own server.</p>
+                    </div>
+
+                    <div class="card plans-callout">
+                        <h3>Care and Static plans don't include development or content time.</h3>
+                        <p>They keep your website secure, updated and backed up, and I fix anything that stops working. If you need regular changes, <strong>Care + Support</strong> includes 2 hours every month. One-off changes are {gbp(rates.hourly)}/hour.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="care">
+            <div class="container">
+                <div class="section-head">
+                    <h2>What every Care plan includes (WordPress)</h2>
+                </div>
+                <div class="includes-grid">
+                    {careIncludes.map((group) => (
+                        <article class="card">
+                            <h3>{group.heading}</h3>
+                            <ul class="check-list">
+                                {group.items.map((item) => (
+                                    <li><span class="check"><CircleCheckBig size={20} /></span><span>{item}</span></li>
+                                ))}
+                            </ul>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="static">
+            <div class="container">
+                <div class="section-head">
+                    <h2>What every Static plan includes</h2>
+                    <p>Static sites are fast, secure and low maintenance because there's no WordPress or database to keep patched.</p>
+                </div>
+                <ul class="check-list two-col-list">
+                    {staticIncludes.map((item) => (
+                        <li><span class="check"><CircleCheckBig size={20} /></span><span>{item}</span></li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="hours">
+            <div class="container">
+                <div class="section-head">
+                    <h2>How included hours work</h2>
+                    <p>Care + Support, Care + Growth and Retainer plans include hours each month. Use them for content edits, small features, SEO tasks, advice — whatever is most useful.</p>
+                </div>
+                <ul class="check-list two-col-list">
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Time is tracked in 15-minute steps.</strong> Every request counts, including small edits.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>I'll let you know when you've used 80%</strong> of the month's hours. You choose: pause, hold work until next month, or approve extra time at {gbp(rates.hourly)}/hour.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Hours are for each calendar month</strong> and don't carry over. Near the end of a quiet month, I'll suggest useful ways to spend any time left.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Your plan always includes the care.</strong> Updates, security, backups, monitoring and fixing anything that stops working are covered every month, whether or not you use your hours.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Your monthly report</strong> shows the hours included, the hours used and what the work was.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>New websites, rebuilds and large features</strong> are quoted separately, so your monthly hours stay for ongoing work.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Change plan</strong> up or down with one month's notice. If you regularly need more time, I'll suggest the plan that fits.</span></li>
+                </ul>
+                <p class="section-note">Plans with hours cost {gbp(rates.perIncludedHour)} per included hour, compared with {gbp(rates.hourly)}/hour for one-off work.</p>
+            </div>
+        </section>
+
+        <section class="section" id="health-check">
+            <div class="container">
+                <div class="plans-detail-grid">
+                    <div class="card">
+                        <h3>Free website health check</h3>
+                        <p>Not sure what state your website is in? I'll take a look, free of charge.</p>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>A check of your site's security, plugins and updates, backups, speed and basic search setup</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>A short written summary of what I found, in plain English</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>A recommendation for the plan that fits, with no obligation</span></li>
+                        </ul>
+                        <a href="/contact" class="btn btn-primary card-btn">Request a free health check</a>
+                    </div>
+
+                    <div class="card" id="takeover">
+                        <h3>Moving your site to me</h3>
+                        <p>If your website was built or hosted by someone else, I'll take it over properly before your plan starts.</p>
+                        <p class="card-subhead"><strong>Site takeover: {gbp(oneOffs.takeover)}, fixed, one-off</strong></p>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Move your site to my managed UK hosting (if I'm hosting it)</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Review and tidy up plugins, and replace licences with the plan's premium tools where they fit</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Set up daily off-site backups, uptime monitoring and update routines</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Check everything works before and after the move</span></li>
+                        </ul>
+                        <p>Then your Care plan runs as normal from the following month. Problems that were already there before the takeover are quoted separately.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="not-included">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Not included in any plan</h2>
+                    <p>These are quoted separately at {gbp(rates.hourly)}/hour (or a fixed price):</p>
+                </div>
+                <ul class="check-list two-col-list">
+                    {notIncluded.map((item) => (
+                        <li><span class="check"><CircleMinus size={20} /></span><span>{item}</span></li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="add-ons">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Add-ons</h2>
+                </div>
+                <PlanTable
+                    caption="Add-ons"
+                    columns={['Add-on', 'Price', 'What it is']}
+                    rows={addOnRows}
+                    stackBy="row"
+                />
+                <p class="table-note">Search advertising management is available for existing plan clients on request. Ask me for details.</p>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="other-work">
+            <div class="container">
+                <div class="plans-detail-grid">
+                    <div class="card">
+                        <h3>Other work</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>New websites:</strong> fixed price, from {gbp(websiteBuilds.businessFrom)}. See <a href="/websites">Websites</a>.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Hourly work:</strong> {gbp(rates.hourly)}/hour, tracked in 15-minute steps, 30-minute minimum per request. Batching small requests together keeps costs down.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Training:</strong> one-to-one help getting comfortable with your site, at {gbp(rates.hourly)}/hour.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Day rate:</strong> {gbp(rates.day)} (7.5 hours), half day {gbp(rates.halfDay)}, booked and paid in advance.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Defined projects</strong> (landing pages, features): fixed price, agreed before work starts.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Rush or out-of-hours work you request:</strong> {gbp(rates.rush)}/hour. Never charged when the problem was caused by my hosting, updates or mistakes.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Standard turnaround for one-off work:</strong> small requests within 3 working days; larger work scheduled.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card" id="payment">
+                        <h3>Payment and terms</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Monthly plans are paid by Direct Debit</strong>, collected in advance on the 1st of each month.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Extra time and one-off work</strong> are invoiced monthly in arrears with a timesheet, paid by Direct Debit or within 14 days.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Pay annually and save {annualDiscountPercent}%</strong> on Care ({gbp(annualPrice(carePlan.price))}/year) and Static ({gbp(annualPrice(staticPlan.price))}/year). Not available on plans with hours.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Minimum terms:</strong> none on Care and Static; 3 months on plans with hours. After that, plans run monthly and you can cancel with one calendar month's notice. Add-ons follow the plan they're added to.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Missed payments:</strong> payments are retried automatically. If a payment is still unpaid after 14 days, work is paused. After 30 days, and only after 7 days' written notice, the service is suspended. Your site is never taken offline without warning.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Prices are reviewed every April</strong>, with notice in March.</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>No VAT:</strong> Ellveren isn't VAT registered, so the prices shown are what you pay.</span></li>
+                        </ul>
+                        <p class="card-link">Full terms: <a href="/terms">Terms of service</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="leaving">
+            <div class="container">
+                <div class="section-head">
+                    <h2>If you leave</h2>
+                    <p>You're never locked in after your minimum term.</p>
+                </div>
+                <ul class="check-list two-col-list">
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span>You get a full backup of your site (or your code repository for static sites) and instructions for pointing your domain at your new host, free of charge.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span>Prefer me to move it for you? An assisted move to your new host is <strong>{gbp(oneOffs.assistedMove)} per site</strong>, fixed.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span>Premium plugin licences and the cookie banner and policies provided under the plan are removed, so you'd set up your own.</span></li>
+                    <li><span class="check"><CircleCheckBig size={20} /></span><span>Your content, images and brand assets are always yours.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <FAQ heading="FAQs" description="" questions={faqs} />
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-banner">
+                    <h2>Not sure which plan fits?</h2>
+                    <p>Tell me about your site and what you need from it, and I'll recommend the right plan. Or start with a free health check. No obligation.</p>
+                    <a href="/contact" class="btn btn-accent cta-banner-btn">Get in touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .plans-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .plans-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(126, 168, 240, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245, 111, 81, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .plans-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .plans-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .plans-hero-content h1 {
+        color: var(--white);
+        margin-inline: auto;
+    }
+
+    .plans-hero-content :global(.lead) {
+        color: var(--dark-muted);
+        margin-inline: auto;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .table-note,
+    .section-note {
+        margin-top: 20px;
+        font-size: 0.94rem;
+    }
+
+    .plans-detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+        align-items: start;
+    }
+
+    #health-check .plans-detail-grid,
+    #other-work .plans-detail-grid {
+        margin-top: 0;
+    }
+
+    .plans-detail-grid .card p + p,
+    .plans-detail-grid .card .check-list + p {
+        margin-top: 14px;
+    }
+
+    .plans-callout {
+        border-color: var(--accent);
+    }
+
+    .card-subhead {
+        color: var(--black);
+    }
+
+    .card-btn {
+        margin-top: 28px;
+    }
+
+    .card-link a,
+    .check-list a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .includes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .check-list strong {
+        color: var(--black);
+    }
+
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    .two-col-list {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 36px;
+        margin-top: 0;
+    }
+
+    .cta-banner {
+        text-align: center;
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    .cta-banner h2 {
+        margin-inline: auto;
+    }
+
+    .cta-banner p {
+        margin-top: 16px;
+        font-size: 1.04rem;
+    }
+
+    .cta-banner-btn {
+        margin-top: 32px;
+    }
+
+    @media (max-width: 980px) {
+        .plans-detail-grid,
+        .includes-grid,
+        .two-col-list {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
