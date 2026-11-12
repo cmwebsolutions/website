@@ -137,3 +137,35 @@ export const managedPlan = {
 };
 
 export const managedPlanFirstYear = managedPlan.setup + managedPlan.monthly * managedPlan.minimumMonths;
+
+export const planComparisonColumns = ['', ...plans.map((plan) => plan.name)];
+
+export const planComparisonRows = [
+    { label: 'Price', cells: plans.map(planPrice) },
+    { label: 'For', cells: plans.map((plan) => plan.for) },
+    { label: 'Included hours', cells: plans.map((plan) => plan.hours) },
+    { label: 'Small requests done within', cells: plans.map((plan) => plan.turnaround) },
+    { label: 'Minimum term', cells: plans.map((plan) => plan.minimumTerm) },
+];
+
+export const websiteComparisonColumns = ['', 'Business website', 'Integrated website', 'Portals and web apps'];
+
+export const websiteComparisonRows = [
+    { label: 'From', cells: [gbp(websiteBuilds.businessFrom), gbp(websiteBuilds.integratedFrom), 'Quoted after scoping'] },
+    {
+        label: 'For',
+        cells: [
+            'Firms that need a professional, fast website that brings in enquiries',
+            'Firms whose website needs to work with their other systems',
+            'Client areas, booking or management tools, custom applications',
+        ],
+    },
+    {
+        label: 'Includes',
+        cells: [
+            '5–10 pages, custom design, mobile-friendly, built for search, contact forms',
+            'Everything in Business, plus connections to other platforms',
+            'A paid scoping phase, then a fixed price for the build',
+        ],
+    },
+];

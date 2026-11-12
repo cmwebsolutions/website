@@ -14,23 +14,15 @@ import {
     extraSite,
     annualPrice,
     annualDiscountPercent,
-    plans,
-    planPrice,
     staticPlan,
     carePlan,
     careSupportPlan,
     retainerTiers,
     addOns,
+    planComparisonColumns,
+    planComparisonRows,
     websiteBuilds,
 } from '../data/plans';
-
-const comparisonRows = [
-    { label: 'Price', cells: plans.map(planPrice) },
-    { label: 'For', cells: plans.map((plan) => plan.for) },
-    { label: 'Included hours', cells: plans.map((plan) => plan.hours) },
-    { label: 'Small requests done within', cells: plans.map((plan) => plan.turnaround) },
-    { label: 'Minimum term', cells: plans.map((plan) => plan.minimumTerm) },
-];
 
 const addOnRows = addOns.map((addOn) => ({ label: addOn.name, cells: [addOn.price, addOn.description] }));
 
@@ -215,8 +207,8 @@ const faqs = [
 
                 <PlanTable
                     caption="Plan comparison"
-                    columns={['', ...plans.map((plan) => plan.name)]}
-                    rows={comparisonRows}
+                    columns={planComparisonColumns}
+                    rows={planComparisonRows}
                 />
 
                 <p class="table-note">Retainer: {retainerLine}. Planned work scheduled monthly.</p>

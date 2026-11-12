@@ -1,0 +1,42 @@
+---
+import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
+---
+
+<section class="section" id="why-ellveren">
+    <div class="container">
+        <div class="section-head">
+            <h2>Why Ellveren</h2>
+        </div>
+        <ul class="check-list why-list">
+            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>One point of contact.</strong> You speak to the person responsible for your site, not an account manager.</span></li>
+            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Clear plans, honest prices.</strong> Stated inclusions, stated hours and fixed-price projects. No overselling.</span></li>
+            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Looked after properly.</strong> Weekly updates, same-day security patches, and daily off-site backups with a separate provider.</span></li>
+            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Built to last.</strong> Some clients have been with me for over 10 years.</span></li>
+            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Yours to keep.</strong> No long lock-ins, and your site and content always belong to you.</span></li>
+        </ul>
+        <p class="why-clients">Clients include accountancy, insurance, recruitment and hospitality businesses.</p>
+    </div>
+</section>
+
+<style>
+    .why-list {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 36px;
+        margin-top: 0;
+    }
+
+    .why-list strong {
+        color: var(--black);
+    }
+
+    .why-clients {
+        margin-top: 28px;
+        font-size: 1.04rem;
+    }
+
+    @media (max-width: 980px) {
+        .why-list {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

@@ -7,30 +7,10 @@ import FAQ from '../components/FAQ.astro';
 import PlanTable from '../components/PlanTable.astro';
 import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 import CircleMinus from '@lucide/astro/icons/circle-minus';
-import { gbp, carePlan, staticPlan, websiteBuilds, managedPlan } from '../data/plans';
+import { gbp, carePlan, staticPlan, websiteBuilds, managedPlan, websiteComparisonColumns, websiteComparisonRows } from '../data/plans';
 
 const businessFrom = gbp(websiteBuilds.businessFrom);
 const integratedFrom = gbp(websiteBuilds.integratedFrom);
-
-const comparisonRows = [
-    { label: 'From', cells: [businessFrom, integratedFrom, 'Quoted after scoping'] },
-    {
-        label: 'For',
-        cells: [
-            'Firms that need a professional, fast website that brings in enquiries',
-            'Firms whose website needs to work with their other systems',
-            'Client areas, booking or management tools, custom applications',
-        ],
-    },
-    {
-        label: 'Includes',
-        cells: [
-            '5–10 pages, custom design, mobile-friendly, built for search, contact forms',
-            'Everything in Business, plus connections to other platforms',
-            'A paid scoping phase, then a fixed price for the build',
-        ],
-    },
-];
 
 const steps = [
     { heading: 'We talk.', description: 'A free 30-minute call about your business, what the website needs to do, your timeline and budget.' },
@@ -104,8 +84,8 @@ const faqs = [
 
                 <PlanTable
                     caption="Choose your website"
-                    columns={['', 'Business website', 'Integrated website', 'Portals and web apps']}
-                    rows={comparisonRows}
+                    columns={websiteComparisonColumns}
+                    rows={websiteComparisonRows}
                 />
 
                 <div class="types-grid">
