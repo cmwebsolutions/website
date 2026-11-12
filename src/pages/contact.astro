@@ -3,11 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Footer from '../components/Footer.astro';
+import { gbp, managedPlan } from '../data/plans';
+
+// slug is what /contact?interest=<slug> pre-selects
+const interests = [
+    { slug: 'health-check', label: 'Free website health check' },
+    { slug: 'care', label: 'Care plan for my existing site' },
+    { slug: 'new-website', label: 'A new website' },
+    { slug: 'integrated', label: 'Integrated website, portal or web app' },
+    { slug: 'managed', label: `Managed Website Plan: a new website for ${gbp(managedPlan.monthly)}/month` },
+    { slug: 'seo', label: 'SEO & marketing' },
+    { slug: 'not-sure', label: 'Not sure yet' },
+];
+
+const budgets = ['Under £2,000', '£2,000–5,000', '£5,000–10,000', '£10,000+', 'Monthly plan only'];
 ---
 
 <Layout
     title="Contact | Ellveren | Get in Touch"
-    description="Get in touch with Ellveren. Fill in our contact form or email hello@ellveren.com. We'll respond within 24 hours."
+    description="Get in touch with Ellveren. Fill in my contact form or email hello@ellveren.com. I'll reply within 1 working day."
     openGraph={{
         basic: {
             title: "Contact | Ellveren | Get in Touch",
@@ -31,9 +45,9 @@ import Footer from '../components/Footer.astro';
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
                 <div class="contact-hero-content">
-                    <span class="eyebrow">Contact us</span>
-                    <h1>Let's talk about your business.</h1>
-                    <p class="lead">Fill in the form below and we'll get back to you within 24 hours. No pressure, just a friendly chat about what you need.</p>
+                    <span class="eyebrow">Contact me</span>
+                    <h1>Let's talk about your website</h1>
+                    <p class="lead">Tell me a little about what you need and I'll get back to you within 1 working day.</p>
                 </div>
             </div>
         </section>
@@ -43,55 +57,71 @@ import Footer from '../components/Footer.astro';
                 <div class="contact-grid">
                     <div class="contact-form-wrap">
                         <div data-fs-success>
-                            <strong>Thanks for your message!</strong> We'll be in touch within 24 hours.
+                            <strong>Thanks, <span id="success-name"></span>.</strong> I've got your message and will reply within 1 working day.
                         </div>
                         <div data-fs-error>
-                            <strong>Oops!</strong> Something went wrong. Please try again or email us directly.
+                            <strong>Oops!</strong> Something went wrong. Please try again or email me directly.
                         </div>
                         <form id="contact-form" class="contact-form" data-form-id="xdarkjga">
                             <div class="form-row">
-                                <label class="form-label" for="name">Full name</label>
-                                <input class="form-input" type="text" id="name" name="name" required placeholder="e.g. Jane Smith" />
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-input" type="text" id="name" name="name" required autocomplete="name" placeholder="e.g. Jane Smith" />
                                 <span data-fs-error="name"></span>
                             </div>
                             <div class="form-row">
-                                <label class="form-label" for="email">Email address</label>
-                                <input class="form-input" type="email" id="email" name="email" required placeholder="jane@example.com" />
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="jane@example.com" />
                                 <span data-fs-error="email"></span>
                             </div>
                             <div class="form-row">
-                                <label class="form-label" for="phone">Phone number</label>
-                                <input class="form-input" type="tel" id="phone" name="phone" placeholder="07700 900000" />
+                                <label class="form-label" for="phone">Phone</label>
+                                <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="07700 900000" />
                                 <span data-fs-error="phone"></span>
                             </div>
                             <div class="form-row">
-                                <label class="form-label" for="budget">Which service or package interests you?</label>
-                                <select class="form-input" id="budget" name="budget">
-                                    <option value="">Select a service or package</option>
-                                    <option value="launch-pad">The Launch Pad</option>
-                                    <option value="core-business">The Core Business</option>
-                                    <option value="premium-growth">The Premium Growth</option>
-                                    <option value="subscription">Managed website – £249/mo</option>
-                                    <option value="software">Bespoke software &amp; integrations</option>
-                                    <option value="support">Hosting, maintenance &amp; support</option>
-                                    <option value="growth">SEO &amp; paid advertising</option>
-                                    <option value="not-sure">Not sure yet</option>
+                                <label class="form-label" for="business">Business name</label>
+                                <input class="form-input" type="text" id="business" name="business" autocomplete="organization" />
+                                <span data-fs-error="business"></span>
+                            </div>
+                            <div class="form-row">
+                                <label class="form-label" for="website">Current website address</label>
+                                <input class="form-input" type="text" inputmode="url" id="website" name="website" autocomplete="url" aria-describedby="website-help" />
+                                <span class="form-help" id="website-help">If you have one</span>
+                                <span data-fs-error="website"></span>
+                            </div>
+                            <fieldset class="form-row form-fieldset">
+                                <legend class="form-label">What are you interested in?</legend>
+                                <div class="radio-list">
+                                    {interests.map((interest) => (
+                                        <label class="checkbox-label">
+                                            <input type="radio" name="interest" value={interest.label} data-slug={interest.slug} required />
+                                            <span>{interest.label}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                                <span data-fs-error="interest"></span>
+                            </fieldset>
+                            <div class="form-row">
+                                <label class="form-label" for="budget">Budget</label>
+                                <select class="form-input" id="budget" name="budget" aria-describedby="budget-help">
+                                    <option value="">Select a budget</option>
+                                    {budgets.map((budget) => <option>{budget}</option>)}
                                 </select>
+                                <span class="form-help" id="budget-help">A rough idea helps me recommend the right option</span>
                                 <span data-fs-error="budget"></span>
                             </div>
                             <div class="form-row">
-                                <label class="form-label" for="message">Tell us about your project</label>
-                                <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What do you need help with? Tell us about your goals and any existing websites or systems."></textarea>
+                                <label class="form-label" for="message">Tell me about your project</label>
+                                <textarea class="form-input form-textarea" id="message" name="message" rows="5" required placeholder="What do you need help with? Tell me about your goals and any existing websites or systems."></textarea>
                                 <span data-fs-error="message"></span>
                             </div>
                             <div class="form-row">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="privacy" required />
-                                    <span>I've read and agree to the <a href="/privacy" target="_blank">Privacy Policy</a></span>
-                                </label>
-                                <span data-fs-error="privacy"></span>
+                                <label class="form-label" for="source">How did you hear about Ellveren?</label>
+                                <input class="form-input" type="text" id="source" name="source" />
+                                <span data-fs-error="source"></span>
                             </div>
-                            <button class="btn btn-accent form-submit" type="submit">Send message</button>
+                            <button class="btn btn-accent form-submit" type="submit">Send enquiry</button>
+                            <p class="form-privacy">I'll only use your details to reply to your enquiry. See the <a href="/privacy">privacy policy</a>.</p>
                         </form>
                     </div>
 
@@ -106,7 +136,7 @@ import Footer from '../components/Footer.astro';
                         </div>
                         <div class="contact-info-card">
                             <h3>LinkedIn</h3>
-                            <a href="https://www.linkedin.com/company/ellveren/" target="_blank">Connect with us</a>
+                            <a href="https://www.linkedin.com/company/ellveren/" target="_blank">Connect with me</a>
                         </div>
                         <div class="contact-info-card">
                             <h3>Response time</h3>
@@ -240,12 +270,51 @@ import Footer from '../components/Footer.astro';
         text-decoration: underline;
     }
 
-    .checkbox-label input[type="checkbox"] {
+    .checkbox-label input[type="checkbox"],
+    .checkbox-label input[type="radio"] {
         width: 16px;
         height: 16px;
         margin-top: 2px;
         accent-color: var(--primary);
         cursor: pointer;
+    }
+
+    .form-fieldset {
+        border: 0;
+        padding: 0;
+        min-width: 0;
+    }
+
+    .form-fieldset legend {
+        padding: 0;
+    }
+
+    .radio-list {
+        display: grid;
+        gap: 10px;
+    }
+
+    .radio-list .checkbox-label {
+        font-size: 0.92rem;
+        color: var(--text);
+    }
+
+    .form-help {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.84rem;
+        color: var(--muted);
+    }
+
+    .form-privacy {
+        margin-top: 14px;
+        font-size: 0.84rem;
+        text-align: center;
+    }
+
+    .form-privacy a {
+        color: var(--primary);
+        text-decoration: underline;
     }
 
     .contact-info {
@@ -347,6 +416,19 @@ import Footer from '../components/Footer.astro';
 
 <script>
     import { initForm } from "@formspree/ajax";
+
+    const params = new URLSearchParams(window.location.search);
+    const preselect = params.get('interest');
+    if (preselect) {
+        const radio = document.querySelector<HTMLInputElement>(`input[name="interest"][data-slug="${CSS.escape(preselect)}"]`);
+        if (radio) radio.checked = true;
+    }
+
+    document.querySelector('#contact-form')?.addEventListener('submit', () => {
+        const name = document.querySelector<HTMLInputElement>('#name')?.value.trim() ?? '';
+        const target = document.querySelector('#success-name');
+        if (target) target.textContent = name;
+    });
 
     initForm({
         formElement: '#contact-form',
