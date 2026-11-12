@@ -1,0 +1,417 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ.astro';
+import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
+import {
+    gbp,
+    rates,
+    staticPlan,
+    careSupportPlan,
+    managedPlan,
+    managedPlanFirstYear,
+} from '../data/plans';
+
+const setup = gbp(managedPlan.setup);
+const monthly = `${gbp(managedPlan.monthly)}/month`;
+
+const steps = [
+    { heading: 'We talk.', description: 'A short call about your business, your customers and what your site needs to do.' },
+    { heading: 'I design and build.', description: 'Up to 5 pages, designed for your business, with 2 rounds of design revisions.' },
+    { heading: 'You launch.', description: 'Your site goes live on fast, secure hosting with everything set up.' },
+    { heading: 'I look after it.', description: 'Hosting, security, backups and 1 hour of edits every month.' },
+    { heading: 'You own it.', description: 'After 12 months, ownership of the site transfers to you.' },
+];
+
+const pricingRows = [
+    { label: 'Setup', value: `${setup}, paid before work starts` },
+    { label: 'Monthly', value: `${monthly} by Direct Debit` },
+    { label: 'Minimum term', value: `${managedPlan.minimumMonths} months` },
+    { label: '12-month total', value: gbp(managedPlanFirstYear) },
+    { label: 'Ownership', value: 'The site transfers to you after 12 months' },
+];
+
+const faqs = [
+    {
+        question: 'Why a static site and not WordPress?',
+        answer: "For most small business sites, static is faster, more secure and cheaper to look after, because there's no WordPress, database or plugins to keep patched. If you want to edit pages yourself, I can set up a simple page editor for you.",
+    },
+    {
+        question: 'What if I need more than an hour of edits in a month?',
+        answer: `Extra time is ${gbp(rates.hourly)}/hour, only with your approval. If you regularly need more, moving to Care + Support later is easy.`,
+    },
+    {
+        question: 'What does "you own it" mean?',
+        answer: 'After 12 months, the design, code and content are yours. You can keep me looking after it, or take it anywhere you like.',
+    },
+];
+---
+
+<Layout
+    title={`Managed Website Plan — A New Website for ${monthly} | Ellveren`}
+    description={`A fast, professionally built website with hosting, care and monthly edits included. ${setup} setup, then ${monthly}. You own the site after 12 months.`}
+    openGraph={{
+        basic: {
+            title: `Managed Website Plan — A New Website for ${monthly} | Ellveren`,
+            type: "website",
+            image: "/og-image.png",
+        },
+        optional: {
+            siteName: "Ellveren",
+            locale: "en_GB",
+        },
+    }}
+    twitter={{
+        card: "summary_large_image",
+        site: "@ellveren",
+    }}
+>
+    <Header />
+    <main>
+        <section class="section managed-hero">
+            <div class="managed-bg"></div>
+            <div class="container">
+                <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Managed Website Plan' }]} />
+                <div class="managed-hero-content">
+                    <h1>A new website, without the big upfront cost</h1>
+                    <p class="lead">A fast, professionally designed website with hosting, security, backups and monthly edits included, for <strong>{setup} setup and {monthly}</strong>. After 12 months, the site is yours.</p>
+                    <div class="hero-actions">
+                        <a href="/contact?interest=managed" class="btn btn-accent">Start your website</a>
+                        <a href="#included" class="btn btn-ghost">See what's included</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="how-it-works">
+            <div class="container">
+                <div class="section-head">
+                    <h2>How it works</h2>
+                </div>
+                <ol class="steps-grid">
+                    {steps.map((step, i) => (
+                        <li class="step">
+                            <span class="step-number">{i + 1}</span>
+                            <h3>{step.heading}</h3>
+                            <p>{step.description}</p>
+                        </li>
+                    ))}
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="included">
+            <div class="container">
+                <div class="section-head">
+                    <h2>What's included</h2>
+                </div>
+                <div class="includes-grid">
+                    <article class="card">
+                        <h3>The build</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>A custom-designed website of up to 5 pages</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>2 rounds of design revisions</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Mobile-friendly, fast-loading and built with search engines in mind</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Contact form with spam protection</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Built as a static site: no WordPress or plugins to patch, so it's faster and more secure</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>Every month</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Hosting on a global network, with SSL</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Uptime monitoring, with a response within 4 working hours if your site goes down</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Full version history: any version of your site can be restored</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Security and dependency checks, and free fixes if an update breaks something</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>A cookie consent banner (where your site needs one), privacy policy and terms set up and kept up to date</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>1 hour of edits a month</strong>, tracked in 15-minute steps (unused time doesn't carry over)</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Edit your own pages or blog through a simple page editor, if you'd like to, and edits you make yourself don't use your hour</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>Optional</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Privacy-friendly analytics: £10/month</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Copywriting: quoted separately</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>SEO &amp; GEO: see <a href="/plans#add-ons">add-ons</a></span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>What you'll need to provide</h3>
+                        <ul class="check-list">
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Your text and images (or I can quote for copywriting)</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Your logo and brand colours, if you have them</span></li>
+                            <li><span class="check"><CircleCheckBig size={20} /></span><span>Access to your domain name, or I can help you register one</span></li>
+                        </ul>
+                        <p class="card-note">Need more than 5 pages, integrations with your other systems or a customer portal? See <a href="/websites">Websites</a> or <a href="/contact?interest=new-website">ask for a custom quote</a>.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-soft" id="pricing">
+            <div class="container">
+                <div class="pricing-grid">
+                    <div class="card pricing-card">
+                        <h2>Pricing</h2>
+                        <dl class="pricing-list">
+                            {pricingRows.map((row) => (
+                                <div>
+                                    <dt>{row.label}</dt>
+                                    <dd>{row.value}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                        <p class="card-note">No VAT is added: Ellveren isn't VAT registered.</p>
+                    </div>
+
+                    <div class="pricing-side">
+                        <div class="card">
+                            <h3>After 12 months</h3>
+                            <p>The website is yours. You can:</p>
+                            <ul class="check-list">
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Keep it looked after</strong> on the Static plan at {gbp(staticPlan.price)}/month (hosting, security, monitoring; changes at {gbp(rates.hourly)}/hour)</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Keep regular changes</strong> with Care + Support at {gbp(careSupportPlan.price)}/month (2 hours a month)</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Take it elsewhere.</strong> You get the full code and instructions for moving, free of charge</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h3>The small print, in plain English</h3>
+                            <ul class="check-list">
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>The setup fee is paid upfront, before work starts.</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>Monthly payments are by Direct Debit on the 1st of each month.</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>If you end the plan before 12 months, the rest of the 12 months is still payable.</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>After 12 months, the plan runs monthly and you can cancel with one month's notice.</span></li>
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>Full terms: <a href="/terms">Terms of service</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <FAQ heading="FAQs" description="" questions={faqs} />
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-banner">
+                    <h2>Ready for a website that works as hard as you do?</h2>
+                    <a href="/contact?interest=managed" class="btn btn-accent cta-banner-btn">Start your website</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .managed-hero {
+        position: relative;
+        padding: 144px 0 100px;
+        color: var(--white);
+        overflow: hidden;
+    }
+
+    .managed-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(126, 168, 240, 0.3) 0%, transparent 100%),
+                    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245, 111, 81, 0.12) 0%, transparent 100%),
+                    var(--black);
+        z-index: 0;
+    }
+
+    .managed-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .managed-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .managed-hero-content h1 {
+        color: var(--white);
+        margin-inline: auto;
+    }
+
+    .managed-hero-content :global(.lead) {
+        color: var(--dark-muted);
+        margin-inline: auto;
+    }
+
+    .managed-hero-content strong {
+        color: var(--white);
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .step {
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .step-number {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 36px;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 15px;
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .step:nth-child(2) .step-number {
+        color: var(--black);
+        background: var(--accent);
+    }
+
+    .step:nth-child(3) .step-number {
+        color: var(--accent);
+        background: var(--black);
+    }
+
+    .step p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+    }
+
+    .includes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        align-items: start;
+    }
+
+    .check-list strong,
+    .card-note strong {
+        color: var(--black);
+    }
+
+    .check-list a,
+    .card-note a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .card-note {
+        margin-top: 20px;
+        font-size: 0.94rem;
+    }
+
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 14px;
+        align-items: start;
+    }
+
+    .pricing-side {
+        display: grid;
+        gap: 14px;
+    }
+
+    .pricing-card h2 {
+        font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    }
+
+    .pricing-list {
+        margin: 24px 0 0;
+    }
+
+    .pricing-list div {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-list div:last-child {
+        border-bottom: 0;
+    }
+
+    .pricing-list dt {
+        color: var(--black);
+        font-weight: 800;
+        font-size: 0.94rem;
+    }
+
+    .pricing-list dd {
+        margin: 0;
+        color: var(--muted-strong);
+        font-size: 0.94rem;
+    }
+
+    .cta-banner {
+        text-align: center;
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    .cta-banner h2 {
+        margin-inline: auto;
+    }
+
+    .cta-banner-btn {
+        margin-top: 32px;
+    }
+
+    @media (max-width: 980px) {
+        .steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .includes-grid,
+        .pricing-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .steps-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pricing-list div {
+            grid-template-columns: 1fr;
+            gap: 2px;
+        }
+    }
+</style>

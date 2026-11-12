@@ -9,5 +9,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.ellveren.com',
   trailingSlash: 'never',
+  redirects: {
+    '/services/managed-website-plan': '/managed-website-plan',
+  },
   integrations: [mdx(), sitemap()]
 });
