@@ -11,6 +11,22 @@ import PlanTabs from '../components/PlanTabs.astro';
 import Photo from '../components/Photo.astro';
 import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 import CircleMinus from '@lucide/astro/icons/circle-minus';
+import Globe from '@lucide/astro/icons/globe';
+import Activity from '@lucide/astro/icons/activity';
+import Mail from '@lucide/astro/icons/mail';
+import Cookie from '@lucide/astro/icons/cookie';
+import History from '@lucide/astro/icons/history';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import Wrench from '@lucide/astro/icons/wrench';
+import FileChartColumn from '@lucide/astro/icons/file-chart-column';
+import PencilLine from '@lucide/astro/icons/pencil-line';
+import CircleQuestionMark from '@lucide/astro/icons/circle-question-mark';
+import Timer from '@lucide/astro/icons/timer';
+import Bell from '@lucide/astro/icons/bell';
+import CalendarDays from '@lucide/astro/icons/calendar-days';
+import FileText from '@lucide/astro/icons/file-text';
+import Hammer from '@lucide/astro/icons/hammer';
+import ArrowUpDown from '@lucide/astro/icons/arrow-up-down';
 import {
     gbp,
     rates,
@@ -84,16 +100,27 @@ const careIncludes = [
 ];
 
 const staticIncludes = [
-    'Hosting on a global network, with SSL',
-    'Uptime monitoring, with a response within 4 working hours if your site goes down',
-    'Contact forms with spam protection and reliable email delivery',
-    'A cookie consent banner (where your site needs one), privacy policy and terms set up and kept up to date',
-    'Full version history: every version of your site is stored and can be restored',
-    'Quarterly security and dependency check, with a rebuild if needed',
-    'If hosting or an update breaks something, I fix it free of charge',
-    'Quarterly summary report',
-    "Edit your own pages and blog through a simple page editor, where it's set up for your site (edits you make yourself are free)",
-    'Quick how-to help by email',
+    { icon: Globe, text: 'Hosting on a global network, with SSL' },
+    { icon: Activity, text: 'Uptime monitoring, with a response within 4 working hours if your site goes down' },
+    { icon: Mail, text: 'Contact forms with spam protection and reliable email delivery' },
+    { icon: Cookie, text: 'A cookie consent banner (where your site needs one), privacy policy and terms set up and kept up to date' },
+    { icon: History, text: 'Full version history: every version of your site is stored and can be restored' },
+    { icon: ShieldCheck, text: 'Quarterly security and dependency check, with a rebuild if needed' },
+    { icon: Wrench, text: 'If hosting or an update breaks something, I fix it free of charge' },
+    { icon: FileChartColumn, text: 'Quarterly summary report' },
+    { icon: PencilLine, text: "Edit your own pages and blog through a simple page editor, where it's set up for your site (edits you make yourself are free)" },
+    { icon: CircleQuestionMark, text: 'Quick how-to help by email' },
+];
+
+// The bold lead of each point is the card title; the rest of the sentence is the body.
+const hoursPoints = [
+    { icon: Timer, title: 'Time is tracked in 15-minute steps.', body: 'Every request counts, including small edits.' },
+    { icon: Bell, title: "I'll let you know when you've used 80%", body: `of the month's hours. You choose: pause, hold work until next month, or approve extra time at ${gbp(rates.hourly)}/hour.` },
+    { icon: CalendarDays, title: 'Hours are for each calendar month', body: "and don't carry over. Near the end of a quiet month, I'll suggest useful ways to spend any time left." },
+    { icon: ShieldCheck, title: 'Your plan always includes the care.', body: 'Updates, security, backups, monitoring and fixing anything that stops working are covered every month, whether or not you use your hours.' },
+    { icon: FileText, title: 'Your monthly report', body: 'shows the hours included, the hours used and what the work was.' },
+    { icon: Hammer, title: 'New websites, rebuilds and large features', body: 'are quoted separately, so your monthly hours stay for ongoing work.' },
+    { icon: ArrowUpDown, title: 'Change plan', body: "up or down with one month's notice. If you regularly need more time, I'll suggest the plan that fits." },
 ];
 
 const notIncluded = [
@@ -259,9 +286,12 @@ const faqs = [
                     <h2>What every Static plan includes</h2>
                     <p>Static sites are fast, secure and low maintenance because there's no WordPress or database to keep patched.</p>
                 </div>
-                <ul class="check-list two-col-list">
+                <ul class="static-grid">
                     {staticIncludes.map((item) => (
-                        <li><span class="check"><CircleCheckBig size={20} /></span><span>{item}</span></li>
+                        <li class="static-tile">
+                            <span class="tile-icon"><item.icon size={20} /></span>
+                            <span>{item.text}</span>
+                        </li>
                     ))}
                 </ul>
             </div>
@@ -273,16 +303,18 @@ const faqs = [
                     <h2>How included hours work</h2>
                     <p>Care + Support, Care + Growth and Retainer plans include hours each month. Use them for content edits, small features, SEO tasks, advice: whatever is most useful.</p>
                 </div>
-                <ul class="check-list two-col-list">
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Time is tracked in 15-minute steps.</strong> Every request counts, including small edits.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>I'll let you know when you've used 80%</strong> of the month's hours. You choose: pause, hold work until next month, or approve extra time at {gbp(rates.hourly)}/hour.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Hours are for each calendar month</strong> and don't carry over. Near the end of a quiet month, I'll suggest useful ways to spend any time left.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Your plan always includes the care.</strong> Updates, security, backups, monitoring and fixing anything that stops working are covered every month, whether or not you use your hours.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Your monthly report</strong> shows the hours included, the hours used and what the work was.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>New websites, rebuilds and large features</strong> are quoted separately, so your monthly hours stay for ongoing work.</span></li>
-                    <li><span class="check"><CircleCheckBig size={20} /></span><span><strong>Change plan</strong> up or down with one month's notice. If you regularly need more time, I'll suggest the plan that fits.</span></li>
+                <ul class="hours-grid">
+                    {hoursPoints.map((point) => (
+                        <li class="hours-card">
+                            <span class="tile-icon"><point.icon size={20} /></span>
+                            <h3>{point.title}</h3>
+                            <p>{point.body}</p>
+                        </li>
+                    ))}
+                    <li class="hours-card hours-price">
+                        <p>Plans with hours cost <strong>{gbp(rates.perIncludedHour)} per included hour,</strong> compared with {gbp(rates.hourly)}/hour for one-off work.</p>
+                    </li>
                 </ul>
-                <p class="section-note">Plans with hours cost {gbp(rates.perIncludedHour)} per included hour, compared with {gbp(rates.hourly)}/hour for one-off work.</p>
             </div>
         </section>
 
@@ -320,15 +352,20 @@ const faqs = [
 
         <section class="section section-soft" id="not-included">
             <div class="container">
-                <div class="section-head">
-                    <h2>Not included in any plan</h2>
-                    <p>These are quoted separately at {gbp(rates.hourly)}/hour (or a fixed price):</p>
+                <div class="excluded-panel">
+                    <HeroGrid />
+                    <div class="excluded-content">
+                        <div class="section-head">
+                            <h2>Not included in any plan</h2>
+                            <p>These are quoted separately at {gbp(rates.hourly)}/hour (or a fixed price):</p>
+                        </div>
+                        <ul class="check-list two-col-list">
+                            {notIncluded.map((item) => (
+                                <li><span class="check"><CircleMinus size={20} /></span><span>{item}</span></li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <ul class="check-list two-col-list">
-                    {notIncluded.map((item) => (
-                        <li><span class="check"><CircleMinus size={20} /></span><span>{item}</span></li>
-                    ))}
-                </ul>
             </div>
         </section>
 
@@ -519,6 +556,115 @@ const faqs = [
         white-space: nowrap;
     }
 
+    /* Static plan: icon tiles. */
+    .static-grid,
+    .hours-grid {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .static-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .static-tile,
+    .hours-card {
+        padding: 22px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .static-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        color: var(--muted-strong);
+        font-size: 0.92rem;
+    }
+
+    .tile-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        background: var(--primary);
+        border-radius: 13px;
+        box-shadow: 0 0 0 5px rgba(4, 79, 200, 0.12);
+    }
+
+    .tile-icon :global(svg) {
+        display: block;
+    }
+
+    /* How included hours work: titled cards, with the price as the last card. */
+    .hours-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .hours-card h3 {
+        margin-top: 18px;
+        font-size: 1.02rem;
+    }
+
+    .hours-card p {
+        margin-top: 8px;
+        font-size: 0.92rem;
+    }
+
+    .hours-price {
+        display: flex;
+        align-items: center;
+        background: var(--black);
+        border-color: var(--black);
+    }
+
+    .hours-card.hours-price p {
+        margin-top: 0;
+        color: var(--dark-muted);
+    }
+
+    .hours-price strong {
+        display: block;
+        margin-block: 6px;
+        color: var(--white);
+        font-family: var(--font-heading);
+        font-size: 1.55rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    /* Not included: a dark panel with the brand grid behind it. */
+    .excluded-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(32px, 5vw, 58px);
+        background: var(--black);
+        border-radius: var(--radius-xl);
+    }
+
+    .excluded-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .excluded-panel h2 {
+        color: var(--white);
+    }
+
+    .excluded-panel .section-head p,
+    .excluded-panel .check-list li {
+        color: var(--dark-muted);
+    }
+
+    .excluded-panel .check {
+        color: var(--accent);
+    }
+
     .two-col-list {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 36px;
@@ -551,10 +697,23 @@ const faqs = [
     }
 
     @media (max-width: 980px) {
+        .static-grid,
+        .hours-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .plans-detail-grid,
         .includes-grid,
         .two-col-list {
             grid-template-columns: 1fr;
+        }
+    }
+
+    /* After the 980px block so it wins on phones. */
+    @media (max-width: 640px) {
+        .static-grid,
+        .hours-grid {
+            grid-template-columns: minmax(0, 1fr);
         }
     }
 </style>
