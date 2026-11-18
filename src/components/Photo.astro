@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { Photo } from '../data/images';
+
+interface Props {
+    photo: Photo;
+    aspect?: string;
+    sizes?: string;
+    rounded?: boolean;
+    eager?: boolean;
+}
+
+// Responsive WebP from a photo in src/data/images.ts, cropped to `aspect` (e.g. "16 / 9").
+// Parents can override the crop at a breakpoint by setting --photo-aspect.
+const {
+    photo,
+    aspect = '16 / 9',
+    sizes = '(max-width: 860px) 100vw, 560px',
+    rounded = true,
+    eager = false,
+} = Astro.props;
+---
+
+<Image
+    src={photo.src}
+    alt={photo.alt}
+    widths={[480, 800, 1200, 1600]}
+    sizes={sizes}
+    format="webp"
+    quality={75}
+    loading={eager ? 'eager' : 'lazy'}
+    class:list={['photo', { 'photo--rounded': rounded }]}
+    style={`--photo-aspect-default: ${aspect}`}
+/>
+
+<style>
+    .photo {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: var(--photo-aspect, var(--photo-aspect-default));
+        object-fit: cover;
+        background: var(--surface-soft);
+    }
+
+    .photo--rounded {
+        border-radius: var(--radius-md);
+    }
+</style>

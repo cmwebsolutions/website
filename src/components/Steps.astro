@@ -1,0 +1,197 @@
+---
+interface Step {
+    heading: string;
+    description: string;
+    icon: (props: { size?: number }) => any;
+}
+
+interface Props {
+    steps: Step[];
+}
+
+// A connected journey: a dashed line links a dot above each step, and the last
+// step is dark to show it carries on after launch. Order comes from the <ol>, not numbers.
+const { steps } = Astro.props;
+---
+
+<ol class="steps">
+    {steps.map((step) => {
+        const Icon = step.icon;
+        return (
+            <li class="step">
+                <span class="step-dot"></span>
+                <div class="step-card">
+                    <span class="step-icon"><Icon size={22} /></span>
+                    <h3>{step.heading}</h3>
+                    <p>{step.description}</p>
+                </div>
+            </li>
+        );
+    })}
+</ol>
+
+<style>
+    .steps {
+        /* Icon tile centre, measured from the card's left edge (padding + half the tile). */
+        --tile-centre: 49px;
+        --gap: 14px;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--gap);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    /* Dashed line from the first dot's centre to the last dot's centre. */
+    .steps::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: var(--tile-centre);
+        right: calc((100% - 4 * var(--gap)) / 5 - var(--tile-centre));
+        border-top: 2px dashed var(--secondary);
+    }
+
+    .step {
+        --tone: var(--primary);
+        --halo: rgba(4, 79, 200, 0.14);
+        --icon: var(--white);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .step:nth-child(2) {
+        --tone: var(--accent);
+        --halo: rgba(245, 111, 81, 0.18);
+        --icon: var(--black);
+    }
+
+    .step:nth-child(3) {
+        --tone: var(--black);
+        --halo: rgba(29, 33, 42, 0.12);
+        --icon: var(--accent);
+    }
+
+    .step:last-child {
+        --tone: var(--accent);
+        --halo: rgba(245, 111, 81, 0.22);
+        --icon: var(--black);
+    }
+
+    .step-dot {
+        position: relative;
+        z-index: 1;
+        width: 12px;
+        height: 12px;
+        margin-left: calc(var(--tile-centre) - 6px);
+        background: var(--tone);
+        border-radius: 999px;
+        box-shadow: 0 0 0 5px var(--halo);
+    }
+
+    .step-card {
+        flex: 1;
+        padding: 26px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition:
+            transform 220ms ease,
+            box-shadow 220ms ease;
+    }
+
+    .step:last-child .step-card {
+        background: var(--black);
+        border-color: var(--black);
+    }
+
+    .step-icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 30px;
+        color: var(--icon);
+        background: var(--tone);
+        border-radius: 15px;
+        box-shadow: 0 0 0 6px var(--halo);
+        transition: transform 220ms ease;
+    }
+
+    .step-icon :global(svg) {
+        display: block;
+    }
+
+    .step-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .step-card:hover .step-icon {
+        transform: rotate(-6deg);
+    }
+
+    .step p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+    }
+
+    .step:last-child h3 {
+        color: var(--white);
+    }
+
+    .step:last-child p {
+        color: var(--dark-muted);
+    }
+
+    /* Below 980px: a vertical timeline, with the line down the left. */
+    @media (max-width: 980px) {
+        .steps {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .steps::before {
+            display: none;
+        }
+
+        .step {
+            flex-direction: row;
+            gap: 18px;
+        }
+
+        .step-dot {
+            flex: 0 0 auto;
+            margin: calc(var(--tile-centre) - 6px) 0 0;
+        }
+
+        .step-icon {
+            margin-bottom: 18px;
+        }
+
+        /* One dashed segment from each dot down to the next. */
+        .step:not(:last-child)::before {
+            content: "";
+            position: absolute;
+            top: var(--tile-centre);
+            left: 5px;
+            height: calc(100% + var(--gap));
+            border-left: 2px dashed var(--secondary);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .step-card,
+        .step-icon {
+            transition: none;
+        }
+
+        .step-card:hover,
+        .step-card:hover .step-icon {
+            transform: none;
+        }
+    }
+</style>

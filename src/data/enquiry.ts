@@ -3,7 +3,8 @@ import { gbp, managedPlan } from './plans';
 // Enquiry options shared by /contact and the CTA form.
 // slug is what /contact?interest=<slug> pre-selects
 export const interests = [
-    { slug: 'health-check', label: 'Free website health check' },
+    // Health check hidden for now.
+    // { slug: 'health-check', label: 'Free website health check' },
     { slug: 'care', label: 'Care plan for my existing site' },
     { slug: 'new-website', label: 'A new website' },
     { slug: 'integrated', label: 'Integrated website, portal or web app' },

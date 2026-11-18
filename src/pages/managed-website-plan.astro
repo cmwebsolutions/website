@@ -1,9 +1,16 @@
 ---
+import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
+import Steps from '../components/Steps.astro';
+import MessagesSquare from '@lucide/astro/icons/messages-square';
+import PenTool from '@lucide/astro/icons/pen-tool';
+import Rocket from '@lucide/astro/icons/rocket';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import KeyRound from '@lucide/astro/icons/key-round';
 import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
 import {
     gbp,
@@ -18,11 +25,11 @@ const setup = gbp(managedPlan.setup);
 const monthly = `${gbp(managedPlan.monthly)}/month`;
 
 const steps = [
-    { heading: 'We talk.', description: 'A short call about your business, your customers and what your site needs to do.' },
-    { heading: 'I design and build.', description: 'Up to 5 pages, designed for your business, with 2 rounds of design revisions.' },
-    { heading: 'You launch.', description: 'Your site goes live on fast, secure hosting with everything set up.' },
-    { heading: 'I look after it.', description: 'Hosting, security, backups and 1 hour of edits every month.' },
-    { heading: 'You own it.', description: 'After 12 months, ownership of the site transfers to you.' },
+    { heading: 'We talk.', icon: MessagesSquare, description: 'A short call about your business, your customers and what your site needs to do.' },
+    { heading: 'I design and build.', icon: PenTool, description: 'Up to 5 pages, designed for your business, with 2 rounds of design revisions.' },
+    { heading: 'You launch.', icon: Rocket, description: 'Your site goes live on fast, secure hosting with everything set up.' },
+    { heading: 'I look after it.', icon: ShieldCheck, description: 'Hosting, security, backups and 1 hour of edits every month.' },
+    { heading: 'You own it.', icon: KeyRound, description: 'After 12 months, ownership of the site transfers to you.' },
 ];
 
 const pricingRows = [
@@ -50,11 +57,11 @@ const faqs = [
 ---
 
 <Layout
-    title={`Managed Website Plan — A New Website for ${monthly} | Ellveren`}
+    title={`Managed Website Plan: A New Website for ${monthly} | Ellveren`}
     description={`A fast, professionally built website with hosting, care and monthly edits included. ${setup} setup, then ${monthly}. You own the site after 12 months.`}
     openGraph={{
         basic: {
-            title: `Managed Website Plan — A New Website for ${monthly} | Ellveren`,
+            title: `Managed Website Plan: A New Website for ${monthly} | Ellveren`,
             type: "website",
             image: "/og-image.png",
         },
@@ -71,7 +78,7 @@ const faqs = [
     <Header />
     <main>
         <section class="section managed-hero">
-            <div class="managed-bg"></div>
+            <div class="managed-bg"><HeroGrid /></div>
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Managed Website Plan' }]} />
                 <div class="managed-hero-content">
@@ -90,15 +97,7 @@ const faqs = [
                 <div class="section-head">
                     <h2>How it works</h2>
                 </div>
-                <ol class="steps-grid">
-                    {steps.map((step, i) => (
-                        <li class="step">
-                            <span class="step-number">{i + 1}</span>
-                            <h3>{step.heading}</h3>
-                            <p>{step.description}</p>
-                        </li>
-                    ))}
-                </ol>
+                <Steps steps={steps} />
             </div>
         </section>
 
@@ -227,16 +226,6 @@ const faqs = [
         z-index: 0;
     }
 
-    .managed-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-    }
-
     .managed-hero-content {
         position: relative;
         z-index: 1;
@@ -265,51 +254,6 @@ const faqs = [
         justify-content: center;
         gap: 12px;
         margin-top: 32px;
-    }
-
-    .steps-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 14px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .step {
-        padding: 26px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-md);
-    }
-
-    .step-number {
-        width: 46px;
-        height: 46px;
-        display: grid;
-        place-items: center;
-        margin-bottom: 36px;
-        color: var(--white);
-        background: var(--primary);
-        border-radius: 15px;
-        font-family: var(--font-heading);
-        font-size: 1.2rem;
-        font-weight: 800;
-    }
-
-    .step:nth-child(2) .step-number {
-        color: var(--black);
-        background: var(--accent);
-    }
-
-    .step:nth-child(3) .step-number {
-        color: var(--accent);
-        background: var(--black);
-    }
-
-    .step p {
-        margin-top: 10px;
-        font-size: 0.92rem;
     }
 
     .includes-grid {
@@ -394,10 +338,6 @@ const faqs = [
     }
 
     @media (max-width: 980px) {
-        .steps-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
         .includes-grid,
         .pricing-grid {
             grid-template-columns: 1fr;
@@ -405,10 +345,6 @@ const faqs = [
     }
 
     @media (max-width: 640px) {
-        .steps-grid {
-            grid-template-columns: 1fr;
-        }
-
         .pricing-list div {
             grid-template-columns: 1fr;
             gap: 2px;

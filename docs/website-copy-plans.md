@@ -1,4 +1,4 @@
-# Ellveren — Website Copy: Plans, Websites, Managed Website Plan, Terms & Enquiry Form
+# Ellveren Website Copy: Plans, Websites, Managed Website Plan, Terms & Enquiry Form
  
 Copy for the pages that must be live **before the Step 6 client notices go out**. Prices and rules come from Steps 2–7 and "Changes after the review" in `pricing-growth-decisions.md`.
  
@@ -13,6 +13,7 @@ Notes before publishing:
 - Updated 4 Nov 2026: **unused hours no longer roll over** (plans page, Managed Website Plan page, FAQ, terms 2.4–2.5). Malware clean-up wording now says what counts as "caused on your side" (plans page and new terms clause 8.7).
 - Updated 11 Nov 2026: **fixes included in Care** ("if something stops working, I fix it", with fair use and clear exclusions; plans page, FAQs, terms 1.6); hosting-only stays withdrawn with no in-between plan.
 - Updated 12 Nov 2026: **extra static site +£30/month** (multi-site rule in the plans section, add-ons table and a new FAQ). One plan per business; WordPress is the base if a client has both.
+- Updated 18 Nov 2026: **no em dashes anywhere** (headings, titles and copy use a colon, comma or full stop instead, and the dash for no included hours is now "None"). **Free health check hidden for now** (homepage route card, `/plans` hero, card, FAQ and closing line, and the enquiry form option; wording kept below, struck through). `/websites` cards now show the name and price on separate lines, and the Portals detail is a short line plus three checkpoints. `/plans` comparison is shown as tabs, one per plan.
 - Updated 12 Nov 2026: **VAT removed everywhere** (not registered). Care now lists a **premium form builder** and **website email delivery** (Postmark, or the client's own email provider connected at setup). Backups are live, so the sample report and restore line can go on `/plans` now.
 Pages:
 0. Brand lines and homepage hero
@@ -38,12 +39,12 @@ Pages:
  
 Ellveren designs, builds and looks after websites for established UK businesses. You deal directly with the person responsible for your site, on clear monthly plans with no surprises.
  
-[Get a free website health check] [See the plans]
+~~[Get a free website health check]~~ [See the plans]
  
 ### Three routes (homepage section)
  
 **Already have a website?**
-Keep it secure, updated and backed up with a Care plan, from £85/month. Start with a free health check. [Care plans]
+Keep it secure, updated and backed up with a Care plan, from £85/month. ~~Start with a free health check.~~ [Care plans]
  
 **Need a new website?**
 Fixed-price websites, designed and built for your business, from £3,500. [Websites]
@@ -62,7 +63,7 @@ Clients include accountancy, insurance, recruitment and hospitality businesses. 
  
 ---
  
-## 1. Plans & what's included — `/plans`
+## 1. Plans & what's included (`/plans`)
  
 **Page title (SEO):** Website Care Plans | Ellveren
 **Meta description:** WordPress and static website care plans from £45/month. Weekly updates, same-day security patches, daily backups, monitoring, fixes and UK hosting included, with support hours when you need them.
@@ -73,7 +74,7 @@ Clients include accountancy, insurance, recruitment and hospitality businesses. 
  
 Every plan keeps your website secure, up to date, backed up and monitored, and if something stops working, I fix it. If you need regular changes too, the plans with hours give you time each month from the person who looks after your site.
  
-[See the plans] [Get a free health check]
+[See the plans] ~~[Get a free health check]~~
  
 ### Plan comparison
  
@@ -81,7 +82,7 @@ Every plan keeps your website secure, up to date, backed up and monitored, and i
 |---|---|---|---|---|---|
 | **Price** | £45/month | £85/month | £235/month | £385/month | from £535/month |
 | **For** | Static websites | WordPress websites | WordPress + regular changes | WordPress + ongoing improvements | Ongoing development and planned work |
-| **Included hours** | — | — | 2 hours | 4 hours | 6+ hours |
+| **Included hours** | None | None | 2 hours | 4 hours | 6+ hours |
 | **Small requests done within** | 3 working days | 3 working days | 2 working days | 2 working days | Next working day |
 | **Minimum term** | None | None | 3 months | 3 months | 3 months |
  
@@ -139,7 +140,7 @@ Static sites are fast, secure and low maintenance because there's no WordPress o
 - Quick how-to help by email
 ### How included hours work
  
-Care + Support, Care + Growth and Retainer plans include hours each month. Use them for content edits, small features, SEO tasks, advice — whatever is most useful.
+Care + Support, Care + Growth and Retainer plans include hours each month. Use them for content edits, small features, SEO tasks, advice: whatever is most useful.
  
 - **Time is tracked in 15-minute steps.** Every request counts, including small edits.
 - **I'll let you know when you've used 80%** of the month's hours. You choose: pause, hold work until next month, or approve extra time at £80/hour.
@@ -150,14 +151,16 @@ Care + Support, Care + Growth and Retainer plans include hours each month. Use t
 - **Change plan** up or down with one month's notice. If you regularly need more time, I'll suggest the plan that fits.
 Plans with hours cost £75 per included hour, compared with £80/hour for one-off work.
  
-### Free website health check
+### ~~Free website health check~~
  
-Not sure what state your website is in? I'll take a look, free of charge.
+_(Free health check hidden for now, 18 Nov 2026. The struck-through wording is kept so it can be restored.)_
  
-- A check of your site's security, plugins and updates, backups, speed and basic search setup
-- A short written summary of what I found, in plain English
-- A recommendation for the plan that fits, with no obligation
-[Request a free health check]
+~~Not sure what state your website is in? I'll take a look, free of charge.~~
+ 
+- ~~A check of your site's security, plugins and updates, backups, speed and basic search setup~~
+- ~~A short written summary of what I found, in plain English~~
+- ~~A recommendation for the plan that fits, with no obligation~~
+~~[Request a free health check]~~
  
 ### Moving your site to me
  
@@ -233,7 +236,7 @@ A fix is when something that was working has stopped working, and the cause is w
 Yes. On every plan, send me your "how do I…" questions and I'll reply with clear written steps so you can make the change yourself. If questions regularly take more than about 30 minutes a month, I'll suggest a training session (£80/hour) or Care + Support, where I can make the changes for you.
  
 **My site was built by someone else. Can you look after it?**
-Yes. Start with a free health check so we both know what we're working with. Taking it over is a one-off £195, then your plan runs as normal.
+Yes. ~~Start with a free health check so we both know what we're working with.~~ Taking it over is a one-off £195, then your plan runs as normal.
  
 **Do I pay more if I host my own site?**
 No. Plans cost the same either way, because most of the cost is the time spent looking after your site. If your site is on your own server, the server itself is your hosting company's responsibility, unless you add Server care.
@@ -265,13 +268,13 @@ No. Ellveren isn't VAT registered, so the prices shown are what you pay.
 ### Closing call to action
  
 ## Not sure which plan fits?
-Tell me about your site and what you need from it, and I'll recommend the right plan. Or start with a free health check. No obligation.
+Tell me about your site and what you need from it, and I'll recommend the right plan. ~~Or start with a free health check.~~ No obligation.
  
 [Get in touch]
  
 ---
  
-## 2. Websites — `/websites`
+## 2. Websites (`/websites`)
  
 **Page title (SEO):** Website Design & Development for UK Businesses | Ellveren
 **Meta description:** Fixed-price websites for established UK businesses, from £3,500. Business websites, integrated websites connected to your other systems, and client portals.
@@ -292,21 +295,29 @@ Fixed-price websites designed and built for your business, connected to the tool
 | **For** | Firms that need a professional, fast website that brings in enquiries | Firms whose website needs to work with their other systems | Client areas, booking or management tools, custom applications |
 | **Includes** | 5–10 pages, custom design, mobile-friendly, built for search, contact forms | Everything in Business, plus connections to other platforms | A paid scoping phase, then a fixed price for the build |
  
-**Business website — from £3,500**
+_(Shown as two linked carousels: the cards (photo, name, price and "For" line) on the left, and the active card's detail on the right. The "Includes" row isn't shown.)_
+
+**Business website**
+From £3,500
 - Custom design for your business, with 2 rounds of revisions
 - 5–10 pages, mobile-friendly and fast-loading
 - Built on WordPress or as a static site, whichever suits how you'll use it
 - Contact forms with spam protection and reliable email delivery
 - Search-engine basics set up from day one
 - Edit your own pages, if you'd like to
-**Integrated website — from £6,000**
+**Integrated website**
+From £6,000
 Everything in a Business website, plus your site connected to the systems you already use, for example:
 - Jobs, listings or products managed in your own platform and published to your site automatically (for example an ATS such as Recruiterflow)
 - Enquiries sent straight into your CRM
 - Booking, payments or finance systems
 - External APIs and AI features, such as smart search or enquiry handling
-**Portals and web apps — quoted**
-For client areas, dashboards and custom tools. We start with a short, paid scoping phase that produces a clear specification and a firm fixed price. The scoping fee is credited against the build.
+**Portals and web apps**
+Quoted after scoping
+For client areas, dashboards and custom tools.
+- A short, paid scoping phase to start
+- A clear specification and a firm fixed price for the build
+- The scoping fee is credited against the build
  
 ### How it works
  
@@ -353,9 +364,9 @@ It's included in every proposal because websites need looking after. If you'd ra
  
 ---
  
-## 3. Managed Website Plan — `/managed-website-plan`
+## 3. Managed Website Plan (`/managed-website-plan`)
  
-**Page title (SEO):** Managed Website Plan — A New Website for £249/month | Ellveren
+**Page title (SEO):** Managed Website Plan: A New Website for £249/month | Ellveren
 **Meta description:** A fast, professionally built website with hosting, care and monthly edits included. £499 setup, then £249/month. You own the site after 12 months.
  
 ### Hero
@@ -443,7 +454,7 @@ After 12 months, the design, code and content are yours. You can keep me looking
  
 ---
  
-## 4. Terms of service — `/terms`
+## 4. Terms of service (`/terms`)
  
 _Working draft. Get it checked before publishing, particularly sections 9 (data protection) and 11 (liability)._
  
@@ -539,7 +550,7 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
  
 ---
  
-## 5. Enquiry form — `/contact`
+## 5. Enquiry form (`/contact`)
  
 **Heading:** Let's talk about your website
 **Intro:** Tell me a little about what you need and I'll get back to you within 1 working day.
@@ -559,7 +570,7 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
 | How did you hear about Ellveren? | Text | No |
  
 **"What are you interested in?" options**
-- Free website health check
+- ~~Free website health check~~ _(hidden for now)_
 - Care plan for my existing site
 - A new website
 - Integrated website, portal or web app
@@ -590,7 +601,7 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
  
 - [ ] **No VAT wording anywhere:** no "+ VAT", "exclude VAT" or VAT number. The VAT FAQ, payment section and terms 3.5 say Ellveren isn't VAT registered
 - [ ] Homepage hero and tagline updated (or added at the reskin, if the brand isn't ready)
-- [ ] `/plans` live, with the bold "no development time on Care or Static" line, the "Fixes included" section and FAQ, the free health check and the £195 site takeover
+- [ ] `/plans` live, with the bold "no development time on Care or Static" line, the "Fixes included" section and FAQ, the £195 site takeover (free health check hidden for now)
 - [ ] No "price fixed until April 2028" wording anywhere (price hold dropped 11 Nov 2026)
 - [ ] `/plans` shows GetTerms (cookie consent and policies) and CleanTalk (spam protection) in place of Complianz and OOPspam, plus the form builder and website email delivery in Care
 - [ ] `/plans`, `/managed-website-plan` and `/terms` say unused hours don't carry over (no "rolls over" wording left anywhere)

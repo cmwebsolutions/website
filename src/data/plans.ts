@@ -39,7 +39,7 @@ export const staticPlan: Plan = {
     name: 'Static',
     price: 45,
     for: 'Static websites',
-    hours: '—',
+    hours: 'None',
     turnaround: '3 working days',
     minimumTerm: 'None',
 };
@@ -48,7 +48,7 @@ export const carePlan: Plan = {
     name: 'Care',
     price: 85,
     for: 'WordPress websites',
-    hours: '—',
+    hours: 'None',
     turnaround: '3 working days',
     minimumTerm: 'None',
 };

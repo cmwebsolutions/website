@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+// gradient-grid-flat.jpg is the designer's Gradient-grid.webp flattened onto black and resized to
+// 2400px wide (sharp: flatten, resize, JPEG). Regenerate it if the designer updates the artwork.
+import gradientGrid from '../assets/images/gradient-grid-flat.jpg';
+
+// The designer's brand grid, used as decoration inside a dark hero's background layer.
+// It's drawn with `screen` blending, so the black background disappears against the dark
+// hero: much smaller than shipping a transparent image.
+// Swap the import for an SVG version when the designer supplies one.
+---
+
+<span class="hero-grid-art" aria-hidden="true">
+    <Image
+        src={gradientGrid}
+        alt=""
+        width={1200}
+        widths={[600, 900, 1200]}
+        sizes="(max-width: 640px) 120vw, 760px"
+        format="webp"
+        quality={60}
+        loading="eager"
+        fetchpriority="low"
+    />
+</span>
+
+<style>
+    .hero-grid-art {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .hero-grid-art img {
+        position: absolute;
+        top: 50%;
+        right: -6%;
+        width: min(60vw, 760px);
+        height: auto;
+        opacity: 0.45;
+        mix-blend-mode: screen;
+        transform: translateY(-50%);
+        /* Fade towards the centre so the headline never sits on the strongest lines. */
+        mask-image: linear-gradient(to left, #000 35%, transparent 95%);
+    }
+
+    @media (max-width: 640px) {
+        .hero-grid-art img {
+            right: 50%;
+            width: 120vw;
+            opacity: 0.25;
+            transform: translate(50%, -50%);
+            mask-image: none;
+        }
+    }
+</style>

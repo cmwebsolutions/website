@@ -1,0 +1,382 @@
+---
+import CircleCheckBig from '@lucide/astro/icons/circle-check-big';
+import ChevronLeft from '@lucide/astro/icons/chevron-left';
+import ChevronRight from '@lucide/astro/icons/chevron-right';
+import Photo from './Photo.astro';
+import { gbp, websiteBuilds, websiteComparisonRows } from '../data/plans';
+import { photos } from '../data/images';
+
+// The "For" row of the website comparison, one line per type.
+const forLine = websiteComparisonRows.find((row) => row.label === 'For')?.cells ?? [];
+const fromLine = websiteComparisonRows.find((row) => row.label === 'From')?.cells ?? [];
+
+const types = [
+    {
+        id: 'business',
+        photo: photos.websitesBusiness,
+        name: 'Business website',
+        price: `From ${gbp(websiteBuilds.businessFrom)}`,
+        for: forLine[0],
+        items: [
+            'Custom design for your business, with 2 rounds of revisions',
+            '5–10 pages, mobile-friendly and fast-loading',
+            "Built on WordPress or as a static site, whichever suits how you'll use it",
+            'Contact forms with spam protection and reliable email delivery',
+            'Search-engine basics set up from day one',
+            "Edit your own pages, if you'd like to",
+        ],
+    },
+    {
+        id: 'integrated',
+        photo: photos.websitesIntegrated,
+        name: 'Integrated website',
+        price: `From ${gbp(websiteBuilds.integratedFrom)}`,
+        for: forLine[1],
+        intro: 'Everything in a Business website, plus your site connected to the systems you already use, for example:',
+        items: [
+            'Jobs, listings or products managed in your own platform and published to your site automatically (for example an applicant tracking system)',
+            'Enquiries sent straight into your CRM',
+            'Booking, payments or finance systems',
+            'External APIs and AI features, such as smart search or enquiry handling',
+        ],
+    },
+    {
+        id: 'portals',
+        photo: photos.websitesPortals,
+        name: 'Portals and web apps',
+        price: fromLine[2],
+        for: forLine[2],
+        intro: 'For client areas, dashboards and custom tools.',
+        items: [
+            'A short, paid scoping phase to start',
+            'A clear specification and a firm fixed price for the build',
+            'The scoping fee is credited against the build',
+        ],
+    },
+];
+
+// Two linked carousels: cards on the left, and the active card's detail on the right.
+---
+
+<div class="website-carousel" data-website-carousel>
+    <div class="carousel-cards">
+        <div class="swiper cards-swiper">
+            <div class="swiper-wrapper">
+                {types.map((type) => (
+                    <div class="swiper-slide" id={type.id}>
+                        <article class="card type-card">
+                            <div class="type-photo">
+                                <Photo photo={type.photo} aspect="16 / 10" rounded={false} sizes="(max-width: 860px) 85vw, 440px" />
+                            </div>
+                            <div class="type-body">
+                                <h3>{type.name}</h3>
+                                <p class="type-price">{type.price}</p>
+                                {type.for && <p class="type-for">{type.for}</p>}
+                            </div>
+                        </article>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button type="button" class="carousel-btn carousel-prev" aria-label="Previous website type">
+                <ChevronLeft size={20} />
+            </button>
+            <div class="carousel-pagination"></div>
+            <button type="button" class="carousel-btn carousel-next" aria-label="Next website type">
+                <ChevronRight size={20} />
+            </button>
+        </div>
+    </div>
+
+    <div class="swiper detail-swiper">
+        <div class="swiper-wrapper" aria-live="polite">
+            {types.map((type) => (
+                <div class="swiper-slide detail">
+                    <h3 class="detail-title">{type.name}</h3>
+                    {type.intro && <p class:list={['detail-intro', { 'detail-lead': type.items.length > 0 }]}>{type.intro}</p>}
+                    {type.items.length > 0 && (
+                        <ul class="check-list">
+                            {type.items.map((item) => (
+                                <li><span class="check"><CircleCheckBig size={20} /></span><span>{item}</span></li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
+
+<script>
+    import Swiper from 'swiper';
+    import { A11y, EffectFade, Keyboard, Navigation, Pagination } from 'swiper/modules';
+    import 'swiper/css';
+    import 'swiper/css/effect-fade';
+    import 'swiper/css/pagination';
+
+    document.querySelectorAll<HTMLElement>('[data-website-carousel]').forEach((carousel) => {
+        const slides = Array.from(carousel.querySelectorAll<HTMLElement>('.cards-swiper .swiper-slide'));
+        const hashIndex = () => slides.findIndex((slide) => `#${slide.id}` === window.location.hash);
+
+        const details = new Swiper(carousel.querySelector<HTMLElement>('.detail-swiper')!, {
+            modules: [EffectFade],
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            allowTouchMove: false,
+            initialSlide: Math.max(0, hashIndex()),
+        });
+
+        // Only the visible detail panel is reachable by screen readers and the keyboard.
+        const syncDetails = () => {
+            details.slides.forEach((slide, i) => {
+                const hidden = i !== details.activeIndex;
+                slide.setAttribute('aria-hidden', String(hidden));
+                slide.inert = hidden;
+            });
+        };
+
+        const cards = new Swiper(carousel.querySelector<HTMLElement>('.cards-swiper')!, {
+            modules: [A11y, Keyboard, Navigation, Pagination],
+            slidesPerView: 1.15,
+            spaceBetween: 14,
+            loop: true,
+            initialSlide: Math.max(0, hashIndex()),
+            slideToClickedSlide: true,
+            grabCursor: true,
+            breakpoints: {
+                640: { slidesPerView: 1.5 },
+            },
+            keyboard: { enabled: true, onlyInViewport: true },
+            navigation: {
+                prevEl: carousel.querySelector<HTMLElement>('.carousel-prev'),
+                nextEl: carousel.querySelector<HTMLElement>('.carousel-next'),
+            },
+            pagination: {
+                el: carousel.querySelector<HTMLElement>('.carousel-pagination'),
+                clickable: true,
+            },
+            on: {
+                // In loop mode Swiper reorders slides, so follow the real (original) index.
+                realIndexChange: (swiper) => {
+                    details.slideTo(swiper.realIndex);
+                    syncDetails();
+                },
+            },
+        });
+
+        syncDetails();
+        carousel.classList.add('is-ready');
+
+        window.addEventListener('hashchange', () => {
+            const index = hashIndex();
+            if (index >= 0) cards.slideToLoop(index);
+        });
+    });
+</script>
+
+<style>
+    .website-carousel {
+        --swiper-theme-color: var(--primary);
+        --swiper-pagination-bullet-horizontal-gap: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 48px;
+        align-items: center;
+    }
+
+    .carousel-cards {
+        min-width: 0;
+    }
+
+    /* Room below for the active card's shadow. */
+    /* Room for the active card's shadow: below, and a little to the left (pulled back
+       with a negative margin so the card still lines up with the heading). */
+    .cards-swiper {
+        margin-inline-start: -16px;
+        padding-block: 14px 36px;
+        padding-inline-start: 16px;
+    }
+
+    /* Before Swiper loads (or without JS), the cards scroll sideways. */
+    .website-carousel:not(.is-ready) .cards-swiper .swiper-wrapper {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 14px;
+    }
+
+    .website-carousel:not(.is-ready) .cards-swiper .swiper-slide {
+        width: 66%;
+        scroll-snap-align: start;
+    }
+
+    /* Extra specificity so these win over Swiper's own slide transforms. */
+    .website-carousel .cards-swiper .swiper-slide {
+        display: flex;
+        height: auto;
+        opacity: 0.55;
+        transform: scale(0.92);
+        transform-origin: left center;
+        transition:
+            transform 320ms ease,
+            opacity 320ms ease;
+    }
+
+    .website-carousel:not(.is-ready) .cards-swiper .swiper-slide,
+    .website-carousel .cards-swiper .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* The photo sits flush with the card edges, so the padding moves to the body. */
+    .type-card {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 0;
+        overflow: hidden;
+        transition:
+            border-color 320ms ease,
+            box-shadow 320ms ease;
+    }
+
+    .swiper-slide-active .type-card {
+        border-color: var(--border-strong);
+        box-shadow: 10px 14px 30px -12px rgba(29, 33, 42, 0.16);
+    }
+
+    .type-photo {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .type-body {
+        padding: 22px 24px 24px;
+    }
+
+    .type-price {
+        margin-top: 4px;
+        color: var(--primary);
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 800;
+    }
+
+    .type-for {
+        color: var(--muted-strong);
+    }
+
+    /* Detail panel: plain text on the section background, not another card. */
+    .detail-swiper {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .detail-title {
+        display: none;
+    }
+
+    .detail-intro {
+        color: var(--black);
+        font-size: 1.04rem;
+    }
+
+    /* An intro that leads into a checklist reads as its heading. */
+    .detail-lead {
+        font-weight: 700;
+    }
+
+    .detail .check-list {
+        margin-top: 20px;
+    }
+
+    .detail-intro:first-child + .check-list,
+    .detail > .check-list:first-child {
+        margin-top: 0;
+    }
+
+    /* Without JS, show every panel stacked, each with its own heading. */
+    .website-carousel:not(.is-ready) .detail-swiper .swiper-wrapper {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .website-carousel:not(.is-ready) .detail-title {
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 0;
+    }
+
+    .website-carousel:not(.is-ready) .carousel-controls {
+        display: none;
+    }
+
+    .carousel-btn {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        color: var(--black);
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        cursor: pointer;
+        transition:
+            color 180ms ease,
+            background 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .carousel-btn:hover:not(:disabled) {
+        color: var(--white);
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .carousel-btn:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    .carousel-controls .carousel-pagination {
+        position: static;
+        width: auto;
+        display: flex;
+        gap: 4px;
+    }
+
+    .carousel-pagination :global(.swiper-pagination-bullet) {
+        width: 10px;
+        height: 10px;
+        margin: 0;
+        background: var(--black);
+        opacity: 0.2;
+    }
+
+    .carousel-pagination :global(.swiper-pagination-bullet-active) {
+        background: var(--primary);
+        opacity: 1;
+    }
+
+    @media (max-width: 860px) {
+        .website-carousel {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 28px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .website-carousel .cards-swiper .swiper-slide,
+        .type-card {
+            transition: none;
+        }
+    }
+</style>

@@ -1,4 +1,5 @@
 ---
+import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -13,6 +14,8 @@ import CodeXml from '@lucide/astro/icons/code-xml';
 import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
 import Zap from '@lucide/astro/icons/zap';
 import BadgeCheck from '@lucide/astro/icons/badge-check';
+import Photo from '../components/Photo.astro';
+import { photos } from '../data/images';
 ---
 
 <Layout
@@ -37,7 +40,7 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
     <Header />
     <main>
         <section class="section about-hero">
-            <div class="about-bg"></div>
+            <div class="about-bg"><HeroGrid /></div>
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
                 <div class="about-hero-content">
@@ -55,6 +58,9 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
                         <h2>Built to last, whatever it takes.</h2>
                         <p>Good technology should make your business easier to run and your services easier to use. We start by understanding the problem, then choose the right approach. That might mean a new website, a portal for your staff or an integration that removes a repetitive task.</p>
                         <p>From a focused landing page to a bespoke web application, we pay attention to performance, security and maintainability. You work directly with the people responsible for your project, with clear communication and support beyond launch.</p>
+                        <div class="about-story-photo">
+                            <Photo photo={photos.aboutStory} aspect="3 / 2" sizes="(max-width: 980px) 100vw, 550px" />
+                        </div>
                     </div>
                     <div class="about-story-values">
                         <div class="value-card">
@@ -152,16 +158,6 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
         z-index: 0;
     }
 
-    .about-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-    }
-
     .about-hero-content {
         position: relative;
         z-index: 1;
@@ -201,6 +197,10 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
     .about-story-text p {
         font-size: 1.04rem;
         margin-top: 16px;
+    }
+
+    .about-story-photo {
+        margin-top: 32px;
     }
 
     .about-story-values {
@@ -307,6 +307,10 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
         .about-story-grid {
             grid-template-columns: 1fr;
             gap: 40px;
+        }
+
+        .about-story-photo {
+            --photo-aspect: 16 / 9;
         }
 
         .approach-grid {

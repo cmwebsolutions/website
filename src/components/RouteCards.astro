@@ -1,24 +1,37 @@
 ---
+import Photo from './Photo.astro';
 import { gbp, carePlan, websiteBuilds } from '../data/plans';
+import { photos } from '../data/images';
+
+const photoSizes = '(max-width: 980px) 100vw, 380px';
 ---
 
 <section class="section routes">
     <div class="container">
         <div class="routes-grid">
             <article class="card">
-                <h3>Already have a website?</h3>
-                <p>Keep it secure, updated and backed up with a Care plan, from {gbp(carePlan.price)}/month. Start with a free health check.</p>
-                <a href="/plans" class="route-link">Care plans</a>
+                <Photo photo={photos.routeExisting} rounded={false} sizes={photoSizes} />
+                <div class="route-body">
+                    <h3>Already have a website?</h3>
+                    <p>Keep it secure, updated and backed up with a Care plan, from {gbp(carePlan.price)}/month.{/* Health check hidden for now: " Start with a free health check." */}</p>
+                    <a href="/plans" class="route-link">Care plans</a>
+                </div>
             </article>
             <article class="card">
-                <h3>Need a new website?</h3>
-                <p>Fixed-price websites, designed and built for your business, from {gbp(websiteBuilds.businessFrom)}.</p>
-                <a href="/websites" class="route-link">Websites</a>
+                <Photo photo={photos.routeNew} rounded={false} sizes={photoSizes} />
+                <div class="route-body">
+                    <h3>Need a new website?</h3>
+                    <p>Fixed-price websites, designed and built for your business, from {gbp(websiteBuilds.businessFrom)}.</p>
+                    <a href="/websites" class="route-link">Websites</a>
+                </div>
             </article>
             <article class="card">
-                <h3>Need more than a website?</h3>
-                <p>Sites connected to your other systems, client portals and web apps.</p>
-                <a href="/websites#integrated" class="route-link">Integrated websites</a>
+                <Photo photo={photos.routeMore} rounded={false} sizes={photoSizes} />
+                <div class="route-body">
+                    <h3>Need more than a website?</h3>
+                    <p>Sites connected to your other systems, client portals and web apps.</p>
+                    <a href="/websites#integrated" class="route-link">Integrated websites</a>
+                </div>
             </article>
         </div>
     </div>
@@ -31,9 +44,20 @@ import { gbp, carePlan, websiteBuilds } from '../data/plans';
         gap: 14px;
     }
 
+    /* The photo sits flush with the card edges, so the padding moves to the body. */
     .routes-grid .card {
         display: flex;
         flex-direction: column;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .route-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 26px;
+        border-top: 1px solid var(--border);
     }
 
     .routes-grid .card p {
@@ -49,6 +73,7 @@ import { gbp, carePlan, websiteBuilds } from '../data/plans';
 
     @media (max-width: 980px) {
         .routes-grid {
+            --photo-aspect: 21 / 9;
             grid-template-columns: 1fr;
         }
     }

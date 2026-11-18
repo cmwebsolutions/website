@@ -1,4 +1,5 @@
 ---
+import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -28,7 +29,7 @@ import { interests, budgets } from '../data/enquiry';
     <Header />
     <main>
         <section class="section contact-hero">
-            <div class="contact-bg"></div>
+            <div class="contact-bg"><HeroGrid /></div>
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
                 <div class="contact-hero-content">
@@ -153,16 +154,6 @@ import { interests, budgets } from '../data/enquiry';
                     radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245, 111, 81, 0.12) 0%, transparent 100%),
                     var(--black);
         z-index: 0;
-    }
-
-    .contact-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
     }
 
     .contact-hero-content {

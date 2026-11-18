@@ -1,0 +1,222 @@
+---
+import { gbp, plans, planPrice, retainerPlan, retainerTiers, carePlan } from '../data/plans';
+
+// One tab per plan. Care opens first, as the core WordPress plan.
+const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const defaultIndex = plans.indexOf(carePlan);
+
+const retainerLine = retainerTiers.map((tier) => `${tier.hours} hours ${gbp(tier.price)}`).join(' · ');
+---
+
+<div class="plan-tabs" data-plan-tabs>
+    <div class="plan-tabs-list" role="tablist" aria-label="Plans">
+        {plans.map((plan, i) => (
+            <button
+                type="button"
+                role="tab"
+                class="plan-tab"
+                id={`plan-tab-${slug(plan.name)}`}
+                aria-controls={`plan-panel-${slug(plan.name)}`}
+                aria-selected={i === defaultIndex ? 'true' : 'false'}
+                tabindex={i === defaultIndex ? 0 : -1}
+            >
+                {plan.name}
+            </button>
+        ))}
+    </div>
+
+    {plans.map((plan) => (
+        <div
+            class="card plan-panel"
+            role="tabpanel"
+            id={`plan-panel-${slug(plan.name)}`}
+            aria-labelledby={`plan-tab-${slug(plan.name)}`}
+            tabindex="0"
+        >
+            <div class="plan-panel-main">
+                <h3>{plan.name}</h3>
+                <p class="plan-price">{planPrice(plan)}</p>
+                <p class="plan-for">{plan.for}</p>
+            </div>
+            <dl class="plan-facts">
+                <div>
+                    <dt>Included hours</dt>
+                    <dd>{plan.hours}</dd>
+                </div>
+                <div>
+                    <dt>Small requests done within</dt>
+                    <dd>{plan.turnaround}</dd>
+                </div>
+                <div>
+                    <dt>Minimum term</dt>
+                    <dd>{plan.minimumTerm}</dd>
+                </div>
+            </dl>
+            {plan === retainerPlan && (
+                <p class="plan-note">Retainer: {retainerLine}. Planned work scheduled monthly.</p>
+            )}
+        </div>
+    ))}
+</div>
+
+<script>
+    // WAI-ARIA tabs. Without JS every panel shows, stacked.
+    document.querySelectorAll<HTMLElement>('[data-plan-tabs]').forEach((root) => {
+        const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+        const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')!)!);
+
+        const select = (index: number, focus = false) => {
+            tabs.forEach((tab, i) => {
+                const selected = i === index;
+                tab.setAttribute('aria-selected', String(selected));
+                tab.tabIndex = selected ? 0 : -1;
+                panels[i].hidden = !selected;
+            });
+            if (focus) {
+                tabs[index].focus();
+                tabs[index].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            }
+        };
+
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => select(i));
+            tab.addEventListener('keydown', (event) => {
+                const last = tabs.length - 1;
+                const next = { ArrowRight: i === last ? 0 : i + 1, ArrowLeft: i === 0 ? last : i - 1, Home: 0, End: last }[event.key];
+                if (next === undefined) return;
+                event.preventDefault();
+                select(next, true);
+            });
+        });
+
+        select(Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true')));
+        root.classList.add('is-ready');
+    });
+</script>
+
+<style>
+    .plan-tabs {
+        display: grid;
+        gap: 14px;
+    }
+
+    .plan-tabs-list {
+        display: none;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+    }
+
+    .plan-tabs-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .plan-tabs.is-ready .plan-tabs-list {
+        display: flex;
+    }
+
+    .plan-tab {
+        flex: 0 0 auto;
+        min-height: 46px;
+        padding: 0 20px;
+        color: var(--black);
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        font: inherit;
+        font-size: 0.94rem;
+        font-weight: 800;
+        white-space: nowrap;
+        cursor: pointer;
+        transition:
+            color 180ms ease,
+            background 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .plan-tab:hover {
+        border-color: var(--black);
+    }
+
+    .plan-tab[aria-selected='true'] {
+        color: var(--white);
+        background: var(--black);
+        border-color: var(--black);
+    }
+
+    .plan-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 14px 48px;
+        align-items: start;
+        padding: 36px;
+    }
+
+    .plan-panel[hidden] {
+        display: none;
+    }
+
+    .plan-price {
+        margin-top: 14px;
+        color: var(--black);
+        font-family: var(--font-heading);
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.05;
+    }
+
+    .plan-for {
+        font-size: 1.04rem;
+    }
+
+    .plan-facts {
+        margin: 0;
+    }
+
+    .plan-facts div {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .plan-facts div:first-child {
+        padding-top: 0;
+    }
+
+    .plan-facts div:last-child {
+        border-bottom: 0;
+    }
+
+    .plan-facts dt {
+        color: var(--muted-strong);
+        font-size: 0.94rem;
+    }
+
+    .plan-facts dd {
+        margin: 0;
+        color: var(--black);
+        font-size: 0.94rem;
+        font-weight: 800;
+        text-align: right;
+    }
+
+    .plan-note {
+        grid-column: 1 / -1;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 760px) {
+        .plan-panel {
+            grid-template-columns: 1fr;
+            padding: 26px;
+        }
+
+        .plan-facts {
+            margin-top: 10px;
+        }
+    }
+</style>

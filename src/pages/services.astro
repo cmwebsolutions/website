@@ -1,4 +1,5 @@
 ---
+import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -9,6 +10,8 @@ import RouteCards from '../components/RouteCards.astro';
 import WhyEllveren from '../components/WhyEllveren.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { testimonials } from '../data/testimonials';
+import Photo from '../components/Photo.astro';
+import { photos } from '../data/images';
 import {
     gbp,
     managedPlan,
@@ -43,7 +46,7 @@ const description = 'Ellveren designs, builds and looks after websites for estab
     <Header />
     <main>
         <section class="section services-hero">
-            <div class="services-bg"></div>
+            <div class="services-bg"><HeroGrid /></div>
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
                 <div class="services-hero-content">
@@ -64,6 +67,9 @@ const description = 'Ellveren designs, builds and looks after websites for estab
                 <div class="section-head">
                     <h2>Care plans</h2>
                 </div>
+                <div class="section-photo">
+                    <Photo photo={photos.servicesCare} aspect="21 / 9" sizes="(max-width: 1200px) 100vw, 1160px" />
+                </div>
                 <PlanTable caption="Care plans" columns={planComparisonColumns} rows={planComparisonRows} />
                 <p class="table-note">Same price whether I host your site or it runs on your own server.</p>
                 <a href="/plans" class="btn btn-primary section-btn">See the plans</a>
@@ -74,6 +80,9 @@ const description = 'Ellveren designs, builds and looks after websites for estab
             <div class="container">
                 <div class="section-head">
                     <h2>Websites</h2>
+                </div>
+                <div class="section-photo">
+                    <Photo photo={photos.servicesWebsites} aspect="21 / 9" sizes="(max-width: 1200px) 100vw, 1160px" />
                 </div>
                 <PlanTable caption="Websites" columns={websiteComparisonColumns} rows={websiteComparisonRows} />
                 <p class="table-note">Smaller business? The <a href="/managed-website-plan">Managed Website Plan</a> gets you a new 5-page website for {gbp(managedPlan.setup)} setup and {gbp(managedPlan.monthly)}/month.</p>
@@ -119,16 +128,6 @@ const description = 'Ellveren designs, builds and looks after websites for estab
         z-index: 0;
     }
 
-    .services-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-    }
-
     .services-hero-content {
         position: relative;
         z-index: 1;
@@ -165,6 +164,16 @@ const description = 'Ellveren designs, builds and looks after websites for estab
         justify-content: center;
         gap: 12px;
         margin-top: 32px;
+    }
+
+    .section-photo {
+        margin-bottom: 28px;
+    }
+
+    @media (max-width: 640px) {
+        .section-photo {
+            --photo-aspect: 16 / 9;
+        }
     }
 
     .table-note {

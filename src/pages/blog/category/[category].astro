@@ -1,4 +1,5 @@
 ---
+import HeroGrid from '../../../components/HeroGrid.astro';
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
@@ -40,7 +41,7 @@ const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() 
 
 <Layout
     title={`${category} Articles | Blog | Ellveren`}
-    description={`Browse our articles about ${category.toLowerCase()} — tips, guides, and insights from Ellveren.`}
+    description={`Browse our articles about ${category.toLowerCase()}: tips, guides, and insights from Ellveren.`}
     openGraph={{
         basic: {
             title: `${category} Articles | Ellveren`,
@@ -60,7 +61,7 @@ const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() 
     <Header />
     <main>
         <section class="section blog-hero">
-            <div class="blog-bg"></div>
+            <div class="blog-bg"><HeroGrid /></div>
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: category }]} />
                 <div class="blog-hero-content">
@@ -116,16 +117,6 @@ const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() 
                     radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245, 111, 81, 0.12) 0%, transparent 100%),
                     var(--black);
         z-index: 0;
-    }
-
-    .blog-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
     }
 
     .blog-hero .container {
