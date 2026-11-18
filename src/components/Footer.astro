@@ -29,12 +29,17 @@ import HeroGrid from './HeroGrid.astro';
                 <a href="/about">About</a>
                 <a href="/blog">Blog</a>
                 <a href="/contact">Contact</a>
-                <a href="/privacy">Privacy policy</a>
             </nav>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Ellveren Ltd. All rights reserved. Ellveren Ltd, formerly Custom Made Web Solutions Ltd.</p>
+            <div class="footer-bottom-row">
+                <p>&copy; 2026 Ellveren Ltd. All rights reserved. Ellveren Ltd, formerly Custom Made Web Solutions Ltd.</p>
+                <nav class="footer-policies" aria-label="Legal">
+                    <a href="/privacy">Privacy policy</a>
+                    <a href="/terms">Terms of service</a>
+                </nav>
+            </div>
             <p class="footer-legal">
                 Registered Office: Friarswood, Chipperfield Road, Kings Langley, Hertfordshire, England, WD4 9JB <br>
                 Registered in England and Wales, No. 15582477
@@ -135,6 +140,28 @@ import HeroGrid from './HeroGrid.astro';
 
     .footer-bottom p {
         color: rgba(250, 242, 237, 0.38);
+    }
+
+    .footer-bottom-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 6px 24px;
+    }
+
+    .footer-policies {
+        display: flex;
+        gap: 18px;
+    }
+
+    .footer-policies a {
+        color: rgba(250, 242, 237, 0.38);
+        transition: color 180ms ease;
+    }
+
+    .footer-policies a:hover {
+        color: var(--white);
     }
 
     .footer-legal {
