@@ -1,5 +1,9 @@
+---
+import HeroGrid from './HeroGrid.astro';
+---
+
 <footer class="site-footer">
-    <div class="site-footer-bg"></div>
+    <div class="site-footer-bg"><HeroGrid /></div>
     <div class="container site-footer-content">
         <div class="footer-grid">
             <div class="footer-brand">
@@ -52,15 +56,12 @@
         z-index: 1;
     }
 
+    /* The dark background sits on this layer too, so the grid's screen blending has
+       something to blend with (this layer is its own stacking context). */
     .site-footer-bg {
         position: absolute;
         inset: 0;
-        background-image:
-            linear-gradient(rgba(250, 242, 237, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(250, 242, 237, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        mask-image: radial-gradient(circle at 0% 100%, black 30%, transparent 70%);
-        -webkit-mask-image: radial-gradient(circle at 0% 100%, black 30%, transparent 70%);
+        background: var(--black);
         pointer-events: none;
         z-index: 0;
     }

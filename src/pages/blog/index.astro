@@ -1,4 +1,5 @@
 ---
+import GradientText from '../../components/GradientText.astro';
 import HeroGrid from '../../components/HeroGrid.astro';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
@@ -56,7 +57,7 @@ function slugify(str: string): string {
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
                 <div class="blog-hero-content">
                     <span class="eyebrow">Blog</span>
-                    <h1>Practical advice for growing businesses.</h1>
+                    <h1>Practical advice for <GradientText>growing businesses</GradientText>.</h1>
                     <p class="lead">Tips, guides, and thoughts on web design, development, and growing your business online.</p>
                 </div>
             </div>

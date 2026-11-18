@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -50,7 +51,7 @@ const description = 'Ellveren designs, builds and looks after websites for estab
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
                 <div class="services-hero-content">
-                    <h1>What I offer</h1>
+                    <h1>What I <GradientText>offer</GradientText></h1>
                     <p class="lead">{description}</p>
                     <div class="hero-actions">
                         <a href="/plans" class="btn btn-accent">See the plans</a>

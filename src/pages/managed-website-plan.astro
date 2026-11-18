@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -82,7 +83,7 @@ const faqs = [
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Managed Website Plan' }]} />
                 <div class="managed-hero-content">
-                    <h1>A new website, without the big upfront cost</h1>
+                    <h1>A new website, <GradientText>without the big upfront cost</GradientText></h1>
                     <p class="lead">A fast, professionally designed website with hosting, security, backups and monthly edits included, for <strong>{setup} setup and {monthly}</strong>. After 12 months, the site is yours.</p>
                     <div class="hero-actions">
                         <a href="/contact?interest=managed" class="btn btn-accent">Start your website</a>

@@ -1,4 +1,5 @@
 ---
+import GradientText from '../../../components/GradientText.astro';
 import HeroGrid from '../../../components/HeroGrid.astro';
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
@@ -66,7 +67,7 @@ const sortedPosts = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() 
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: category }]} />
                 <div class="blog-hero-content">
                     <span class="eyebrow">{category}</span>
-                    <h1>{category} articles</h1>
+                    <h1><GradientText>{category}</GradientText> articles</h1>
                     <p class="lead">Browse our articles about {category.toLowerCase()}.</p>
                 </div>
             </div>

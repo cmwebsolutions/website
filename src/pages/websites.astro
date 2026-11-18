@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -74,7 +75,7 @@ const faqs = [
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Websites' }]} />
                 <div class="websites-hero-content">
-                    <h1>Websites built properly, and looked after properly</h1>
+                    <h1>Websites built properly, and <GradientText>looked after properly</GradientText></h1>
                     <p class="lead">Fixed-price websites designed and built for your business, connected to the tools you already use where you need them, and looked after on a clear monthly plan once they're live.</p>
                     <div class="hero-actions">
                         <a href="/contact?interest=new-website" class="btn btn-accent">Talk about your project</a>

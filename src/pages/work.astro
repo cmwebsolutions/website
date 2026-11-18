@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -37,7 +38,7 @@ import { projects } from '../data/projects';
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Our Work' }]} />
                 <div class="work-hero-content">
                     <span class="eyebrow">Our work</span>
-                    <h1>Real websites for real businesses.</h1>
+                    <h1>Real websites for <GradientText>real businesses</GradientText>.</h1>
                     <p class="lead">Every project is different, but our approach stays the same: understand the goal, design with purpose, and deliver something that works.</p>
                 </div>
             </div>

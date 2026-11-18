@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -34,7 +35,7 @@ import { interests, budgets } from '../data/enquiry';
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
                 <div class="contact-hero-content">
                     <span class="eyebrow">Contact me</span>
-                    <h1>Let's talk about your website</h1>
+                    <h1>Let's talk about <GradientText>your website</GradientText></h1>
                     <p class="lead">Tell me a little about what you need and I'll get back to you within 1 working day.</p>
                 </div>
             </div>

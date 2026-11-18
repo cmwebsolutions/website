@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -45,7 +46,7 @@ import { photos } from '../data/images';
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
                 <div class="about-hero-content">
                     <span class="eyebrow">About us</span>
-                    <h1>A technology partner who understands your business.</h1>
+                    <h1>A technology partner who <GradientText>understands your business</GradientText>.</h1>
                     <p class="lead">Ellveren is a UK-based technology and digital partner for growing businesses, wherever they are based. We bring together websites, bespoke software, ongoing support and digital growth, with a practical approach to what your business needs.</p>
                 </div>
             </div>

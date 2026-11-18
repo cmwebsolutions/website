@@ -1,0 +1,25 @@
+---
+// The brand's blue-to-coral gradient on a key phrase in a heading, as in the designer's banner.
+// Use on dark backgrounds only: the light-blue end is too faint on the light sections.
+---
+
+<span class="gradient-text"><slot /></span>
+
+<style>
+    .gradient-text {
+        color: var(--secondary);
+    }
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        .gradient-text {
+            color: transparent;
+            background-image: linear-gradient(90deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* If the phrase wraps, each line gets the full sweep. */
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+    }
+</style>

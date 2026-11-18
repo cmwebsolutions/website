@@ -1,4 +1,5 @@
 ---
+import GradientText from '../components/GradientText.astro';
 import HeroGrid from '../components/HeroGrid.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -189,7 +190,7 @@ const faqs = [
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Plans' }]} />
                 <div class="plans-hero-content">
-                    <h1>Website care plans</h1>
+                    <h1>Website <GradientText>care plans</GradientText></h1>
                     <p class="lead">Every plan keeps your website secure, up to date, backed up and monitored, and if something stops working, I fix it. If you need regular changes too, the plans with hours give you time each month from the person who looks after your site.</p>
                     <div class="hero-actions">
                         <a href="#plan-comparison" class="btn btn-accent">See the plans</a>
