@@ -1,9 +1,22 @@
 ---
+import HeroGrid from './HeroGrid.astro';
+
 interface Props {
     transparent?: boolean;
 }
 
 const { transparent = true } = Astro.props;
+
+const mobileLinks = [
+    { href: '/services', label: 'Services' },
+    { href: '/websites', label: 'Websites' },
+    { href: '/plans', label: 'Plans' },
+    { href: '/work', label: 'Work' },
+    { href: '/about', label: 'About' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="site-header" class:list={{ 'site-header--scrolled': !transparent, 'site-header--solid': !transparent }}>
@@ -18,7 +31,7 @@ const { transparent = true } = Astro.props;
                 <a href="/services">Services</a>
                 <a href="/websites">Websites</a>
                 <a href="/plans">Plans</a>
-                <a href="/work">Our Work</a>
+                <a href="/work">Work</a>
                 <a href="/about">About</a>
                 <a href="/blog">Blog</a>
                 <a href="/contact">Contact</a>
@@ -26,7 +39,7 @@ const { transparent = true } = Astro.props;
 
             <div class="nav-actions">
                 <a class="btn btn-primary" href="/contact">Book a call</a>
-                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -34,15 +47,20 @@ const { transparent = true } = Astro.props;
             </div>
         </nav>
 
-            <div class="nav-mobile">
-                <a href="/services">Services</a>
-                <a href="/websites">Websites</a>
-                <a href="/plans">Plans</a>
-                <a href="/work">Our Work</a>
-                <a href="/about">About</a>
-                <a href="/blog">Blog</a>
-                <a href="/contact">Contact</a>
-            </div>
+        <div class="nav-mobile" id="nav-mobile">
+            <HeroGrid />
+            <nav class="nav-mobile-links" aria-label="Mobile navigation">
+                {mobileLinks.map((link, i) => (
+                    <a
+                        href={link.href}
+                        style={`--i: ${i}`}
+                        aria-current={path === link.href || path.startsWith(`${link.href}/`) ? 'page' : undefined}
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </nav>
+        </div>
     </div>
 </header>
 
@@ -54,24 +72,32 @@ const { transparent = true } = Astro.props;
         toggleHeader();
     }
 
-    const hamburger = document.querySelector('.hamburger');
+    // Full-screen mobile menu: locks page scroll while open; Escape, a link or the button closes it.
+    const hamburger = document.querySelector<HTMLButtonElement>('.hamburger');
     if (header && hamburger) {
-        hamburger.addEventListener('click', () => {
-            header.classList.toggle('nav-open');
-            const isOpen = header.classList.contains('nav-open');
-            hamburger.setAttribute('aria-expanded', String(isOpen));
-        });
-    }
+        const setOpen = (open: boolean) => {
+            header.classList.toggle('nav-open', open);
+            hamburger.setAttribute('aria-expanded', String(open));
+            hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            document.documentElement.style.overflow = open ? 'hidden' : '';
+        };
 
-    if (header) {
+        hamburger.addEventListener('click', () => setOpen(!header.classList.contains('nav-open')));
+
         document.querySelectorAll('.nav-mobile a').forEach((link) => {
-            link.addEventListener('click', () => {
-                header.classList.remove('nav-open');
-                const hamburgerBtn = document.querySelector('.hamburger');
-                if (hamburgerBtn) {
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                }
-            });
+            link.addEventListener('click', () => setOpen(false));
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && header.classList.contains('nav-open')) {
+                setOpen(false);
+                hamburger.focus();
+            }
+        });
+
+        // Close it if the window grows past the mobile breakpoint.
+        window.matchMedia('(min-width: 981px)').addEventListener('change', (event) => {
+            if (event.matches) setOpen(false);
         });
     }
 </script>
@@ -224,21 +250,20 @@ const { transparent = true } = Astro.props;
         transform: translateY(-7.5px) rotate(-45deg);
     }
 
+    /* Full-screen mobile menu. It sits behind the header bar (negative z-index inside the
+       header's stacking context), so the logo and close button stay on top. */
     .nav-mobile {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
         display: none;
-        flex-direction: column;
-        gap: 4px;
-        padding: 12px 20px 20px;
-        background: rgba(250, 242, 237, 0.82);
-        backdrop-filter: blur(18px);
-        border-bottom: 1px solid var(--border);
+        place-items: center;
+        padding: 96px 24px 48px;
+        overflow-y: auto;
+        background: var(--black);
         opacity: 0;
         visibility: hidden;
-        transition: opacity 200ms ease, visibility 200ms ease;
+        transition: opacity 260ms ease, visibility 260ms ease;
     }
 
     .nav-open .nav-mobile {
@@ -246,18 +271,68 @@ const { transparent = true } = Astro.props;
         visibility: visible;
     }
 
-    .nav-mobile a {
-        padding: 12px 16px;
-        border-radius: var(--radius-sm);
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--muted);
-        transition: background 180ms ease, color 180ms ease;
+    .nav-mobile-links {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
     }
 
-    .nav-mobile a:hover {
-        background: rgba(29, 33, 42, 0.06);
-        color: var(--text);
+    .nav-mobile-links a {
+        padding: 6px 12px;
+        color: var(--white);
+        font-family: var(--font-heading);
+        font-size: clamp(1.9rem, 8vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.15;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+            color 180ms ease,
+            opacity 300ms ease,
+            transform 300ms ease;
+    }
+
+    /* Links fade up one after another as the menu opens. */
+    .nav-open .nav-mobile-links a {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(80ms + var(--i) * 40ms), calc(80ms + var(--i) * 40ms), calc(80ms + var(--i) * 40ms);
+    }
+
+    .nav-mobile-links a:hover,
+    .nav-mobile-links a[aria-current='page'] {
+        color: var(--accent);
+    }
+
+    /* While open the header bar is see-through, with the white logo and close icon.
+       Dropping the backdrop filter also lets the fixed menu fill the whole screen. */
+    .site-header.nav-open {
+        background: transparent;
+        border-bottom-color: transparent;
+        backdrop-filter: none;
+    }
+
+    .site-header.nav-open .brand-logo--white {
+        display: block;
+    }
+
+    .site-header.nav-open .brand-logo--dark {
+        display: none;
+    }
+
+    .site-header.nav-open .hamburger span {
+        background: var(--white);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .nav-mobile,
+        .nav-mobile-links a {
+            transition: none;
+            transform: none;
+        }
     }
 
     @media (max-width: 980px) {
@@ -270,7 +345,7 @@ const { transparent = true } = Astro.props;
         }
 
         .nav-mobile {
-            display: flex;
+            display: grid;
         }
     }
 
