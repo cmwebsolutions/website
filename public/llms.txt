@@ -1,0 +1,36 @@
+# Ellveren
+> Ellveren designs, builds and looks after websites for established UK businesses. One point of contact who knows your site, clear monthly plans, and no surprises.
+
+## Pages
+
+- [Home](https://www.ellveren.com/) — Your website, in safe hands.
+- [Services](https://www.ellveren.com/services) — Website design, web applications, hosting and maintenance, SEO, and paid advertising.
+- [Websites](https://www.ellveren.com/websites) — Fixed-price websites from £3,500. Brochure, business, integrated and portal sites.
+- [Plans](https://www.ellveren.com/plans) — Monthly website care plans: Static £45/mo, Care £85/mo, Care + Support £235/mo, Care + Growth £385/mo.
+- [Managed Website Plan](https://www.ellveren.com/managed-website-plan) — Full-service website at £249/mo + £499 setup. Design, build, hosting, care, and support.
+- [Work](https://www.ellveren.com/work) — Recent projects.
+- [About](https://www.ellveren.com/about) — Who runs Ellveren and how it works.
+- [Contact](https://www.ellveren.com/contact) — Enquiry form.
+- [Blog](https://www.ellveren.com/blog) — Tips on web design, SEO, and growing your business online.
+- [Terms](https://www.ellveren.com/terms) — Terms of service.
+- [Privacy](https://www.ellveren.com/privacy) — Privacy policy.
+
+## Pricing
+
+- **Static plan:** £45/month
+- **Care plan:** £85/month
+- **Care + Support plan:** £235/month
+- **Care + Growth plan:** £385/month
+- **Retainer:** from £535/month
+- **Managed Website Plan:** £249/month + £499 setup
+- **Fixed-price websites:** from £3,500
+- **Hourly rate:** £80
+- **Prices do not include VAT (Ellveren is not VAT registered).**
+
+## Key facts
+
+- Based in the UK — serves established UK businesses.
+- Clients work directly with the person responsible for their site, not an account manager.
+- Weekly updates, same-day security patches, daily off-site backups.
+- No long lock-ins — your site and content always belong to you.
+- WordPress and static sites supported.
