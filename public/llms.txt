@@ -1,5 +1,5 @@
 # Ellveren
-> Ellveren designs, builds and looks after websites for established UK businesses. One point of contact who knows your site, clear monthly plans, and no surprises.
+> Ellveren designs, builds and looks after websites for established UK businesses. Clear monthly plans, and no surprises.
 
 ## Pages
 
@@ -25,12 +25,11 @@
 - **Managed Website Plan:** £249/month + £499 setup
 - **Fixed-price websites:** from £3,500
 - **Hourly rate:** £80
-- **Prices do not include VAT (Ellveren is not VAT registered).**
+- **No VAT: Ellveren isn't VAT registered, so the prices shown are what you pay.**
 
 ## Key facts
 
 - Based in the UK — serves established UK businesses.
-- Clients work directly with the person responsible for their site, not an account manager.
 - Weekly updates, same-day security patches, daily off-site backups.
 - No long lock-ins — your site and content always belong to you.
 - WordPress and static sites supported.

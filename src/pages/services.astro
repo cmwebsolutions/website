@@ -22,7 +22,7 @@ import {
     websiteComparisonRows,
 } from '../data/plans';
 
-const description = 'Ellveren designs, builds and looks after websites for established UK businesses, with one point of contact who knows your site and clear monthly plans.';
+const description = 'Ellveren designs, builds and looks after websites for established UK businesses, with clear monthly plans.';
 ---
 
 <Layout
@@ -51,7 +51,7 @@ const description = 'Ellveren designs, builds and looks after websites for estab
             <div class="container">
                 <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
                 <div class="services-hero-content">
-                    <h1>What I <GradientText>offer</GradientText></h1>
+                    <h1>What we <GradientText>offer</GradientText></h1>
                     <p class="lead">{description}</p>
                     <div class="hero-actions">
                         <a href="/plans" class="btn btn-accent">See the plans</a>
@@ -72,7 +72,7 @@ const description = 'Ellveren designs, builds and looks after websites for estab
                     <Photo photo={photos.servicesCare} aspect="21 / 9" sizes="(max-width: 1200px) 100vw, 1160px" />
                 </div>
                 <PlanTable caption="Care plans" columns={planComparisonColumns} rows={planComparisonRows} />
-                <p class="table-note">Same price whether I host your site or it runs on your own server.</p>
+                <p class="table-note">Same price whether we host your site or it runs on your own server.</p>
                 <a href="/plans" class="btn btn-primary section-btn">See the plans</a>
             </div>
         </section>
@@ -94,8 +94,8 @@ const description = 'Ellveren designs, builds and looks after websites for estab
         <WhyEllveren />
 
         <Testimonials
-            heading="Trusted by businesses I've built for."
-            description="See what my clients say about working with me on their websites."
+            heading="Trusted by businesses we've built for."
+            description="See what our clients say about working with us on their websites."
             layout="featured"
             testimonials={[
                 testimonials[5],

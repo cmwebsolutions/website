@@ -3,7 +3,7 @@
 Copy for the pages that must be live **before the Step 6 client notices go out**. Prices and rules come from Steps 2–7 and "Changes after the review" in `pricing-growth-decisions.md`.
  
 Notes before publishing:
-- Written in the first person ("I"), to match the notices and the fact that clients work directly with Ciaran. Ellveren is the brand (headlines, logo, tagline); Ciaran is the face (body copy). To switch to "we" when someone joins, change the pronouns in body copy only.
+- Written as the business ("we", "us", "our"), so Ellveren reads as a company rather than a personal brand. Customer-voice lines (FAQ questions such as "Do I own the website?", form options) stay in the first person. Testimonials are quoted as given.
 - **No VAT.** Ellveren isn't VAT registered (12 Nov 2026), so prices are shown as they are. Once registered, add "+ VAT" to the prices, update terms 3.5, the payment section and the VAT FAQ, and give clients notice.
 - Not on the public pages: existing clients moving onto plans with hours don't have the 3-month minimum (goes in their notices only). There is **no price hold** (removed 11 Nov 2026). The free move for existing hosting-only clients is in their notices only; the public price for an assisted move stays £120.
 - The Terms page is a working draft, not legal advice. A quick review by a solicitor or a template service is worthwhile, particularly the liability and data protection clauses.
@@ -15,6 +15,7 @@ Notes before publishing:
 - Updated 12 Nov 2026: **extra static site +£30/month** (multi-site rule in the plans section, add-ons table and a new FAQ). One plan per business; WordPress is the base if a client has both.
 - Updated 18 Nov 2026: **no em dashes anywhere** (headings, titles and copy use a colon, comma or full stop instead, and the dash for no included hours is now "None"). **Free health check hidden for now** (homepage route card, `/plans` hero, card, FAQ and closing line, and the enquiry form option; wording kept below, struck through). `/websites` cards now show the name and price on separate lines, and the Portals detail is a short line plus three checkpoints. `/plans` comparison is shown as tabs, one per plan.
 - Updated 12 Nov 2026: **VAT removed everywhere** (not registered). Care now lists a **premium form builder** and **website email delivery** (Postmark, or the client's own email provider connected at setup). Backups are live, so the sample report and restore line can go on `/plans` now.
+- Updated 20 Nov 2026: **"we" instead of "I"** in all Ellveren body copy, including the Terms ("Ellveren", "we", "us"). **"One point of contact" removed** (Why Ellveren bullet, positioning sentence, homepage hero line), so the business doesn't read as too small for larger projects.
 Pages:
 0. Brand lines and homepage hero
 1. Plans & what's included (`/plans`)
@@ -29,7 +30,7 @@ Pages:
  
 **Tagline:** Your website, in safe hands.
  
-**Positioning sentence:** Ellveren designs, builds and looks after websites for established UK businesses, with one point of contact who knows your site and clear monthly plans.
+**Positioning sentence:** Ellveren designs, builds and looks after websites for established UK businesses, with clear monthly plans.
  
 **Brand feel (brief for the designer):** calm, dependable, plain-spoken, quietly technical. Not a flashy creative studio. Clean type, plenty of space, one confident accent colour.
  
@@ -37,7 +38,7 @@ Pages:
  
 # Your website, in safe hands.
  
-Ellveren designs, builds and looks after websites for established UK businesses. You deal directly with the person responsible for your site, on clear monthly plans with no surprises.
+Ellveren designs, builds and looks after websites for established UK businesses. Clear monthly plans, with no surprises.
  
 ~~[Get a free website health check]~~ [See the plans]
  
@@ -54,10 +55,9 @@ Sites connected to your other systems, client portals and web apps. [Integrated 
  
 ### Why Ellveren (homepage section)
  
-- **One point of contact.** You speak to the person responsible for your site, not an account manager.
 - **Clear plans, honest prices.** Stated inclusions, stated hours and fixed-price projects. No overselling.
 - **Looked after properly.** Weekly updates, same-day security patches, and daily off-site backups with a separate provider.
-- **Built to last.** Some clients have been with me for over 10 years.
+- **Built to last.** Some clients have been with us for over 10 years.
 - **Yours to keep.** No long lock-ins, and your site and content always belong to you.
 Clients include accountancy, insurance, recruitment and hospitality businesses. _(Replace with named case studies once approved: UK Credit, Haleybridge, SAS.)_
  
@@ -72,7 +72,7 @@ Clients include accountancy, insurance, recruitment and hospitality businesses. 
  
 # Website care plans
  
-Every plan keeps your website secure, up to date, backed up and monitored, and if something stops working, I fix it. If you need regular changes too, the plans with hours give you time each month from the person who looks after your site.
+Every plan keeps your website secure, up to date, backed up and monitored, and if something stops working, we fix it. If you need regular changes too, the plans with hours give you time each month from the people who look after your site.
  
 [See the plans] ~~[Get a free health check]~~
  
@@ -93,37 +93,37 @@ Retainer: 6 hours £535 · 8 hours £685 · 10 hours £835. Planned work schedul
 - Each extra static website: **+£30/month**
 If you have both, the plan is based on a WordPress site. On plans with hours, the hours are shared across all your sites.
  
-Same price whether I host your site or it runs on your own server.
+Same price whether we host your site or it runs on your own server.
  
 > **Care and Static plans don't include development or content time.**
-> They keep your website secure, updated and backed up, and I fix anything that stops working. If you need regular changes, **Care + Support** includes 2 hours every month. One-off changes are £80/hour.
+> They keep your website secure, updated and backed up, and we fix anything that stops working. If you need regular changes, **Care + Support** includes 2 hours every month. One-off changes are £80/hour.
  
 ### What every Care plan includes (WordPress)
  
 **Updates and security**
 - Weekly updates to WordPress, your theme and plugins, with a visual check of your site after each update
 - Critical security patches applied the same day
-- Malware clean-up included on sites I host, unless it's caused on your side (for example a leaked password, a plugin you've added, or access you've given someone else)
+- Malware clean-up included on sites we host, unless it's caused on your side (for example a leaked password, a plugin you've added, or access you've given someone else)
 **Fixes included**
-- If something on your site that was working stops working, and the cause is within my care (WordPress, the plugins and theme I manage, or the hosting), I fix it at no extra cost
+- If something on your site that was working stops working, and the cause is within our care (WordPress, the plugins and theme we manage, or the hosting), we fix it at no extra cost
 - That includes anything an update breaks
 - Changes, new content and new features aren't fixes, so they're quoted separately (see below)
 **Monitoring**
 - Uptime checked every 5 minutes
-- If your site goes down, I start on it within 4 working hours
+- If your site goes down, we start on it within 4 working hours
 **Backups**
 - Daily backups kept for 30 days, stored with a separate provider from your hosting, so a problem with one never takes out both
-- Sites I host also get hourly backups from the hosting platform
-**Hosting** (if I host your site)
+- Sites we host also get hourly backups from the hosting platform
+**Hosting** (if we host your site)
 - Managed UK servers, with SSL included
 **Cookie consent and policies**
 - A cookie consent banner, privacy policy, cookie policy and terms set up for your site and kept up to date (powered by GetTerms)
 **Premium tools, included while you're on the plan**
 - A premium theme, speed optimisation, spam protection for your forms and comments, and a premium form builder, where your site uses them
-- Reliable delivery of your website's emails, such as form notifications: through my email delivery service, or I'll connect your own email provider
+- Reliable delivery of your website's emails, such as form notifications: through our email delivery service, or we'll connect your own email provider
 **Help and reporting**
 - Quick how-to help: questions about using your site answered by email with clear written steps, so you can make changes yourself
-- A monthly email report covering updates, uptime, backups and anything I fixed
+- A monthly email report covering updates, uptime, backups and anything we fixed
 ### What every Static plan includes
  
 Static sites are fast, secure and low maintenance because there's no WordPress or database to keep patched.
@@ -134,7 +134,7 @@ Static sites are fast, secure and low maintenance because there's no WordPress o
 - A cookie consent banner (where your site needs one), privacy policy and terms set up and kept up to date (powered by GetTerms)
 - Full version history: every version of your site is stored and can be restored
 - Quarterly security and dependency check, with a rebuild if needed
-- If hosting or an update breaks something, I fix it free of charge
+- If hosting or an update breaks something, we fix it free of charge
 - Quarterly summary report
 - Edit your own pages and blog through Sitepins, where it's set up for your site (edits you make yourself are free)
 - Quick how-to help by email
@@ -143,31 +143,31 @@ Static sites are fast, secure and low maintenance because there's no WordPress o
 Care + Support, Care + Growth and Retainer plans include hours each month. Use them for content edits, small features, SEO tasks, advice: whatever is most useful.
  
 - **Time is tracked in 15-minute steps.** Every request counts, including small edits.
-- **I'll let you know when you've used 80%** of the month's hours. You choose: pause, hold work until next month, or approve extra time at £80/hour.
-- **Hours are for each calendar month** and don't carry over. Near the end of a quiet month, I'll suggest useful ways to spend any time left.
+- **We'll let you know when you've used 80%** of the month's hours. You choose: pause, hold work until next month, or approve extra time at £80/hour.
+- **Hours are for each calendar month** and don't carry over. Near the end of a quiet month, we'll suggest useful ways to spend any time left.
 - **Your plan always includes the care.** Updates, security, backups, monitoring and fixing anything that stops working are covered every month, whether or not you use your hours.
 - **Your monthly report** shows the hours included, the hours used and what the work was.
 - **New websites, rebuilds and large features** are quoted separately, so your monthly hours stay for ongoing work.
-- **Change plan** up or down with one month's notice. If you regularly need more time, I'll suggest the plan that fits.
+- **Change plan** up or down with one month's notice. If you regularly need more time, we'll suggest the plan that fits.
 Plans with hours cost £75 per included hour, compared with £80/hour for one-off work.
  
 ### ~~Free website health check~~
  
 _(Free health check hidden for now, 18 Nov 2026. The struck-through wording is kept so it can be restored.)_
  
-~~Not sure what state your website is in? I'll take a look, free of charge.~~
+~~Not sure what state your website is in? We'll take a look, free of charge.~~
  
 - ~~A check of your site's security, plugins and updates, backups, speed and basic search setup~~
-- ~~A short written summary of what I found, in plain English~~
+- ~~A short written summary of what we found, in plain English~~
 - ~~A recommendation for the plan that fits, with no obligation~~
 ~~[Request a free health check]~~
  
-### Moving your site to me
+### Moving your site to us
  
-If your website was built or hosted by someone else, I'll take it over properly before your plan starts.
+If your website was built or hosted by someone else, we'll take it over properly before your plan starts.
  
 **Site takeover: £195, fixed, one-off**
-- Move your site to my managed UK hosting (if I'm hosting it)
+- Move your site to our managed UK hosting (if we're hosting it)
 - Review and tidy up plugins, and replace licences with the plan's premium tools where they fit
 - Set up daily off-site backups, uptime monitoring and update routines
 - Check everything works before and after the move
@@ -176,13 +176,13 @@ Then your Care plan runs as normal from the following month. Problems that were 
 ### Not included in any plan
  
 These are quoted separately at £80/hour (or a fixed price):
-- Content edits, new pages and new features on Care and Static plans, however small (I'll happily explain how to make simple changes yourself)
+- Content edits, new pages and new features on Care and Static plans, however small (we'll happily explain how to make simple changes yourself)
 - Domain names, DNS and email hosting (mailboxes)
 - Third-party services, including fixing problems when a third-party service changes or stops working (for example booking tools, embeds, CRMs or external APIs)
 - Plugins or tools you've added yourself
 - Your server, if your site runs on your own hosting (unless you add Server care)
 - Fixing problems caused on your side, such as plugins you've installed, changes you've made, leaked passwords or access you've given to others
-- Problems that were already there when I took over your site
+- Problems that were already there when we took over your site
 - Premium plugin licences after you leave a plan
 ### Add-ons
  
@@ -195,7 +195,7 @@ These are quoted separately at £80/hour (or a fixed price):
 | **Extra WordPress site** | £65/month | Each additional WordPress site for the same business |
 | **Extra static site** | £30/month | Each additional static site for the same business, on the same plan |
  
-Google Ads management is available for existing plan clients on request. Ask me for details.
+Google Ads management is available for existing plan clients on request. Ask us for details.
  
 ### Other work
  
@@ -204,7 +204,7 @@ Google Ads management is available for existing plan clients on request. Ask me 
 - **Training:** one-to-one help getting comfortable with your site, at £80/hour.
 - **Day rate:** £550 (7.5 hours), half day £300, booked and paid in advance.
 - **Defined projects** (landing pages, features): fixed price, agreed before work starts.
-- **Rush or out-of-hours work you request:** £120/hour. Never charged when the problem was caused by my hosting, updates or mistakes.
+- **Rush or out-of-hours work you request:** £120/hour. Never charged when the problem was caused by our hosting, updates or mistakes.
 - **Standard turnaround for one-off work:** small requests within 3 working days; larger work scheduled.
 ### Payment and terms
  
@@ -221,7 +221,7 @@ Full terms: [Terms of service](/terms)
  
 You're never locked in after your minimum term.
 - You get a full backup of your site (or your code repository for static sites) and instructions for pointing your domain at your new host, free of charge.
-- Prefer me to move it for you? An assisted move to your new host is **£120 per site**, fixed.
+- Prefer us to move it for you? An assisted move to your new host is **£120 per site**, fixed.
 - Premium plugin licences and the cookie banner and policies provided under the plan are removed, so you'd set up your own.
 - Your content, images and brand assets are always yours.
 ### FAQs
@@ -230,10 +230,10 @@ You're never locked in after your minimum term.
 Care covers the work that keeps your site safe and working: updates, security, backups, monitoring, and fixing anything that stops working. Keeping changes separate is what keeps the price at £85. If you want changes every month, Care + Support includes 2 hours for £235.
  
 **What counts as a fix, and what counts as a change?**
-A fix is when something that was working has stopped working, and the cause is within my care: an update, a plugin or theme I manage, or the hosting. That's included. A change is anything new or different: new text or images, moving or restyling something, a new page or feature. Changes are £80/hour, or come out of your hours on a plan that includes them. Problems caused by a third-party service, by changes made on your side, or that were there before I took over the site are quoted separately. If fixes ever start taking more than about 30 minutes a month, I'll talk to you about why.
+A fix is when something that was working has stopped working, and the cause is within our care: an update, a plugin or theme we manage, or the hosting. That's included. A change is anything new or different: new text or images, moving or restyling something, a new page or feature. Changes are £80/hour, or come out of your hours on a plan that includes them. Problems caused by a third-party service, by changes made on your side, or that were there before we took over the site are quoted separately. If fixes ever start taking more than about 30 minutes a month, we'll talk to you about why.
  
 **Can I ask how to do things on my site?**
-Yes. On every plan, send me your "how do I…" questions and I'll reply with clear written steps so you can make the change yourself. If questions regularly take more than about 30 minutes a month, I'll suggest a training session (£80/hour) or Care + Support, where I can make the changes for you.
+Yes. On every plan, send us your "how do I…" questions and we'll reply with clear written steps so you can make the change yourself. If questions regularly take more than about 30 minutes a month, we'll suggest a training session (£80/hour) or Care + Support, where we can make the changes for you.
  
 **My site was built by someone else. Can you look after it?**
 Yes. ~~Start with a free health check so we both know what we're working with.~~ Taking it over is a one-off £195, then your plan runs as normal.
@@ -242,7 +242,7 @@ Yes. ~~Start with a free health check so we both know what we're working with.~~
 No. Plans cost the same either way, because most of the cost is the time spent looking after your site. If your site is on your own server, the server itself is your hosting company's responsibility, unless you add Server care.
  
 **Can you just host my site, without the care plan?**
-No. WordPress sites that aren't updated are the ones that get hacked, so every site I host is on a plan that keeps it updated and secure. If you only want hosting, a self-managed host will suit you better, and I'm happy to help you move.
+No. WordPress sites that aren't updated are the ones that get hacked, so every site we host is on a plan that keeps it updated and secure. If you only want hosting, a self-managed host will suit you better, and we're happy to help you move.
  
 **What counts as a "small request"?**
 Anything that takes under about an hour: a text or image change, a new team member, a form tweak. Bigger work is scheduled and agreed with you first.
@@ -251,7 +251,7 @@ Anything that takes under about an hour: a text or image change, a new team memb
 Nothing happens without your say-so. You'll get a heads-up at 80%, and extra time is only done if you approve it, at £80/hour.
  
 **Do unused hours carry over?**
-No. Hours are for each calendar month. Your plan pays for your site to be looked after every month, and for me to be there when something goes wrong; the included hours are on top of that. Near the end of a quiet month I'll suggest useful ways to spend any time left, and if your needs change, you can move plans with one month's notice.
+No. Hours are for each calendar month. Your plan pays for your site to be looked after every month, and for us to be there when something goes wrong; the included hours are on top of that. Near the end of a quiet month we'll suggest useful ways to spend any time left, and if your needs change, you can move plans with one month's notice.
  
 **I have more than one website. Do I need a plan for each?**
 No. One plan covers all your sites. Your first site is on its normal plan (Care for WordPress, Static for a static site), and each extra site is added on: +£65/month for WordPress, +£30/month for static. You get one monthly report and one Direct Debit, and on plans with hours, the hours are shared across your sites. Annual billing (10% off) applies to the whole plan on Care and Static. For example, one WordPress site and two static sites: £85 + £30 + £30 = £145/month.
@@ -260,7 +260,7 @@ No. One plan covers all your sites. Your first site is on its normal plan (Care 
 Yes, up or down, with one month's notice.
  
 **Do you host email?**
-No. Domains and email mailboxes stay with the providers you choose. I'm happy to point your website's DNS records in the right place, and on Care plans your website's own emails (such as form notifications) are delivered reliably, through my email delivery service or your own provider.
+No. Domains and email mailboxes stay with the providers you choose. We're happy to point your website's DNS records in the right place, and on Care plans your website's own emails (such as form notifications) are delivered reliably, through our email delivery service or your own provider.
  
 **Do you charge VAT?**
 No. Ellveren isn't VAT registered, so the prices shown are what you pay.
@@ -268,7 +268,7 @@ No. Ellveren isn't VAT registered, so the prices shown are what you pay.
 ### Closing call to action
  
 ## Not sure which plan fits?
-Tell me about your site and what you need from it, and I'll recommend the right plan. ~~Or start with a free health check.~~ No obligation.
+Tell us about your site and what you need from it, and we'll recommend the right plan. ~~Or start with a free health check.~~ No obligation.
  
 [Get in touch]
  
@@ -322,22 +322,22 @@ For client areas, dashboards and custom tools.
 ### How it works
  
 1. **We talk.** A free 30-minute call about your business, what the website needs to do, your timeline and budget.
-2. **I send a proposal.** Within 3 working days: the scope, what's not included, a timeline and a fixed price.
-3. **Design.** I design your site, with 2 rounds of revisions.
-4. **Build and launch.** I build, test and launch your site, and move everything across if you're replacing an old one.
-5. **I look after it.** Every website comes with a Care plan, so it stays secure, updated and backed up.
+2. **We send a proposal.** Within 3 working days: the scope, what's not included, a timeline and a fixed price.
+3. **Design.** We design your site, with 2 rounds of revisions.
+4. **Build and launch.** We build, test and launch your site, and move everything across if you're replacing an old one.
+5. **We look after it.** Every website comes with a Care plan, so it stays secure, updated and backed up.
 ### Prices and payment
  
 - **Fixed prices,** agreed before work starts. No surprise bills.
 - **50% to book, 50% at launch.** Projects over £8,000 are paid in three stages (40% / 40% / 20%).
 - **Care plan from £85/month** once your site is live (or the Static plan at £45/month for static sites). See [Plans](/plans).
-- You supply your text and images, or I can quote for copywriting.
+- You supply your text and images, or we can quote for copywriting.
 - No VAT is added: Ellveren isn't VAT registered.
 Smaller business? The [Managed Website Plan](/managed-website-plan) gets you a new 5-page website for £499 setup and £249/month.
  
-### What I don't build
+### What we don't build
  
-- Online shops. I'll point you to a specialist.
+- Online shops. We'll point you to a specialist.
 - Very low-budget sites. For a simple DIY site, Squarespace or Wix may suit you better.
 ### Case studies
  
@@ -349,7 +349,7 @@ _(Add once approved: UK Credit portal, Haleybridge's Recruiterflow job integrati
 Most Business websites take 2–4 weeks from agreed designs to launch, depending on content. Larger and integrated sites are scheduled in the proposal.
  
 **WordPress or static?**
-WordPress if you want lots of plugins or a familiar editor; static if you want the fastest, most secure site with the least maintenance. I'll recommend what suits you.
+WordPress if you want lots of plugins or a familiar editor; static if you want the fastest, most secure site with the least maintenance. We'll recommend what suits you.
  
 **Do I own the website?**
 Yes. Once the project is paid in full, the design, code and content are yours.
@@ -380,9 +380,9 @@ A fast, professionally designed website with hosting, security, backups and mont
 ### How it works
  
 1. **We talk.** A short call about your business, your customers and what your site needs to do.
-2. **I design and build.** Up to 5 pages, designed for your business, with 2 rounds of design revisions.
+2. **We design and build.** Up to 5 pages, designed for your business, with 2 rounds of design revisions.
 3. **You launch.** Your site goes live on fast, secure hosting with everything set up.
-4. **I look after it.** Hosting, security, backups and 1 hour of edits every month.
+4. **We look after it.** Hosting, security, backups and 1 hour of edits every month.
 5. **You own it.** After 12 months, ownership of the site transfers to you.
 ### What's included
  
@@ -406,9 +406,9 @@ A fast, professionally designed website with hosting, security, backups and mont
 - SEO & GEO: see [add-ons](/plans#add-ons)
 ### What you'll need to provide
  
-- Your text and images (or I can quote for copywriting)
+- Your text and images (or we can quote for copywriting)
 - Your logo and brand colours, if you have them
-- Access to your domain name, or I can help you register one
+- Access to your domain name, or we can help you register one
 Need more than 5 pages, integrations with your other systems or a customer portal? See [Websites](/websites) or [ask for a custom quote](/contact).
  
 ### Pricing
@@ -445,7 +445,7 @@ For most small business sites, static is faster, more secure and cheaper to look
 Extra time is £80/hour, only with your approval. If you regularly need more, moving to Care + Support later is easy.
  
 **What does "you own it" mean?**
-After 12 months, the design, code and content are yours. You can keep me looking after it, or take it anywhere you like.
+After 12 months, the design, code and content are yours. You can keep us looking after it, or take it anywhere you like.
  
 ### Call to action
  
@@ -462,36 +462,36 @@ _Working draft. Get it checked before publishing, particularly sections 9 (data 
  
 Last updated: [date]
  
-These terms apply to all website care plans, website builds, add-ons and other work provided by **Ellveren Ltd** ("Ellveren", "I", "me") to you ("you", "the client"). Prices and plan details are set out on the [Plans page](/plans) and the [Websites page](/websites), which form part of these terms.
+These terms apply to all website care plans, website builds, add-ons and other work provided by **Ellveren Ltd** ("Ellveren", "we", "us") to you ("you", "the client"). Prices and plan details are set out on the [Plans page](/plans) and the [Websites page](/websites), which form part of these terms.
  
 ### 1. Services
-1.1 I provide the services described for your plan on the Plans page, and any add-ons or work we agree in writing (email is fine).
+1.1 We provide the services described for your plan on the Plans page, and any add-ons or work we agree in writing (email is fine).
 1.2 Work outside your plan is quoted or charged at the hourly rate before it starts, unless it's covered by included hours.
 1.3 New websites, rebuilds and new features are always quoted separately.
-1.4 Quick how-to help is provided by email on a fair-use basis. Where questions regularly take more than about 30 minutes a month, I may suggest training or a plan with included hours.
-1.5 Where I take over a website built or hosted by someone else, a one-off site takeover fee applies before the plan starts. Problems that existed before the takeover are not covered by the plan and are quoted separately.
-1.6 On Care plans and plans built on Care, fixes are included: if something on your site that was working stops working, and the cause is within the care I provide (WordPress, themes or plugins I manage, or hosting I provide), I'll fix it at no extra charge. This doesn't cover changes or new work of any size, problems caused by you or anyone acting for you, changes to or failures of third-party services, or problems that existed before I took over the site. Fixes are provided on a fair-use basis; where they regularly take more than about 30 minutes a month, I'll discuss the cause with you and may suggest a plan with included hours.
+1.4 Quick how-to help is provided by email on a fair-use basis. Where questions regularly take more than about 30 minutes a month, we may suggest training or a plan with included hours.
+1.5 Where we take over a website built or hosted by someone else, a one-off site takeover fee applies before the plan starts. Problems that existed before the takeover are not covered by the plan and are quoted separately.
+1.6 On Care plans and plans built on Care, fixes are included: if something on your site that was working stops working, and the cause is within the care we provide (WordPress, themes or plugins we manage, or hosting we provide), we'll fix it at no extra charge. This doesn't cover changes or new work of any size, problems caused by you or anyone acting for you, changes to or failures of third-party services, or problems that existed before we took over the site. Fixes are provided on a fair-use basis; where they regularly take more than about 30 minutes a month, we'll discuss the cause with you and may suggest a plan with included hours.
  
 ### 2. Included hours
 2.1 Plans with hours include the stated number of hours each calendar month.
 2.2 Time is recorded in 15-minute steps and shown in your monthly report.
-2.3 I'll tell you when 80% of the month's hours have been used. Time over the included hours is only done with your approval and is charged at the hourly rate.
+2.3 We'll tell you when 80% of the month's hours have been used. Time over the included hours is only done with your approval and is charged at the hourly rate.
 2.4 Included hours are for the calendar month they belong to. Unused hours don't carry over to a later month and have no cash value.
 2.5 Monthly plan fees pay for the care services described for your plan, whether or not the included hours are used in a given month.
  
 ### 3. Fees and payment
 3.1 Monthly plan fees are collected in advance by Direct Debit on the 1st of each month. A Direct Debit mandate is required for every plan.
 3.2 Hourly work and extra time are invoiced monthly in arrears with a timesheet, payable by Direct Debit or within 14 days of the invoice date.
-3.3 Annual billing (Care and Static plans only) is paid upfront for 12 months. Annual fees aren't refundable unless I end the service.
+3.3 Annual billing (Care and Static plans only) is paid upfront for 12 months. Annual fees aren't refundable unless we end the service.
 3.4 Day and half-day bookings are paid in advance.
-3.5 Ellveren is not currently registered for VAT, so no VAT is charged. If Ellveren becomes VAT registered, I'll give you at least 30 days' written notice, and VAT will then be added at the standard rate to fees from the date of registration.
+3.5 Ellveren is not currently registered for VAT, so no VAT is charged. If Ellveren becomes VAT registered, we'll give you at least 30 days' written notice, and VAT will then be added at the standard rate to fees from the date of registration.
 3.6 Website builds are paid 50% on booking and 50% at launch. Projects over £8,000 are paid 40% on booking, 40% at an agreed milestone and 20% at launch. Paid scoping phases are paid in advance and credited against the build if it goes ahead. If launch is delayed for more than 30 days for reasons on your side, the final payment becomes due.
  
 ### 4. Late or failed payments
 4.1 Failed Direct Debits are retried automatically.
 4.2 If a payment remains unpaid 14 days after it's due, work under your plan is paused until it's paid.
-4.3 If a payment remains unpaid 30 days after it's due, I may suspend the service after giving you 7 days' written notice. Your site won't be taken offline without that notice.
-4.4 I reserve the right to charge statutory interest on late business payments under the Late Payment of Commercial Debts (Interest) Act 1998.
+4.3 If a payment remains unpaid 30 days after it's due, we may suspend the service after giving you 7 days' written notice. Your site won't be taken offline without that notice.
+4.4 We reserve the right to charge statutory interest on late business payments under the Late Payment of Commercial Debts (Interest) Act 1998.
  
 ### 5. Term, changes and cancellation
 5.1 Care and Static plans have no minimum term. Plans with included hours have a 3-month minimum term. The Managed Website Plan has a 12-month minimum term.
@@ -501,40 +501,40 @@ These terms apply to all website care plans, website builds, add-ons and other w
 5.5 Add-ons follow the term and notice period of the plan they're added to.
  
 ### 6. Price changes
-6.1 Prices are reviewed every April. I'll give at least 30 days' written notice of any change, normally in March.
+6.1 Prices are reviewed every April. We'll give at least 30 days' written notice of any change, normally in March.
  
 ### 7. Your responsibilities
-7.1 Give me the access, content and information I need, in good time.
-7.2 Keep your passwords secure and tell me promptly if you think an account has been compromised.
-7.3 Tell me before installing plugins or making technical changes to your site. Work to fix problems caused by changes made by you or anyone acting for you is chargeable.
-7.4 Make sure you have the right to use any content, images and materials you give me.
-7.5 Keep your domain name registered and renewed, unless I've agreed in writing to manage it.
+7.1 Give us the access, content and information we need, in good time.
+7.2 Keep your passwords secure and tell us promptly if you think an account has been compromised.
+7.3 Tell us before installing plugins or making technical changes to your site. Work to fix problems caused by changes made by you or anyone acting for you is chargeable.
+7.4 Make sure you have the right to use any content, images and materials you give us.
+7.5 Keep your domain name registered and renewed, unless we've agreed in writing to manage it.
  
 ### 8. Hosting, backups and third parties
-8.1 Where I host your site, it's hosted with reputable third-party providers. I'm not responsible for outages or failures of those providers, but I'll work to restore service as quickly as possible.
+8.1 Where we host your site, it's hosted with reputable third-party providers. We're not responsible for outages or failures of those providers, but we'll work to restore service as quickly as possible.
 8.2 Backups are taken and stored as described for your plan. Backups reduce the risk of data loss but can't remove it entirely.
 8.3 Where your site runs on your own server, the server and your contract with its provider are your responsibility, unless you've added Server care.
 8.4 Premium plugin and tool licences provided under a plan, including the form builder, cookie consent banner, policies, spam protection and email delivery service, are for use while you're on that plan. They're removed when the plan ends.
 8.5 Domain names, DNS, email hosting (mailboxes) and third-party services are outside the plans unless agreed in writing.
 8.6 The cookie consent banner and policies provided under a plan are set up and kept up to date using a third-party service. They help you meet your obligations, but they aren't legal advice, and you remain responsible for how your business uses personal data.
-8.7 Malware clean-up is included on sites I host where the cause is within the care I provide (for example a vulnerability in WordPress, a theme or plugin I manage, or the hosting). Clean-up is charged at the hourly rate where the cause is on your side (for example compromised passwords or user accounts, plugins or code added by you or anyone acting for you, or access you've given to others), or where the site runs on your own server.
+8.7 Malware clean-up is included on sites we host where the cause is within the care we provide (for example a vulnerability in WordPress, a theme or plugin we manage, or the hosting). Clean-up is charged at the hourly rate where the cause is on your side (for example compromised passwords or user accounts, plugins or code added by you or anyone acting for you, or access you've given to others), or where the site runs on your own server.
  
 ### 9. Data protection
-9.1 Where I process personal data on your behalf (for example, form submissions or customer data stored on your website), I act as your data processor under UK GDPR, and you remain the data controller.
-9.2 I'll process that data only to provide the services, keep it secure, use only reputable sub-processors (such as hosting, backup, email delivery, spam protection and cookie consent providers), and help you meet your obligations where reasonable.
+9.1 Where we process personal data on your behalf (for example, form submissions or customer data stored on your website), we act as your data processor under UK GDPR, and you remain the data controller.
+9.2 We'll process that data only to provide the services, keep it secure, use only reputable sub-processors (such as hosting, backup, email delivery, spam protection and cookie consent providers), and help you meet your obligations where reasonable.
 9.3 A data processing agreement is available on request.
 9.4 Ellveren is registered with the Information Commissioner's Office.
  
 ### 10. Ownership
 10.1 Your content, images, logos and brand assets remain yours at all times.
-10.2 For websites I build, ownership of the design and code transfers to you once the project has been paid in full, or for the Managed Website Plan, at the end of the 12-month term.
-10.3 I may reuse general techniques, code components and tools that aren't specific to your business.
-10.4 I may mention you as a client and show your website in my portfolio, unless you ask me not to.
+10.2 For websites we build, ownership of the design and code transfers to you once the project has been paid in full, or for the Managed Website Plan, at the end of the 12-month term.
+10.3 We may reuse general techniques, code components and tools that aren't specific to your business.
+10.4 We may mention you as a client and show your website in our portfolio, unless you ask us not to.
  
 ### 11. Liability
-11.1 I'll provide the services with reasonable skill and care.
-11.2 I'm not liable for indirect or consequential loss, including loss of profits, revenue, business or data.
-11.3 My total liability in any 12-month period is limited to the fees you've paid me in that period.
+11.1 We'll provide the services with reasonable skill and care.
+11.2 We're not liable for indirect or consequential loss, including loss of profits, revenue, business or data.
+11.3 Our total liability in any 12-month period is limited to the fees you've paid us in that period.
 11.4 Nothing in these terms limits liability that can't be limited by law.
  
 ### 12. Ending the service
@@ -543,7 +543,7 @@ These terms apply to all website care plans, website builds, add-ons and other w
 12.3 Any outstanding fees remain payable.
  
 ### 13. General
-13.1 I may update these terms with at least 30 days' written notice.
+13.1 We may update these terms with at least 30 days' written notice.
 13.2 These terms are governed by the law of England and Wales.
  
 Ellveren Ltd · Registered in England and Wales · Company number [number] · Registered office [address]
@@ -553,7 +553,7 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
 ## 5. Enquiry form (`/contact`)
  
 **Heading:** Let's talk about your website
-**Intro:** Tell me a little about what you need and I'll get back to you within 1 working day.
+**Intro:** Tell us a little about what you need and we'll get back to you within 1 working day.
  
 **Fields**
  
@@ -565,8 +565,8 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
 | Business name | Text | No |
 | Current website address | URL | No (helper text: "If you have one") |
 | What are you interested in? | Radio | Yes |
-| Budget | Select | No (helper text: "A rough idea helps me recommend the right option") |
-| Tell me about your project | Textarea | Yes |
+| Budget | Select | No (helper text: "A rough idea helps us recommend the right option") |
+| Tell us about your project | Textarea | Yes |
 | How did you hear about Ellveren? | Text | No |
  
 **"What are you interested in?" options**
@@ -585,15 +585,15 @@ Ellveren Ltd · Registered in England and Wales · Company number [number] · Re
 - £5,000–10,000
 - £10,000+
 - Monthly plan only
-**Privacy line under the button:** I'll only use your details to reply to your enquiry. See the [privacy policy](/privacy).
+**Privacy line under the button:** We'll only use your details to reply to your enquiry. See the [privacy policy](/privacy).
  
 **Button:** Send enquiry
  
-**Confirmation message:** Thanks, [name]. I've got your message and will reply within 1 working day.
+**Confirmation message:** Thanks, [name]. We've got your message and will reply within 1 working day.
  
 **Auto-reply email (optional):**
 > Subject: Thanks for getting in touch
-> Hi [name], thanks for your enquiry about [option]. I'll reply within 1 working day. In the meantime, you can see what's included in each plan here: ellveren.com/plans. Ciaran, Ellveren
+> Hi [name], thanks for your enquiry about [option]. We'll reply within 1 working day. In the meantime, you can see what's included in each plan here: ellveren.com/plans. Ciaran, Ellveren
  
 ---
  
