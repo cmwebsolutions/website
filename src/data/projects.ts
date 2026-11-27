@@ -9,6 +9,13 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: "Allied Heathrow Health",
+        description: "A redesigned static website built for speed and security. Built with user privacy in mind: the map is opt-in rather than loaded automatically, analytics are privacy-first, and a form service is integrated for enquiries.",
+        label: "Healthcare",
+        gradient: 3,
+        image: "/projects/HeathrowAlliedHealth.webp",
+    },
+    {
         title: "Aila Recruitment",
         description: "A custom-designed recruitment website with integrated job listings. Roles are synced directly from their platform and can be posted manually or updated automatically, keeping candidates informed without extra effort.",
         label: "Recruitment",

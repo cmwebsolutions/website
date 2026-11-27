@@ -335,10 +335,10 @@ For client areas, dashboards and custom tools.
 - No VAT is added: Ellveren isn't VAT registered.
 Smaller business? The [Managed Website Plan](/managed-website-plan) gets you a new 5-page website for £499 setup and £249/month.
  
-### What we don't build
- 
-- Online shops. We'll point you to a specialist.
-- Very low-budget sites. For a simple DIY site, Squarespace or Wix may suit you better.
+### What to expect
+
+- Online shops on WooCommerce are something we build, but they're scoped and quoted separately from our standard websites, not part of the fixed-price range.
+- Very low-budget sites. We don't compete with DIY site builders. If you want to manage everything yourself on a template, Squarespace or Wix may suit you better.
 ### Case studies
  
 _(Add once approved: UK Credit portal, Haleybridge's Recruiterflow job integration, SAS.)_
