@@ -9,7 +9,7 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-        title: "Allied Heathrow Health",
+        title: "Heathrow Allied Health",
         description: "A redesigned static website built for speed and security. Built with user privacy in mind: the map is opt-in rather than loaded automatically, analytics are privacy-first, and a form service is integrated for enquiries.",
         label: "Healthcare",
         gradient: 3,
